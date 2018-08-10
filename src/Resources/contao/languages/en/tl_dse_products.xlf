@@ -1,0 +1,33 @@
+<?xml version="1.0" ?>
+<xliff version="1.1">
+	<file datatype="php" original="src/Resources/contao/languages/en/default.php" source-language="en">
+    <body>
+        <trans-unit id="tl_dse_products.new.0">
+            <source>New product</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.new.1">
+            <source>Create a new product</source>
+        </trans-unit>
+
+        <trans-unit id="tl_dse_products.sku.0">
+            <source>SKU</source>
+        </trans-unit>
+
+        <trans-unit id="tl_dse_products.type.0">
+            <source>Type</source>
+        </trans-unit>
+
+        <trans-unit id="tl_dse_products.product_legend">
+            <source>Product</source>
+        </trans-unit>
+
+        <trans-unit id="tl_dse_products.title.0">
+            <source>Title</source>
+        </trans-unit>
+
+        <trans-unit id="tl_dse_products.attr_bm_nennaufnahmeleistung.0">
+            <source>EN - Nennaufnahmeleistung</source>
+        </trans-unit>
+    </body>
+  </file>
+</xliff>

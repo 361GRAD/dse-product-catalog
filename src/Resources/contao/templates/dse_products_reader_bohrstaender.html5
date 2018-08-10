@@ -1,0 +1,70 @@
+
+<div class="products_reader block<?= ($this->class) ? ' '.$this->class : ''; ?>"<?php echo $this->cssID; ?><?php if ($this->style): ?> style="<?php echo $this->style; ?>"<?php endif; ?>>
+
+    <h1><?php echo $this->title; ?></h1>
+    <div class="subheader">
+        <p><?php echo $this->bcsubheader; ?></p>
+    </div>
+    <div class="attributes">
+        <div class="row">
+            <div class="col col-12 col-sm-4">
+                <?php if ($this->attr_height): ?>
+                    <?php $arrHeight = unserialize($this->attr_height); ?>
+                    <?php foreach ($arrHeight as $key => $value): ?>
+                        <?php echo $arrHeight[$key]['attr_height'] ?>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+    <?php if ($this->bctext): ?>
+        <div class="ce_text">
+            <?php echo $this->bctext; ?>
+        </div>
+    <?php endif; ?>
+
+    {{image::<?= $this->main_image_path ?>}}
+    <?php if ($this->img_details): ?>
+        <div class="ce_image">
+
+            {{image::<?php echo $this->img_details; ?>?alt=<?php
+            echo $this->headline;
+            //echo "&width=210";
+            //echo "&height=110";
+            //echo "&mode=crop";
+            ?>}}
+            <?php if ($this->img_label): ?>
+                <div class="label">
+                    {{image::<?php echo $this->img_label; ?>?alt=<?php
+                    echo $this->headline;
+                    //echo "&width=210";
+                    //echo "&height=110";
+                    //echo "&mode=crop";
+                    ?>}}
+                </div>
+            <?php endif; ?>
+        </div>
+    <?php endif; ?>
+
+    <div class="product-content">
+        <?php echo $this->text; ?>
+    </div>
+
+    <!--<p class="back-button">
+        <a href="<?php echo $this->bcback; ?>" class="lb-iframe-link">
+            <span class="icon"></span>
+            {{iflng::de}}
+                <span>Zurück</span>
+            {{iflng}}
+            {{iflng::en}}
+                <span>Back</span>
+            {{iflng}}
+        </a>
+    </p>-->
+
+    <?php //echo $this->showTemplateVars();
+    //var_dump($this->set);
+    //var_dump($this->arrData);
+    ?>
+
+</div>

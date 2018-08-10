@@ -1,0 +1,286 @@
+
+<div class="products_reader block<?= ($this->class) ? ' '.$this->class : ''; ?>"<?php echo $this->cssID; ?><?php if ($this->style): ?> style="<?php echo $this->style; ?>"<?php endif; ?>>
+
+    <!-- ToDo: h4 -->
+    <h4>Bohrmaschinen</h4>
+    <h1><?php echo $this->title; ?></h1>
+    <div class="subheader">
+        <p><?php echo $this->bcsubheader; ?></p>
+    </div>
+<!--
+    <?php if ($this->bctext): ?>
+        <div class="ce_text">
+            <?php echo $this->bctext; ?>
+        </div>
+    <?php endif; ?>
+-->
+    <?php if($this->add_image_map): ?>
+    <div id="detail_image_map">
+        <div class="image_wrapper">
+            <?php $arrImageMap = deserialize($this->image_map); ?>
+            <map name="map<?= $this->id ?>">
+            <?php for($i=0; $i<count($arrImageMap); $i++): ?>
+                <area id="m<?= $this->id ?>_<?= $i ?>" shape="circle" coords="<?= $arrImageMap[$i]["im_x_coord"].",".$arrImageMap[$i]["im_y_coord"] ?>,1">
+            <?php endfor; ?>
+            </map>
+            <img src="<?= $this->main_image_path ?>" alt="<?= '?alt='.$this->main_image_alt ?>" usemap="#map<?= $this->id ?>">
+            <?php for($i=0; $i<count($arrImageMap); $i++): ?>
+                <a class="overlay" href="#m<?= $this->id ?>_<?= $i ?>" data-toggle="modal" data-target="#modal<?= $this->id ?>_<?= $i ?>">
+                    TEST
+                </a>
+                <a class="overlay popper-btn" href="#m<?= $this->id ?>_<?= $i ?>">
+                    TEST
+                </a>
+            <?php endfor; ?>
+        </div>
+        <?php for($i=0; $i<count($arrImageMap); $i++): ?>
+            <div class="popper-popover m<?= $this->id ?>_<?= $i ?>">
+                <div class="popper-popover__body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col col-12 ce_text block">
+                                <h5><?= $arrImageMap[$i]["im_content_headline"] ?></h5>
+                                <?= $arrImageMap[$i]["im_content_text"] ?>
+                            </div>
+                            <!-- IMAGE HERE -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="modal<?= $this->id ?>_<?= $i ?>" tabindex="-1" role="dialog" aria-labelledby="modalLabel<?= $this->id ?>_<?= $i ?>" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalLabel<?= $this->id ?>_<?= $i ?>"><?= $arrImageMap[$i]["im_content_headline"] ?></h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col col-12 ce_text block">
+                                        <?= $arrImageMap[$i]["im_content_text"] ?>
+                                    </div>
+                                    <!-- IMAGE HERE -->
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php endfor; ?>
+    </div>
+    <?php else: ?>
+        <?php $arrImageOptions = deserialize($this->main_image_size); ?>
+        <?php $imgOptions = ''; ?>
+        <?php for($i=0; $i < count($arrImageOptions); $i++): ?>
+            <?php if($i == 0 && $arrImageOptions[$i] != ''): ?>
+                <?php $imgOptions .= 'width='.$arrImageOptions[$i].'&' ?>
+            <?php elseif($i == 1 && $arrImageOptions[$i] != ''): ?>
+                <?php $imgOptions .= 'height='.$arrImageOptions[$i].'&' ?>
+            <?php elseif($i == 2 && $arrImageOptions[$i] != ''): ?>
+                <?php $imgOptions .= 'mode='.$arrImageOptions[$i] ?>
+            <?php endif; ?>
+        <?php endfor; ?>
+        {{image::<?= $this->main_image_path ?><?= '?alt='.$this->main_image_alt ?><?= ($imgOptions) ? '&'.$imgOptions : '' ?>}}
+    <?php endif; ?>
+
+    <div class="menu">
+        <ul>
+        <?php if(!$this->bf_exclude_menu): ?>
+            <li><a href="{{env::request}}#menu_benefits"><?= $this->bf_headline ?></a></li>
+        <?php endif; ?>
+        <?php if(!$this->reasons_exclude_menu): ?>
+            <li><a href="{{env::request}}#menu_reasons"><?= $this->reasons_headline ?></a></li>
+        <?php endif; ?>
+        <?php if(!$this->applications_exclude_menu): ?>
+            <li><a href="{{env::request}}#menu_applications"><?= $this->applications_headline ?></a></li>
+        <?php endif; ?>
+        <?php if(!$this->video_exclude_menu): ?>
+            <li><a href="{{env::request}}#menu_video"><?= $this->video_headline ?></a></li>
+        <?php endif; ?>
+        <?php if(!$this->downloads_exclude_menu): ?>
+            <li><a href="{{env::request}}#menu_downloads"><?= $this->downloads_headline ?></a></li>
+        <?php endif; ?>
+        </ul>
+    </div>
+
+    <div id="menu_benefits" class="menu area">
+        <h2><?= $this->bf_headline ?></h2>
+        <p><?= $this->bf_hl_text ?></p>
+        <?= $this->bf_textarea ?>
+        <?= $this->bf_field_textarea ?>
+    </div>
+
+    <div id="menu_reasons" class="menu area">
+        <h2><?= $this->reasons_headline ?></h2>
+        <?php $objImage = \FilesModel::findByUuid($this->reasons_image); ?>
+        <?php $arrImageOptions = deserialize($this->reasons_image_size); ?>
+        <?php $imgOptions = ''; ?>
+        <?php for($i=0; $i < count($arrImageOptions); $i++): ?>
+        <?php if($i == 0 && $arrImageOptions[$i] != ''): ?>
+        <?php $imgOptions .= 'width='.$arrImageOptions[$i].'&' ?>
+        <?php elseif($i == 1 && $arrImageOptions[$i] != ''): ?>
+        <?php $imgOptions .= 'height='.$arrImageOptions[$i].'&' ?>
+        <?php elseif($i == 2 && $arrImageOptions[$i] != ''): ?>
+        <?php $imgOptions .= 'mode='.$arrImageOptions[$i] ?>
+        <?php endif; ?>
+        <?php endfor; ?>
+        {{image::<?= $objImage->id ?><?= '?alt='.$this->reasons_image_alt ?><?= ($imgOptions) ? '&'.$imgOptions : '' ?>}}
+    </div>
+
+    <div class="attributes">
+        <div class="row">
+            <div class="col col-12">
+                <?php if ($this->attr_bohrmaschinen_nennaufnahmeleistung): ?>
+                <div class="row attr_bohrmaschinen_nennaufnahmeleistung">
+                    <div class="col col-6">
+                        <!-- ToDo: Bezeichner nicht hardcoded -->
+                        Nennaufnahmeleistung:
+                    </div>
+                    <div class="col col-6">
+                        <?= $this->attr_bohrmaschinen_nennaufnahmeleistung ?>
+                    </div>
+                </div>
+                <?php endif; ?>
+                <?php if ($this->attr_bohrmaschinen_maschinengewicht): ?>
+                    <div class="row attr_bohrmaschinen_maschinengewicht">
+                        <div class="col col-6">
+                            <!-- ToDo: Bezeichner nicht hardcoded -->
+                            Maschinengewicht:
+                        </div>
+                        <div class="col col-6">
+                            <?= $this->attr_bohrmaschinen_maschinengewicht ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
+                <?php if ($this->attr_bohrmaschinen_schrauben_weichholz_ohne_vorbohren): ?>
+                    <div class="row attr_bohrmaschinen_schrauben_weichholz_ohne_vorbohren">
+                        <div class="col col-6">
+                            <!-- ToDo: Bezeichner nicht hardcoded -->
+                            Schrauben in Weichholz, ohne Vorbohren, max.:
+                        </div>
+                        <div class="col col-6">
+                            <?= $this->attr_bohrmaschinen_schrauben_weichholz_ohne_vorbohren ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
+                <?php if ($this->attr_bohrmaschinen_festdrehmoment): ?>
+                    <div class="row attr_bohrmaschinen_festdrehmoment">
+                        <div class="col col-6">
+                            <!-- ToDo: Bezeichner nicht hardcoded -->
+                            Festdrehmoment (1. Gang):
+                        </div>
+                        <div class="col col-6">
+                            <?= $this->attr_bohrmaschinen_festdrehmoment ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
+                <?php if ($this->attr_bohrmaschinen_bohrspindelgewinde): ?>
+                    <div class="row attr_bohrmaschinen_bohrspindelgewinde">
+                        <div class="col col-6">
+                            <!-- ToDo: Bezeichner nicht hardcoded -->
+                            Bohrspindelgewinde:
+                        </div>
+                        <div class="col col-6">
+                            <?= $this->attr_bohrmaschinen_bohrspindelgewinde ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
+                <?php if ($this->attr_bohrmaschinen_spannhals): ?>
+                    <div class="row attr_bohrmaschinen_spannhals">
+                        <div class="col col-6">
+                            <!-- ToDo: Bezeichner nicht hardcoded -->
+                            Spannhals (Durchschnitt):
+                        </div>
+                        <div class="col col-6">
+                            <?= $this->attr_bohrmaschinen_spannhals ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
+                <?php if ($this->attr_bohrmaschinen_spannbereich_bohrfutter): ?>
+                    <div class="row attr_bohrmaschinen_spannbereich_bohrfutter">
+                        <div class="col col-6">
+                            <!-- ToDo: Bezeichner nicht hardcoded -->
+                            Spannbereich Bohrfutter:
+                        </div>
+                        <div class="col col-6">
+                            <?= $this->attr_bohrmaschinen_spannbereich_bohrfutter ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
+                <?php if ($this->attr_bohrmaschinen_werkzeugaufnahme): ?>
+                    <div class="row attr_bohrmaschinen_werkzeugaufnahme">
+                        <div class="col col-6">
+                            <!-- ToDo: Bezeichner nicht hardcoded -->
+                            Werkzeugaufnahme:
+                        </div>
+                        <div class="col col-6">
+                            <?= $this->attr_bohrmaschinen_werkzeugaufnahme ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
+                <?php if ($this->attr_bohrmaschinen_maschinentyp): ?>
+                    <div class="row attr_bohrmaschinen_maschinentyp">
+                        <div class="col col-6">
+                            <!-- ToDo: Bezeichner nicht hardcoded -->
+                            Maschinentyp:
+                        </div>
+                        <div class="col col-6">
+                            <?= $this->attr_bohrmaschinen_maschinentyp ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
+                <?php if ($this->attr_bohrmaschinen_einsatzgebiete): ?>
+                    <div class="row attr_bohrmaschinen_einsatzgebiete">
+                        <div class="col col-6">
+                            <!-- ToDo: Bezeichner nicht hardcoded -->
+                            Einsatzgebiete:
+                        </div>
+                        <div class="col col-6">
+                            <?= $this->attr_bohrmaschinen_einsatzgebiete ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+
+    <div id="menu_applications">
+        <h3><?= $this->applications_headline ?></h3>
+    </div>
+
+    <div id="menu_video">
+        <h3><?= $this->video_headline ?></h3>
+    </div>
+
+    <div id="menu_downloads">
+        <h3><?= $this->downloads_headline ?></h3>
+    </div>
+
+    <div class="product-content">
+        <?php echo $this->text; ?>
+    </div>
+
+    <!--<p class="back-button">
+        <a href="<?php echo $this->bcback; ?>" class="lb-iframe-link">
+            <span class="icon"></span>
+            {{iflng::de}}
+                <span>Zurück</span>
+            {{iflng}}
+            {{iflng::en}}
+                <span>Back</span>
+            {{iflng}}
+        </a>
+    </p>-->
+
+    <?php //echo $this->showTemplateVars();
+    //var_dump($this->set);
+    //var_dump($this->arrData);
+    ?>
+
+</div>

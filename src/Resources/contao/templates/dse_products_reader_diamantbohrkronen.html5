@@ -1,0 +1,94 @@
+
+<div class="products_reader block<?= ($this->class) ? ' '.$this->class : ''; ?>"<?php echo $this->cssID; ?><?php if ($this->style): ?> style="<?php echo $this->style; ?>"<?php endif; ?>>
+
+    <h1><?php echo $this->title; ?></h1>
+    <div class="subheader">
+        <p><?php echo $this->bcsubheader; ?></p>
+    </div>
+    <?php if($this->attr_diamantbohrkronen): ?>
+    <?php $arrDiamantbohrkronen = array_chunk(unserialize($this->attr_diamantbohrkronen), ($this->attr_diamantbohrkronen_split) ? $this->attr_diamantbohrkronen_split : count($this->attr_diamantbohrkronen), true) ?>
+    <div class="attributes">
+        <div class="row">
+            <div class="col col-12">
+                <div class="row">
+                    <div class="col col-4">
+                        Bohr-Durchschnitt mm
+                    </div>
+                    <div class="col col-4">
+                        Arbeitslänge mm
+                    </div>
+                    <div class="col col-4">
+                        Bestell-Nr.
+                    </div>
+                </div>
+                <?php for ($i=0; $i<count($arrDiamantbohrkronen); $i++): ?>
+                <div class="row">
+                <?php foreach ($arrDiamantbohrkronen[$i] as $key => $value): ?>
+                    <div class="col col-4">
+                        <span><?= $arrDiamantbohrkronen[$i][$key]['drill_average'] ?></span>
+                    </div>
+                    <div class="col col-4">
+                        <?= $arrDiamantbohrkronen[$i][$key]['working_length'] ?>
+                    </div>
+                    <div class="col col-4">
+                        <?= $arrDiamantbohrkronen[$i][$key]['add_sku'] ?>
+                        <a href="#" data-pid="<?= standardize(StringUtil::restoreBasicEntities($arrDiamantbohrkronen[$i][$key]['add_sku'])); ?>" id="addToWishlist-<?= standardize(StringUtil::restoreBasicEntities($arrDiamantbohrkronen[$i][$key]['add_sku'])); ?>">Auf die Merkliste</a>
+                    </div>
+                <?php endforeach; ?>
+                </div>
+                <?php endfor; ?>
+            </div>
+        </div>
+    </div>
+    <?php endif; ?>
+    <?php if ($this->bctext): ?>
+        <div class="ce_text">
+            <?php echo $this->bctext; ?>
+        </div>
+     <?php endif; ?>
+
+    {{image::<?= $this->main_image_path ?>}}
+    <?php if ($this->img_details): ?>
+        <div class="ce_image">
+
+            {{image::<?php echo $this->img_details; ?>?alt=<?php
+                echo $this->headline;
+                //echo "&width=210";
+                //echo "&height=110";
+                //echo "&mode=crop";
+            ?>}}
+            <?php if ($this->img_label): ?>
+                <div class="label">
+                    {{image::<?php echo $this->img_label; ?>?alt=<?php
+                        echo $this->headline;
+                        //echo "&width=210";
+                        //echo "&height=110";
+                        //echo "&mode=crop";
+                    ?>}}
+                </div>
+            <?php endif; ?>
+        </div>
+    <?php endif; ?>
+
+    <div class="product-content">
+        <?php echo $this->text; ?>
+    </div>
+
+    <!--<p class="back-button">
+        <a href="<?php echo $this->bcback; ?>" class="lb-iframe-link">
+            <span class="icon"></span>
+            {{iflng::de}}
+                <span>Zurück</span>
+            {{iflng}}
+            {{iflng::en}}
+                <span>Back</span>
+            {{iflng}}
+        </a>
+    </p>-->
+
+    <?php //echo $this->showTemplateVars(); 
+    //var_dump($this->set);
+    //var_dump($this->arrData);
+    ?>
+
+</div>

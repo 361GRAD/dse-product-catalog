@@ -1,0 +1,22 @@
+
+<div class="<?php echo $this->class; ?> block"<?php echo $this->cssID; ?><?php if ($this->style): ?> style="<?php echo $this->style; ?>"<?php endif; ?>>
+<?php if ($this->headline): ?>
+
+<<?php echo $this->hl; ?>><?php echo $this->headline; ?></<?php echo $this->hl; ?>>
+<?php endif; ?>
+<?php echo $this->articles; ?>
+
+<?php if(isset($this->relatedArticles)): ?>
+    <div class="related">
+        <div class="row">
+        <?php for ($i=0; $i < count($this->relatedArticles); $i++): ?>
+            <?php echo $this->relatedArticles[$i]; ?>
+        <?php endfor; ?>
+        </div>
+    </div>
+<?php endif; ?>
+<!-- indexer::stop -->
+<p class="back"><a href="<?php echo $this->referer; ?>" title="<?php echo $this->back; ?>">{{iflng::de}}Zurück{{iflng}}{{iflng::en}}Back{{iflng}}</a></p>
+<!-- indexer::continue -->
+
+</div>

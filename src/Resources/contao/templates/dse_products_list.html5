@@ -1,0 +1,22 @@
+
+<div class="col col-4<?= ($this->class) ? ' '.$this->class : ''; ?>"<?php echo $this->cssID; ?><?php if ($this->style): ?> style="<?php echo $this->style; ?>"<?php endif; ?>>
+    <?php if ($this->comparable): ?>
+    <input type="checkbox" name="compare_<?= $this->id ?>" id="compare_<?= $this->id ?>" />
+    <label for="compare_<?= $this->id ?>">vergleichen</label>
+    <?php endif; ?>
+<!--<a href="<?php echo $this->link; ?>">
+    <figure class="image_container test" style="background-image: url(<?php echo $this->img_main; ?>);"></figure>
+</a>-->
+
+    <a href="<?php echo $this->link; ?>">
+        <img src="<?= $this->main_image_path ?>" alt="">
+        <h2><?= $this->title ?></h2>
+    </a>
+
+
+<?php //echo $this->showTemplateVars();
+//var_dump($this->set);
+//var_dump($this->arrData);
+?>
+
+</div>

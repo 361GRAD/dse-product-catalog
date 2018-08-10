@@ -1,0 +1,126 @@
+
+<div class="<?php echo $this->class; ?> block"<?php echo $this->cssID; ?><?php if ($this->style): ?> style="<?php echo $this->style; ?>"<?php endif; ?>>
+
+<?php if ($this->headline): ?>
+<<?php echo $this->hl; ?>><?php echo $this->headline; ?></<?php echo $this->hl; ?>>
+<?php endif; ?>
+
+<?php if(isset($this->articles)): ?>
+    <div class="compare">
+        <!--<div class="row">
+            <div class="col col-12">
+                <table class="table">
+                    <thead>
+                    <tr>
+                        <th scope="col"></th>
+                        <?php for($i=0;$i < count($this->objArticles);$i++): ?>
+                        <th scope="col"><?= $this->objArticles[$i]->title ?></th>
+                        <?php endfor; ?>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <th scope="row">Nennaufnahmeleistung</th>
+                        <?php for($i=0;$i < count($this->objArticles);$i++): ?>
+                        <td><?= $this->objArticles[0]->attr_bohrmaschinen_nennaufnahmeleistung ?></td>
+                        <?php endfor; ?>
+                    </tr>
+                    <tr>
+                        <th scope="row">Maschinengewicht</th>
+                        <?php for($i=0;$i < count($this->objArticles);$i++): ?>
+                        <td><?= $this->objArticles[0]->attr_bohrmaschinen_maschinengewicht ?></td>
+                        <?php endfor; ?>
+                    </tr>
+                    <tr>
+                        <th scope="row">Bohrspindelgewinde</th>
+                        <?php for($i=0;$i < count($this->objArticles);$i++): ?>
+                            <td><?= $this->objArticles[0]->attr_bohrmaschinen_bohrspindelgewinde ?></td>
+                        <?php endfor; ?>
+                    </tr>
+                    <tr>
+                        <th scope="row">Spannhals (Durchschnitt)</th>
+                        <?php for($i=0;$i < count($this->objArticles);$i++): ?>
+                            <td><?= $this->objArticles[0]->attr_bohrmaschinen_spannhals ?></td>
+                        <?php endfor; ?>
+                    </tr>
+                    <tr>
+                        <th scope="row">Werkzeugaufnahme</th>
+                        <?php for($i=0;$i < count($this->objArticles);$i++): ?>
+                            <td><?= $this->objArticles[0]->attr_bohrmaschinen_werkzeugaufnahme ?></td>
+                        <?php endfor; ?>
+                    </tr>
+                    <tr>
+                        <th scope="row">Maschinentyp</th>
+                        <?php for($i=0;$i < count($this->objArticles);$i++): ?>
+                            <td><?= $this->objArticles[0]->attr_bohrmaschinen_maschinentyp ?></td>
+                        <?php endfor; ?>
+                    </tr>
+                    <tr>
+                        <th scope="row">Einsatzgebiete</th>
+                        <?php for($i=0;$i < count($this->objArticles);$i++): ?>
+                            <td><?= $this->objArticles[0]->attr_bohrmaschinen_einsatzgebiete ?></td>
+                        <?php endfor; ?>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>-->
+        <div class="row no-gutters align-items-end">
+            <div class="col col-6">
+                <div class="row">
+                    <div class="col col-12">
+                        <div class="bg_wrapper">
+                            Technische Daten
+                        </div>
+                    </div>
+                </div>
+                <div class="row attr_bohrmaschinen_nennaufnahmeleistung">
+                    <div class="col col-6">
+                        Nennaufnahmeleistung:
+                    </div>
+                </div>
+                <div class="row attr_bohrmaschinen_maschinengewicht">
+                    <div class="col col-12">
+                        Maschinengewicht:
+                    </div>
+                </div>
+                <div class="row attr_bohrmaschinen_bohrspindelgewinde">
+                    <div class="col col-12">
+                        Bohrspindelgewinde:
+                    </div>
+                </div>
+                <div class="row attr_bohrmaschinen_spannhals">
+                    <div class="col col-12">
+                        Spannhals (Durchschnitt):
+                    </div>
+                </div>
+                <div class="row attr_bohrmaschinen_werkzeugaufnahme">
+                    <div class="col col-12">
+                        Werkzeugaufnahme:
+                    </div>
+                </div>
+                <div class="row attr_bohrmaschinen_maschinentyp">
+                    <div class="col col-12">
+                        Maschinentyp:
+                    </div>
+                </div>
+                <div class="row attr_bohrmaschinen_einsatzgebiete">
+                    <div class="col col-12">
+                        Einsatzgebiete:
+                    </div>
+                </div>
+            </div>
+            <div class="col col-6">
+            <?php for ($i=0; $i < count($this->articles); $i++): ?>
+                <?php echo $this->articles[$i]; ?>
+            <?php endfor; ?>
+            </div>
+        </div>
+    </div>
+<?php endif; ?>
+
+<!-- indexer::stop -->
+<p class="back"><a href="<?php echo $this->referer; ?>" title="<?php echo $this->back; ?>">{{iflng::de}}Zurück{{iflng}}{{iflng::en}}Back{{iflng}}</a></p>
+<!-- indexer::continue -->
+
+</div>

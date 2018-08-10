@@ -1,0 +1,51 @@
+<!-- indexer::stop -->
+<div class="<?php echo $this->class; ?> block"<?php echo $this->cssID; ?><?php if ($this->style): ?> style="<?php echo $this->style; ?>"<?php endif; ?>>
+<?php if ($this->headline): ?>
+
+<<?php echo $this->hl; ?>><?php echo $this->headline; ?></<?php echo $this->hl; ?>>
+<?php endif; ?>
+
+    <div class="back-white top">
+        <a href="javascript:history.go(-1)">
+            {{iflng::de}}
+                ZURÜCK zur Übersicht
+            {{iflng}}
+            {{iflng::en}}
+                BACK to overview
+            {{iflng}}
+        </a>
+        <br>
+        <?php if ($this->comparable): ?>
+        <a href="#" class="showCompare">Produkte vergleichen</a>
+        <?php endif; ?>
+    </div>
+
+<?php if (count($this->articles)): // more then 0 articles  ?>
+
+    <div class="pl-wrap">
+        <div class="row">
+            <?php foreach($this->articles as $article) echo $article; ?>
+        </div>
+    </div>
+    <div class="pl-nav">
+        <div class="back-white bottom">
+            <a href="javascript:history.go(-1)">
+                {{iflng::de}}
+                ZURÜCK zur Übersicht
+                {{iflng}}
+                {{iflng::en}}
+                BACK to overview
+                {{iflng}}
+            </a>
+        </div>
+        <?php echo $this->pagination; ?>
+    </div>
+
+<?php else: // nothing found ?>
+
+    <p>In diesem Bereich gibt es noch keine Produkte.</p>
+
+<?php endif; ?>
+
+</div>
+<!-- indexer::continue -->

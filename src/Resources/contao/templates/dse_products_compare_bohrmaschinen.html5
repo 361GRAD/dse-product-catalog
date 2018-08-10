@@ -1,0 +1,43 @@
+
+<div class="row">
+    <div class="col col-12">
+        <div class="bg_wrapper">
+            <strong><?= $this->title ?></strong>
+        </div>
+    </div>
+</div>
+<div class="row attr_bohrmaschinen_nennaufnahmeleistung">
+    <div class="col col-12">
+        <?= $this->attr_bohrmaschinen_nennaufnahmeleistung ?>
+    </div>
+</div>
+<div class="row attr_bohrmaschinen_maschinengewicht">
+    <div class="col col-12">
+        <?= $this->attr_bohrmaschinen_maschinengewicht ?>
+    </div>
+</div>
+<div class="row attr_bohrmaschinen_bohrspindelgewinde">
+    <div class="col col-12">
+        <?= $this->attr_bohrmaschinen_bohrspindelgewinde ?>
+    </div>
+</div>
+<div class="row attr_bohrmaschinen_spannhals">
+    <div class="col col-12">
+        <?= $this->attr_bohrmaschinen_spannhals ?>
+    </div>
+</div>
+<div class="row attr_bohrmaschinen_werkzeugaufnahme">
+    <div class="col col-12">
+        <?= $this->attr_bohrmaschinen_werkzeugaufnahme ?>
+    </div>
+</div>
+<div class="row attr_bohrmaschinen_maschinentyp">
+    <div class="col col-12">
+        <?= $this->attr_bohrmaschinen_maschinentyp ?>
+    </div>
+</div>
+<div class="row attr_bohrmaschinen_einsatzgebiete">
+    <div class="col col-12">
+        <?= $this->attr_bohrmaschinen_einsatzgebiete ?>
+    </div>
+</div>

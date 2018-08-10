@@ -1,0 +1,33 @@
+{
+  "name": "361GRAD-Elements/dse-product-catalog",
+  "type": "contao-bundle",
+  "description": "361GRAD-Element - product-catalog extension",
+  "license": "proprietary",
+  "homepage": "http://361.de",
+  "authors": [
+    {
+      "name": "Markus Häfner",
+      "email": "markus@361.de",
+      "homepage": "http://361.de",
+      "role": "Developer"
+    }
+  ],
+  "require": {
+    "php": ">=7.0",
+    "contao/core-bundle": "~4.4"
+  },
+  "require-dev": {
+    "phpcq/all-tasks": "^1.1"
+  },
+  "autoload": {
+    "psr-4": {
+      "Dse\\ProductCatalogBundle\\": "src"
+    }
+  },
+  "extra": {
+    "contao-manager-plugin":"Dse\\ProductCatalogBundle\\ContaoManager\\Plugin",
+    "branch-alias": {
+      "dev-master": "1.2.x-dev"
+    }
+  }
+}

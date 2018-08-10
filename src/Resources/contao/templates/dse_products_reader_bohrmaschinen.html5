@@ -1,0 +1,693 @@
+
+<div class="products_reader block<?= ($this->class) ? ' '.$this->class : ''; ?>"<?php echo $this->cssID; ?><?php if ($this->style): ?> style="<?php echo $this->style; ?>"<?php endif; ?>>
+
+    <!-- ToDo: h4 -->
+    <h4>Bohrmaschinen</h4>
+    <h1><?php echo $this->title; ?></h1>
+    <div class="subheader">
+        <p><?php echo $this->bcsubheader; ?></p>
+    </div>
+<!--
+    <?php if ($this->bctext): ?>
+        <div class="ce_text">
+            <?php echo $this->bctext; ?>
+        </div>
+    <?php endif; ?>
+-->
+    <?php if($this->add_image_map): ?>
+    <div id="detail_image_map">
+        <div class="image_wrapper">
+            <?php $arrImageMap = deserialize($this->image_map); ?>
+            <map name="map<?= $this->id ?>">
+            <?php if($this->im_1_x_coord > 0 && $this->im_1_y_coord > 0): ?>
+                <area id="m<?= $this->id ?>_1" shape="circle" coords="<?= $this->im_1_x_coord.",".$this->im_1_y_coord ?>,1">
+            <?php endif; ?>
+            <?php if($this->im_2_x_coord > 0 && $this->im_2_y_coord > 0): ?>
+                <area id="m<?= $this->id ?>_2" shape="circle" coords="<?= $this->im_2_x_coord.",".$this->im_2_y_coord ?>,1">
+            <?php endif; ?>
+            <?php if($this->im_3_x_coord > 0 && $this->im_3_y_coord > 0): ?>
+                <area id="m<?= $this->id ?>_3" shape="circle" coords="<?= $this->im_3_x_coord.",".$this->im_3_y_coord ?>,1">
+            <?php endif; ?>
+            <?php if($this->im_4_x_coord > 0 && $this->im_4_y_coord > 0): ?>
+                <area id="m<?= $this->id ?>_4" shape="circle" coords="<?= $this->im_4_x_coord.",".$this->im_4_y_coord ?>,1">
+            <?php endif; ?>
+            <?php if($this->im_5_x_coord > 0 && $this->im_5_y_coord > 0): ?>
+                <area id="m<?= $this->id ?>_5" shape="circle" coords="<?= $this->im_5_x_coord.",".$this->im_5_y_coord ?>,1">
+            <?php endif; ?>
+            </map>
+            <img src="<?= $this->main_image_path ?>" alt="<?= $this->main_image_alt ?>" usemap="#map<?= $this->id ?>">
+            <?php if($this->im_1_x_coord && $this->im_1_y_coord): ?>
+                <a class="overlay" href="#m<?= $this->id ?>_1" data-toggle="modal" data-target="#modal<?= $this->id ?>_1">
+                    TEST
+                </a>
+                <a class="overlay popper-btn" href="#m<?= $this->id ?>_1">
+                    TEST
+                </a>
+            <?php endif; ?>
+            <?php if($this->im_2_x_coord && $this->im_2_y_coord): ?>
+                <a class="overlay" href="#m<?= $this->id ?>_2" data-toggle="modal" data-target="#modal<?= $this->id ?>_2">
+                    TEST
+                </a>
+                <a class="overlay popper-btn" href="#m<?= $this->id ?>_2">
+                    TEST
+                </a>
+            <?php endif; ?>
+            <?php if($this->im_3_x_coord && $this->im_3_y_coord): ?>
+                <a class="overlay" href="#m<?= $this->id ?>_3" data-toggle="modal" data-target="#modal<?= $this->id ?>_3">
+                    TEST
+                </a>
+                <a class="overlay popper-btn" href="#m<?= $this->id ?>_3">
+                    TEST
+                </a>
+            <?php endif; ?>
+            <?php if($this->im_4_x_coord && $this->im_4_y_coord): ?>
+                <a class="overlay" href="#m<?= $this->id ?>_4" data-toggle="modal" data-target="#modal<?= $this->id ?>_4">
+                    TEST
+                </a>
+                <a class="overlay popper-btn" href="#m<?= $this->id ?>_4">
+                    TEST
+                </a>
+            <?php endif; ?>
+            <?php if($this->im_5_x_coord && $this->im_5_y_coord): ?>
+                <a class="overlay" href="#m<?= $this->id ?>_5" data-toggle="modal" data-target="#modal<?= $this->id ?>_5">
+                    TEST
+                </a>
+                <a class="overlay popper-btn" href="#m<?= $this->id ?>_5">
+                    TEST
+                </a>
+            <?php endif; ?>
+        </div>
+        <?php if($this->im_1_x_coord && $this->im_1_y_coord): ?>
+            <?php $objImage = ""; ?>
+            <?php $objImage = \FilesModel::findByUuid($this->im_1_ct_img); ?>
+            <div class="popper-popover m<?= $this->id ?>_1">
+                <div class="popper-popover__body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col col-12 ce_text block">
+                                <h5><?= $this->im_1_ct_hl ?></h5>
+                                <p><?= $this->im_1_ct_txt ?></p>
+                            </div>
+                            <img src="<?= $objImage->path ?>" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="modal<?= $this->id ?>_1" tabindex="-1" role="dialog" aria-labelledby="modalLabel<?= $this->id ?>_1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalLabel<?= $this->id ?>_1"><?= $this->im_1_ct_hl ?></h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col col-12">
+                                        <p><?= $this->im_1_ct_txt ?></p>
+                                    </div>
+                                    <div class="col col-12">
+                                        <img src="<?= $objImage->path ?>" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php endif; ?>
+        <?php if($this->im_2_x_coord && $this->im_2_y_coord): ?>
+            <?php $objImage = ""; ?>
+            <?php $objImage = \FilesModel::findByUuid($this->im_2_ct_img); ?>
+            <div class="popper-popover m<?= $this->id ?>_1">
+                <div class="popper-popover__body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col col-12 ce_text block">
+                                <h5><?= $this->im_2_ct_hl ?></h5>
+                                <p><?= $this->im_2_ct_txt ?></p>
+                            </div>
+                            <img src="<?= $objImage->path ?>" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="modal<?= $this->id ?>_1" tabindex="-1" role="dialog" aria-labelledby="modalLabel<?= $this->id ?>_1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalLabel<?= $this->id ?>_1"><?= $this->im_2_ct_hl ?></h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col col-12">
+                                        <p><?= $this->im_2_ct_txt ?></p>
+                                    </div>
+                                    <div class="col col-12">
+                                        <img src="<?= $objImage->path ?>" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php endif; ?>
+        <?php if($this->im_3_x_coord && $this->im_3_y_coord): ?>
+            <?php $objImage = ""; ?>
+            <?php $objImage = \FilesModel::findByUuid($this->im_3_ct_img); ?>
+            <div class="popper-popover m<?= $this->id ?>_1">
+                <div class="popper-popover__body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col col-12 ce_text block">
+                                <h5><?= $this->im_3_ct_hl ?></h5>
+                                <p><?= $this->im_3_ct_txt ?></p>
+                            </div>
+                            <img src="<?= $objImage->path ?>" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="modal<?= $this->id ?>_1" tabindex="-1" role="dialog" aria-labelledby="modalLabel<?= $this->id ?>_1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalLabel<?= $this->id ?>_1"><?= $this->im_3_ct_hl ?></h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col col-12">
+                                        <p><?= $this->im_3_ct_txt ?></p>
+                                    </div>
+                                    <div class="col col-12">
+                                        <img src="<?= $objImage->path ?>" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php endif; ?>
+        <?php if($this->im_4_x_coord && $this->im_4_y_coord): ?>
+            <?php $objImage = ""; ?>
+            <?php $objImage = \FilesModel::findByUuid($this->im_4_ct_img); ?>
+            <div class="popper-popover m<?= $this->id ?>_1">
+                <div class="popper-popover__body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col col-12 ce_text block">
+                                <h5><?= $this->im_4_ct_hl ?></h5>
+                                <p><?= $this->im_4_ct_txt ?></p>
+                            </div>
+                            <img src="<?= $objImage->path ?>" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="modal<?= $this->id ?>_1" tabindex="-1" role="dialog" aria-labelledby="modalLabel<?= $this->id ?>_1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalLabel<?= $this->id ?>_1"><?= $this->im_4_ct_hl ?></h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col col-12">
+                                        <p><?= $this->im_4_ct_txt ?></p>
+                                    </div>
+                                    <div class="col col-12">
+                                        <img src="<?= $objImage->path ?>" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php endif; ?>
+        <?php if($this->im_5_x_coord && $this->im_5_y_coord): ?>
+            <?php $objImage = ""; ?>
+            <?php $objImage = \FilesModel::findByUuid($this->im_5_ct_img); ?>
+            <div class="popper-popover m<?= $this->id ?>_1">
+                <div class="popper-popover__body">
+                    <div class="container-fluid">
+                        <div class="row">
+                            <div class="col col-12 ce_text block">
+                                <h5><?= $this->im_5_ct_hl ?></h5>
+                                <p><?= $this->im_5_ct_txt ?></p>
+                            </div>
+                            <img src="<?= $objImage->path ?>" alt="">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal fade" id="modal<?= $this->id ?>_1" tabindex="-1" role="dialog" aria-labelledby="modalLabel<?= $this->id ?>_1" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modalLabel<?= $this->id ?>_1"><?= $this->im_5_ct_hl ?></h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col col-12">
+                                        <p><?= $this->im_5_ct_txt ?></p>
+                                    </div>
+                                    <div class="col col-12">
+                                        <img src="<?= $objImage->path ?>" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        <?php endif; ?>
+    </div>
+    <?php else: ?>
+        <?php $arrImageOptions = deserialize($this->main_image_size); ?>
+        <?php $imgOptions = ''; ?>
+        <?php for($i=0; $i < count($arrImageOptions); $i++): ?>
+            <?php if($i == 0 && $arrImageOptions[$i] != ''): ?>
+                <?php $imgOptions .= 'width='.$arrImageOptions[$i].'&' ?>
+            <?php elseif($i == 1 && $arrImageOptions[$i] != ''): ?>
+                <?php $imgOptions .= 'height='.$arrImageOptions[$i].'&' ?>
+            <?php elseif($i == 2 && $arrImageOptions[$i] != ''): ?>
+                <?php $imgOptions .= 'mode='.$arrImageOptions[$i] ?>
+            <?php endif; ?>
+        <?php endfor; ?>
+        {{image::<?= $this->main_image_path ?><?= '?alt='.$this->main_image_alt ?><?= ($imgOptions) ? '&'.$imgOptions : '' ?>}}
+    <?php endif; ?>
+
+    <div class="menu">
+        <ul>
+        <?php if(!$this->bf_exclude_menu): ?>
+            <li><a href="{{env::request}}#menu_benefits"><?= $this->bf_headline ?></a></li>
+        <?php endif; ?>
+        <?php if(!$this->reasons_exclude_menu): ?>
+            <li><a href="{{env::request}}#menu_reasons"><?= $this->reasons_headline ?></a></li>
+        <?php endif; ?>
+        <?php if(!$this->applications_exclude_menu): ?>
+            <li><a href="{{env::request}}#menu_applications"><?= $this->applications_headline ?></a></li>
+        <?php endif; ?>
+        <?php if(!$this->video_exclude_menu): ?>
+            <li><a href="{{env::request}}#menu_video"><?= $this->video_headline ?></a></li>
+        <?php endif; ?>
+        <?php if(!$this->downloads_exclude_menu): ?>
+            <li><a href="{{env::request}}#menu_downloads"><?= $this->downloads_headline ?></a></li>
+        <?php endif; ?>
+        </ul>
+    </div>
+
+    <div id="menu_benefits" class="menu area">
+        <h2><?= $this->bf_headline ?></h2>
+        <p><?= $this->bf_hl_text ?></p>
+        <h3><?= $this->bf_textarea_headline ?></h3>
+        <?= $this->bf_textarea_left ?>
+        <?= $this->bf_textarea_right ?>
+        <h3><?= $this->bf_field_textarea_headline ?></h3>
+        <p><?= $this->bf_field_textarea_text ?></p>
+        <?= $this->bf_field_textarea_left ?>
+        <?= $this->bf_field_textarea_right ?>
+        <?php $arrBfImages = array(); ?>
+        <?php ($this->bf_img_1) ? $arrBfImages[0] = $this->bf_img_1 : '' ?>
+        <?php ($this->bf_img_2) ? $arrBfImages[1] = $this->bf_img_2 : '' ?>
+        <?php ($this->bf_img_3) ? $arrBfImages[2] = $this->bf_img_3 : '' ?>
+        <?php ($this->bf_img_4) ? $arrBfImages[3] = $this->bf_img_4 : '' ?>
+        <?php ($this->bf_img_5) ? $arrBfImages[4] = $this->bf_img_5 : '' ?>
+        <?php if(count($arrBfImages)>0): ?>
+        <div class="row justify-content-center">
+        <?php for($i=0; $i<count($arrBfImages);$i++): ?>
+            <div class="col col-2">
+                <?php $objImage = \FilesModel::findByUuid($arrBfImages[$i]); ?>
+                {{image::<?= $objImage->id ?><?= '?alt='.$this->reasons_image_alt ?><?= ($imgOptions) ? '&'.$imgOptions : '' ?>}}
+            </div>
+        <?php endfor; ?>
+        </div>
+        <?php endif; ?>
+    </div>
+
+    <div id="menu_reasons" class="menu area">
+        <h2><?= $this->reasons_headline ?></h2>
+        <?php $objImage = \FilesModel::findByUuid($this->reasons_image); ?>
+        <?php $arrImageOptions = deserialize($this->reasons_image_size); ?>
+        <?php $imgOptions = ''; ?>
+        <?php for($i=0; $i < count($arrImageOptions); $i++): ?>
+        <?php if($i == 0 && $arrImageOptions[$i] != ''): ?>
+        <?php $imgOptions .= 'width='.$arrImageOptions[$i].'&' ?>
+        <?php elseif($i == 1 && $arrImageOptions[$i] != ''): ?>
+        <?php $imgOptions .= 'height='.$arrImageOptions[$i].'&' ?>
+        <?php elseif($i == 2 && $arrImageOptions[$i] != ''): ?>
+        <?php $imgOptions .= 'mode='.$arrImageOptions[$i] ?>
+        <?php endif; ?>
+        <?php endfor; ?>
+        {{image::<?= $objImage->id ?><?= '?alt='.$this->reasons_image_alt ?><?= ($imgOptions) ? '&'.$imgOptions : '' ?>}}
+        <?php if($this->reasons_list): ?>
+        <div class="reasons_list">
+            <ul>
+                <?php foreach(deserialize($this->reasons_list) as $listelement): ?>
+                <li>
+                    <h5><?= $listelement['reasons_list_headline'] ?></h5>
+                    <p><?= $listelement['reasons_list_text'] ?></p>
+                </li>
+                <?php endforeach; ?>
+            </ul>
+        </div>
+        <?php endif; ?>
+    </div>
+
+    <div id="menu_applications">
+        <h3><?= $this->applications_headline ?></h3>
+        <div class="row align-items-center">
+            <div class="col col-6">
+                <?php $objImage = \FilesModel::findByUuid($this->applications_field_big_image); ?>
+                {{image::<?= $objImage->id ?><?= '?alt='.$this->reasons_image_alt ?><?= ($imgOptions) ? '&'.$imgOptions : '' ?>}}
+            </div>
+            <div class="col col-6">
+                <div class="row">
+                    <div class="col col-12">
+                        <?php $objImage = \FilesModel::findByUuid($this->applications_field_small_1_image); ?>
+                        {{image::<?= $objImage->id ?><?= '?alt='.$this->reasons_image_alt ?><?= ($imgOptions) ? '&'.$imgOptions : '' ?>}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-12">
+                        <?php $objImage = \FilesModel::findByUuid($this->applications_field_small_2_image); ?>
+                        {{image::<?= $objImage->id ?><?= '?alt='.$this->reasons_image_alt ?><?= ($imgOptions) ? '&'.$imgOptions : '' ?>}}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row align-items-center">
+            <div class="col col-6">
+                <div class="row">
+                    <div class="col col-12">
+                        <?php $objImage = \FilesModel::findByUuid($this->applications_field_small_3_image); ?>
+                        {{image::<?= $objImage->id ?><?= '?alt='.$this->reasons_image_alt ?><?= ($imgOptions) ? '&'.$imgOptions : '' ?>}}
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col col-12">
+                        <?php $objImage = \FilesModel::findByUuid($this->applications_field_small_4_image); ?>
+                        {{image::<?= $objImage->id ?><?= '?alt='.$this->reasons_image_alt ?><?= ($imgOptions) ? '&'.$imgOptions : '' ?>}}
+                    </div>
+                </div>
+            </div>
+            <div class="col col-6">
+                <?php $objImage = \FilesModel::findByUuid($this->applications_field_big_2_image); ?>
+                {{image::<?= $objImage->id ?><?= '?alt='.$this->reasons_image_alt ?><?= ($imgOptions) ? '&'.$imgOptions : '' ?>}}
+            </div>
+        </div>
+    </div>
+
+    <div class="attributes">
+        <?php if($this->attr_headline || $this->attr_text): ?>
+        <div class="row">
+            <div class="col col-12">
+                <?php if($this->attr_headline): ?>
+                <h2><?= $this->attr_headline ?></h2>
+                <?php endif; ?>
+                <?php if($this->attr_text): ?>
+                <p><?= $this->attr_text ?></p>
+                <?php endif; ?>
+            </div>
+        </div>
+        <?php endif; ?>
+        <div class="row">
+            <div class="col col-12">
+                <?php if ($this->attr_bm_nennaufnahmeleistung): ?>
+                <div class="row attr_bm_nennaufnahmeleistung">
+                    <div class="col col-6">
+                        <!-- ToDo: Bezeichner nicht hardcoded -->
+                        <?= $this->localTrans['attr_bm_nennaufnahmeleistung'][0]; ?>
+                    </div>
+                    <div class="col col-6">
+                        <?= $this->attr_bm_nennaufnahmeleistung ?>
+                    </div>
+                </div>
+                <?php endif; ?>
+                <?php if ($this->attr_bm_maschinengewicht): ?>
+                    <div class="row attr_bm_maschinengewicht">
+                        <div class="col col-6">
+                            <!-- ToDo: Bezeichner nicht hardcoded -->
+                            Maschinengewicht:
+                        </div>
+                        <div class="col col-6">
+                            <?= $this->attr_bm_maschinengewicht ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
+                <?php if ($this->attr_bm_schrauben_weichholz_ohne_vorbohren): ?>
+                    <div class="row attr_bm_schrauben_weichholz_ohne_vorbohren">
+                        <div class="col col-6">
+                            <!-- ToDo: Bezeichner nicht hardcoded -->
+                            Schrauben in Weichholz, ohne Vorbohren, max.:
+                        </div>
+                        <div class="col col-6">
+                            <?= $this->attr_bm_schrauben_weichholz_ohne_vorbohren ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
+                <?php if ($this->attr_bm_festdrehmoment): ?>
+                    <div class="row attr_bm_festdrehmoment">
+                        <div class="col col-6">
+                            <!-- ToDo: Bezeichner nicht hardcoded -->
+                            Festdrehmoment (1. Gang):
+                        </div>
+                        <div class="col col-6">
+                            <?= $this->attr_bm_festdrehmoment ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
+                <?php if ($this->attr_bm_bohrspindelgewinde): ?>
+                    <div class="row attr_bm_bohrspindelgewinde">
+                        <div class="col col-6">
+                            <!-- ToDo: Bezeichner nicht hardcoded -->
+                            Bohrspindelgewinde:
+                        </div>
+                        <div class="col col-6">
+                            <?= $this->attr_bm_bohrspindelgewinde ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
+                <?php if ($this->attr_bm_spannhals): ?>
+                    <div class="row attr_bm_spannhals">
+                        <div class="col col-6">
+                            <!-- ToDo: Bezeichner nicht hardcoded -->
+                            Spannhals (Durchschnitt):
+                        </div>
+                        <div class="col col-6">
+                            <?= $this->attr_bm_spannhals ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
+                <?php if ($this->attr_bm_spannbereich_bohrfutter): ?>
+                    <div class="row attr_bm_spannbereich_bohrfutter">
+                        <div class="col col-6">
+                            <!-- ToDo: Bezeichner nicht hardcoded -->
+                            Spannbereich Bohrfutter:
+                        </div>
+                        <div class="col col-6">
+                            <?= $this->attr_bm_spannbereich_bohrfutter ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
+                <?php if ($this->attr_bm_werkzeugaufnahme): ?>
+                    <div class="row attr_bm_werkzeugaufnahme">
+                        <div class="col col-6">
+                            <!-- ToDo: Bezeichner nicht hardcoded -->
+                            Werkzeugaufnahme:
+                        </div>
+                        <div class="col col-6">
+                            <?= $this->attr_bm_werkzeugaufnahme ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
+                <?php if ($this->attr_bm_maschinentyp): ?>
+                    <div class="row attr_bm_maschinentyp">
+                        <div class="col col-6">
+                            <!-- ToDo: Bezeichner nicht hardcoded -->
+                            Maschinentyp:
+                        </div>
+                        <div class="col col-6">
+                            <?= $this->attr_bm_maschinentyp ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
+                <?php if ($this->attr_bm_einsatzgebiete): ?>
+                    <div class="row attr_bm_einsatzgebiete">
+                        <div class="col col-6">
+                            <!-- ToDo: Bezeichner nicht hardcoded -->
+                            Einsatzgebiete:
+                        </div>
+                        <div class="col col-6">
+                            <?= $this->attr_bm_einsatzgebiete ?>
+                        </div>
+                    </div>
+                <?php endif; ?>
+            </div>
+        </div>
+    </div>
+
+    <?php if($this->order_data_headline && $this->order_data): ?>
+    <div class="order_data">
+        <h3><?= $this->order_data_headline ?></h3>
+        <div class="row">
+            <div class="col col-12">
+            <?php $arrOrderData = deserialize($this->order_data) ?>
+            <?php for($i=0;$i<count($arrOrderData);$i++): ?>
+            <?php if($i == 0): ?>
+                <div class="row head">
+                    <div class="col col-4">
+                        <?= $arrOrderData[$i]["order_data_value_1"] ?>
+                    </div>
+                    <div class="col col-4">
+                        <?= $arrOrderData[$i]["order_data_value_2"] ?>
+                    </div>
+                    <div class="col col-4">
+                        <?= $arrOrderData[$i]["order_data_value_3"] ?>
+                    </div>
+                </div>
+            <?php endif; ?>
+            <?php if($i > 0): ?>
+                <div class="row">
+                    <div class="col col-4">
+                        <?= $arrOrderData[$i]["order_data_value_1"] ?>
+                    </div>
+                    <div class="col col-4">
+                        <?= $arrOrderData[$i]["order_data_value_2"] ?>
+                    </div>
+                    <div class="col col-4">
+                        <?= $arrOrderData[$i]["order_data_value_3"] ?>
+                    </div>
+                </div>
+            <?php endif; ?>
+            <?php endfor; ?>
+            </div>
+        </div>
+    </div>
+    <?php endif; ?>
+
+    <div id="menu_video">
+        <h3><?= $this->video_headline ?></h3>
+        <p><?= $this->video_text ?></p>
+    </div>
+
+    <div id="menu_downloads">
+        <h3><?= $this->downloads_headline ?></h3>
+        <?php $arrDownloads = array(); ?>
+        <?php if($this->downloads_file_1_title && $this->downloads_file_1): ?>
+        <?php $arrDownloads[0]['title'] = $this->downloads_file_1_title; ?>
+        <?php $arrDownloads[0]['file'] = $this->downloads_file_1; ?>
+        <?php endif; ?>
+        <?php if($this->downloads_file_2_title && $this->downloads_file_2): ?>
+            <?php $arrDownloads[1]['title'] = $this->downloads_file_2_title; ?>
+            <?php $arrDownloads[1]['file'] = $this->downloads_file_2; ?>
+        <?php endif; ?>
+        <?php if($this->downloads_file_3_title && $this->downloads_file_3): ?>
+            <?php $arrDownloads[2]['title'] = $this->downloads_file_3_title; ?>
+            <?php $arrDownloads[2]['file'] = $this->downloads_file_3; ?>
+        <?php endif; ?>
+        <?php if($this->downloads_file_4_title && $this->downloads_file_4): ?>
+            <?php $arrDownloads[3]['title'] = $this->downloads_file_4_title; ?>
+            <?php $arrDownloads[3]['file'] = $this->downloads_file_4; ?>
+        <?php endif; ?>
+        <?php if($this->downloads_file_5_title && $this->downloads_file_5): ?>
+            <?php $arrDownloads[4]['title'] = $this->downloads_file_5_title; ?>
+            <?php $arrDownloads[4]['file'] = $this->downloads_file_5; ?>
+        <?php endif; ?>
+        <?php if($this->downloads_file_6_title && $this->downloads_file_6): ?>
+            <?php $arrDownloads[5]['title'] = $this->downloads_file_6_title; ?>
+            <?php $arrDownloads[5]['file'] = $this->downloads_file_6; ?>
+        <?php endif; ?>
+        <?php if($this->downloads_file_7_title && $this->downloads_file_7): ?>
+            <?php $arrDownloads[6]['title'] = $this->downloads_file_7_title; ?>
+            <?php $arrDownloads[6]['file'] = $this->downloads_file_7; ?>
+        <?php endif; ?>
+        <?php if($this->downloads_file_8_title && $this->downloads_file_8): ?>
+            <?php $arrDownloads[7]['title'] = $this->downloads_file_8_title; ?>
+            <?php $arrDownloads[7]['file'] = $this->downloads_file_8; ?>
+        <?php endif; ?>
+        <?php if($this->downloads_file_9_title && $this->downloads_file_9): ?>
+            <?php $arrDownloads[8]['title'] = $this->downloads_file_9_title; ?>
+            <?php $arrDownloads[8]['file'] = $this->downloads_file_9; ?>
+        <?php endif; ?>
+        <?php if($this->downloads_file_10_title && $this->downloads_file_10): ?>
+            <?php $arrDownloads[9]['title'] = $this->downloads_file_10_title; ?>
+            <?php $arrDownloads[9]['file'] = $this->downloads_file_10; ?>
+        <?php endif; ?>
+        <?php if(count($arrDownloads) > 0): ?>
+        <div class="row">
+            <div class="col col-12">
+                <?php foreach($arrDownloads as $downloadfile): ?>
+                <div class="row">
+                    <div class="col col-8">
+                        <?= $downloadfile['title'] ?>
+                    </div>
+                    <div class="col col-4">
+                        <?php $objFile = \FilesModel::findByUuid($downloadfile['file']); ?>
+                        <a target="_blank" href="<?= $objFile->path ?>">Download</a>
+                    </div>
+                </div>
+                <?php endforeach; ?>
+            </div>
+        </div>
+        <?php endif; ?>
+    </div>
+
+    <div class="product-content">
+        <?php echo $this->text; ?>
+    </div>
+
+    <!--<p class="back-button">
+        <a href="<?php echo $this->bcback; ?>" class="lb-iframe-link">
+            <span class="icon"></span>
+            {{iflng::de}}
+                <span>Zurück</span>
+            {{iflng}}
+            {{iflng::en}}
+                <span>Back</span>
+            {{iflng}}
+        </a>
+    </p>-->
+
+    <?php //echo $this->showTemplateVars();
+    //var_dump($this->set);
+    //var_dump($this->arrData);
+    ?>
+
+</div>

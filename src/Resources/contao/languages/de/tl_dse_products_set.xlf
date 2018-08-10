@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<xliff version="1.1">
+	<file datatype="php" original="src/Resources/contao/languages/en/default.php" source-language="en" target-langue="de">
+    <body>
+        <trans-unit id="tl_dse_products_set.new.0">
+            <source>New entry</source>
+            <target>Neuer Eintrag</target>
+        </trans-unit>
+        <trans-unit id="tl_dse_products_set.new.1">
+            <source>Create a new entry</source>
+            <target>Einen neuen Datensatz erstellen</target>
+        </trans-unit>
+
+        <trans-unit id="tl_dse_products_set.copy.1">
+            <source>Duplicate category ID %s</source>
+            <target>Kategorie ID %s duplizieren</target>
+        </trans-unit>
+
+        <trans-unit id="tl_dse_products_set.id.0">
+            <source>ID</source>
+            <target>ID</target>
+        </trans-unit>
+
+        <trans-unit id="tl_dse_products_set.title.0">
+            <source>Title</source>
+            <target>Titel</target>
+        </trans-unit>
+    </body>
+  </file>
+</xliff>
