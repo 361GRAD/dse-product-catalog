@@ -807,7 +807,7 @@ $GLOBALS['TL_DCA']['tl_dse_products'] = array(
             'inputType' => 'textarea',
             'eval' => array(
                 'mandatory' => false,
-                'rte' => 'tinyCustom',
+                'rte' => 'tinyMCE',
                 'tl_class' => 'clr w50 autoheight',
             ),
             'sql' => "text NULL"
@@ -819,7 +819,7 @@ $GLOBALS['TL_DCA']['tl_dse_products'] = array(
             'inputType' => 'textarea',
             'eval' => array(
                 'mandatory' => false,
-                'rte' => 'tinyCustom',
+                'rte' => 'tinyMCE',
                 'tl_class' => 'w50 autoheight',
             ),
             'sql' => "text NULL"
@@ -855,7 +855,7 @@ $GLOBALS['TL_DCA']['tl_dse_products'] = array(
             'inputType' => 'textarea',
             'eval' => array(
                 'mandatory' => false,
-                'rte' => 'tinyCustom',
+                'rte' => 'tinyMCE',
                 'tl_class' => 'clr w50 autoheight',
             ),
             'sql' => "text NULL"
@@ -867,7 +867,7 @@ $GLOBALS['TL_DCA']['tl_dse_products'] = array(
             'inputType' => 'textarea',
             'eval' => array(
                 'mandatory' => false,
-                'rte' => 'tinyCustom',
+                'rte' => 'tinyMCE',
                 'tl_class' => 'w50 autoheight',
             ),
             'sql' => "text NULL"
