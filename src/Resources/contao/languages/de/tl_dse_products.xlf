@@ -736,11 +736,11 @@
             <source>Drehzahl bei Nennlast</source>
             <target>Drehzahl bei Nennlast</target>
         </trans-unit>
-        <trans-unit id="tl_dse_products.attr_nt_bohrbereich_diamant_hand_trocken.0">
+        <trans-unit id="tl_dse_products.attr_nt_bohrbereich_diamant_trocken.0">
             <source>Bohrbereich mit Diamantbohrkrone handgeführt trocken</source>
             <target>Bohrbereich mit Diamantbohrkrone handgeführt trocken</target>
         </trans-unit>
-        <trans-unit id="tl_dse_products.attr_nt_bohrbereich_diamant_hand_nass.0">
+        <trans-unit id="tl_dse_products.attr_nt_bohrbereich_diamant_nass.0">
             <source>Bohrbereich mit Diamantbohrkrone handgeführt nass</source>
             <target>Bohrbereich mit Diamantbohrkrone handgeführt nass</target>
         </trans-unit>
