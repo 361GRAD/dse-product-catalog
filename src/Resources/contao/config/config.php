@@ -40,6 +40,7 @@ array_insert($GLOBALS['FE_MOD'], 2, array
 //        'dse_products_list' => Dse\ProductCatalogBundle\Module\ModuleProductsList::class
         'dse_products_list' => 'Dse\ProductCatalogBundle\Module\ModuleProductsList',
         'dse_products_reader' => 'Dse\ProductCatalogBundle\Module\ModuleProductsReader',
-        'dse_products_compare' => 'Dse\ProductCatalogBundle\Module\ModuleProductsCompare'
+        'dse_products_compare' => 'Dse\ProductCatalogBundle\Module\ModuleProductsCompare',
+        'dse_products_notelist' => 'Dse\ProductCatalogBundle\Module\ModuleProductsNotelist'
     )
 ));
