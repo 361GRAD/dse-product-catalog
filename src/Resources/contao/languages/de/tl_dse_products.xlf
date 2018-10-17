@@ -1410,6 +1410,10 @@
             <source>Wert 3</source>
             <target>Wert 3</target>
         </trans-unit>
+        <trans-unit id="tl_dse_products.order_data_value_4.0">
+            <source>Wert 4</source>
+            <target>Wert 4</target>
+        </trans-unit>
 
         <trans-unit id="tl_dse_products.tech_data_legend">
             <source>Technical data</source>

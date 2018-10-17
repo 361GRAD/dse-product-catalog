@@ -4549,6 +4549,16 @@ $GLOBALS['TL_DCA']['tl_dse_products'] = array(
                             'tl_class' => 'w50',
                         )
                     ),
+                    'order_data_value_4' => array(
+                        'label' => &$GLOBALS['TL_LANG']['tl_dse_products']['order_data_value_4'],
+                        'exclude' => true,
+                        'inputType' => 'text',
+                        'eval' => array(
+                            'mandatory' => false,
+                            'maxlength' => 255,
+                            'tl_class' => 'w50',
+                        )
+                    ),
                 ),
             ),
             'sql' => 'blob NULL',
