@@ -148,7 +148,7 @@ class tl_module_dse_products extends Backend {
      * @return array
      */
     public function getProductsSets() {
-        if (!$this->User->isAdmin && !is_array($this->User->products)) {
+        if($this->User->hasAccess("dse_products_set", "modules") == false) {
             return array();
         }
 
@@ -156,9 +156,7 @@ class tl_module_dse_products extends Backend {
         $objSets = $this->Database->execute("SELECT id, title FROM tl_dse_products_set ORDER BY title");
 
         while ($objSets->next()) {
-            if ($this->User->isAdmin || $this->User->hasAccess($objSets->id, 'products')) {
-                $arrSets[$objSets->id] = $objSets->title;
-            }
+            $arrSets[$objSets->id] = $objSets->title;
         }
 
         return $arrSets;
