@@ -1419,6 +1419,14 @@
             <source>Technical data</source>
             <target>Technische Daten</target>
         </trans-unit>
+        <trans-unit id="tl_dse_products.tech_data_headline.0">
+            <source>Überschrift</source>
+            <target>Überschrift</target>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.tech_data_text.0">
+            <source>Text</source>
+            <target>Text</target>
+        </trans-unit>
         <trans-unit id="tl_dse_products.tech_data_image.0">
             <source>Image</source>
             <target>Bild</target>

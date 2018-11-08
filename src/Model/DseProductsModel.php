@@ -63,6 +63,32 @@ class DseProductsModel extends \Model
     }
 
     /**
+     * Find published by their alias
+     *
+     * @param mixed $varId alias name
+     * @param array $arrPids An array of parent IDs
+     * @param array $arrOptions An optional options array
+     *
+     * @return \Model|null The PackagesModel or null if there are no packages
+     */
+    public static function findPublishedByAlias($varId, $arrPids, array $arrOptions = array())
+    {
+        if (!is_array($arrPids) || empty($arrPids)) {
+            return null;
+        }
+
+        $t = static::$strTable;
+        $arrColumns = array("$t.alias=? AND $t.pid IN(" . implode(',', array_map('intval', $arrPids)) . ")");
+
+        if (!BE_USER_LOGGED_IN) {
+            $time = time();
+            $arrColumns[] = "($t.start='' OR $t.start<$time) AND ($t.stop='' OR $t.stop>$time) AND $t.published=1";
+        }
+
+        return static::findBy($arrColumns, array((is_numeric($varId) ? $varId : 0), $varId), $arrOptions);
+    }
+
+    /**
      * Find published by their parent ID
      *
      * @param array $arrPids An array of packages set IDs

@@ -105,7 +105,7 @@ class ModuleProductsReader extends ModuleProducts {
         $this->Template->referer = 'javascript:history.go(-1)';
 
         // Get the product
-        $objArticle = DseProductsModel::findPublishedByParentAndIdOrAlias(\Input::get('items'), $this->products_sets);
+        $objArticle = DseProductsModel::findPublishedByAlias(\Input::get('items'), $this->products_sets);
 
         if (null === $objArticle) {
             throw new PageNotFoundException('Page not found: ' . \Environment::get('uri'));
