@@ -85,7 +85,7 @@ class DseProductsModel extends \Model
             $arrColumns[] = "($t.start='' OR $t.start<$time) AND ($t.stop='' OR $t.stop>$time) AND $t.published=1";
         }
 
-        return static::findBy($arrColumns, array((is_numeric($varId) ? $varId : 0), $varId), $arrOptions);
+        return static::findBy($arrColumns, $varId, $arrOptions);
     }
 
     /**

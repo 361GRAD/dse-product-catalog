@@ -572,6 +572,14 @@
             <source>Attributes</source>
             <target>Attribute</target>
         </trans-unit>
+        <trans-unit id="tl_dse_products.attr_headline.0">
+            <source>Überschrift</source>
+            <target>Überschrift</target>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_text.0">
+            <source>Text</source>
+            <target>Text</target>
+        </trans-unit>
         <trans-unit id="tl_dse_products.attr_bm_nennaufnahmeleistung.0">
             <source>Nennaufnahmeleistung</source>
             <target>Nennaufnahmeleistung</target>
@@ -1390,6 +1398,10 @@
             <source>Überschrift</source>
             <target>Überschrift</target>
         </trans-unit>
+        <trans-unit id="tl_dse_products.order_data_text.0">
+            <source>Text</source>
+            <target>Text</target>
+        </trans-unit>
         <trans-unit id="tl_dse_products.order_data.0">
             <source>Bestelldaten</source>
             <target>Bestelldaten</target>
@@ -1415,18 +1427,6 @@
             <target>Wert 4</target>
         </trans-unit>
 
-        <trans-unit id="tl_dse_products.tech_data_legend">
-            <source>Technical data</source>
-            <target>Technische Daten</target>
-        </trans-unit>
-        <trans-unit id="tl_dse_products.tech_data_headline.0">
-            <source>Überschrift</source>
-            <target>Überschrift</target>
-        </trans-unit>
-        <trans-unit id="tl_dse_products.tech_data_text.0">
-            <source>Text</source>
-            <target>Text</target>
-        </trans-unit>
         <trans-unit id="tl_dse_products.tech_data_image.0">
             <source>Image</source>
             <target>Bild</target>
