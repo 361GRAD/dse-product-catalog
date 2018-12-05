@@ -41,6 +41,19 @@
             <target>Alternativer Text</target>
         </trans-unit>
 
+        <trans-unit id="tl_dse_products.thumb_image.0">
+            <source>Thumbnail</source>
+            <target>Thumbnail</target>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.thumb_image_size.0">
+            <source>Thumbnail size</source>
+            <target>Thumbnail Größe</target>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.thumb_image_alt.0">
+            <source>Thumbnail alternate text</source>
+            <target>Thumbnail alternativer Text</target>
+        </trans-unit>
+
         <trans-unit id="tl_dse_products.subheadline.0">
             <source>Subheadline</source>
             <target>Kleine Überschrift</target>
