@@ -585,6 +585,10 @@
             <source>Attributes</source>
             <target>Attribute</target>
         </trans-unit>
+        <trans-unit id="tl_dse_products.attr_exclude_menu.0">
+            <source>Exclude from Menu?</source>
+            <target>Vom Menü ausschließen?</target>
+        </trans-unit>
         <trans-unit id="tl_dse_products.attr_headline.0">
             <source>Überschrift</source>
             <target>Überschrift</target>
@@ -1406,6 +1410,10 @@
         <trans-unit id="tl_dse_products.order_data_legend">
             <source>Bestelldaten</source>
             <target>Bestelldaten</target>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.order_exclude_menu.0">
+            <source>Exclude from Menu?</source>
+            <target>Vom Menü ausschließen?</target>
         </trans-unit>
         <trans-unit id="tl_dse_products.order_data_headline.0">
             <source>Überschrift</source>
