@@ -1411,7 +1411,7 @@
             <source>Bestelldaten</source>
             <target>Bestelldaten</target>
         </trans-unit>
-        <trans-unit id="tl_dse_products.order_exclude_menu.0">
+        <trans-unit id="tl_dse_products.order_data_exclude_menu.0">
             <source>Exclude from Menu?</source>
             <target>Vom Menü ausschließen?</target>
         </trans-unit>
