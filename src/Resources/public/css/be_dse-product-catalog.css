@@ -1,3 +1,10 @@
 #tl_navigation .tl_level_1_group .group-dse-products {
     background: url('/bundles/dseproductcatalog/icons/icon.svg') 0px 0px no-repeat;
 }
+
+.header_export_excel {
+    background-image: url("/bundles/dseproductcatalog/icons/export_excel.png");
+    background-position: left center;
+    background-repeat: no-repeat;
+    padding: 2px 0 3px 22px;
+}

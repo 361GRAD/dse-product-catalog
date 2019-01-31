@@ -13,7 +13,8 @@ array_insert($GLOBALS['BE_MOD'], 1, array
         ),
         'dse_products_export' => array
         (
-            'tables' => array()
+            'tables' => array('tl_dse_products_export'),
+            'export' => array('tl_dse_products_export', 'export'),
         )
     )
 ));
