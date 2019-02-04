@@ -116,15 +116,13 @@ class ModuleProductsReader extends ModuleProducts {
         if ($objArticle->related != "") {
 //            $arrRelatedProductsIds = deserialize($objArticle->related);
 //            foreach ($arrRelatedProductsIds as $relatedProductId) {
-//                echo $relatedProductId."<br><br>";
 //                $objArticles = DseProductsModel::findPublishedByPids($this->products_sets, $blnFeatured, $limit, $offset);
                 $objRelatedProduct = DseProductsModel::findRelatedByIds(deserialize($objArticle->related));
-//                var_dump($objRelatedProduct);
 //                $this->Template->relatedArticles = $this->parseArticles($objRelatedProduct, false, $this->full_details);
                 $arrRelatedArticles = $this->parseArticles($objRelatedProduct, false, 0, true);
 //            }
         }
-//        var_dump($arrRelatedArticles);
+
         $this->Template->articles = $arrArticle;
         $this->Template->relatedArticles = $arrRelatedArticles;
 

@@ -6,6 +6,10 @@ $GLOBALS['TL_DCA']['tl_dse_products_set'] = array(
         'ctable' => array('tl_dse_products'),
         'switchToEdit' => true,
         'enableVersioning' => true,
+        'onload_callback' => array(
+            array('tl_dse_products_set', 'loadExportConfigs'),
+            array('tl_dse_products_set', 'checkPermission'),
+        ),
         'sql' => array(
             'keys' => array(
                 'id' => 'primary'
@@ -132,6 +136,64 @@ class tl_dse_products_set extends Backend
     {
         parent::__construct();
         $this->import('BackendUser', 'User');
+    }
+
+    /**
+     * Check if a user has access to lead data.
+     *
+     * @param $dc
+     */
+    public function checkPermission($dc)
+    {
+        if ($this->User->isAdmin) {
+            return;
+        }
+
+        if (!$this->User->hasAccess('tl_dse_products_set', 'tl_dse_products', 'alexf')) {
+            throw new Contao\CoreBundle\Exception\AccessDeniedException('Not enough permissions');
+        }
+    }
+
+    /**
+     * Load the export configs.
+     */
+    public function loadExportConfigs()
+    {
+        $arrOperations['export_csv'] = array(
+            'label'         => &$GLOBALS['TL_LANG']['tl_dse_products_set']['export_csv'],
+            'href'          => 'key=export&amp;config=csv',
+            'class'         => 'leads-export header_export_excel',
+            'attributes'    => 'onclick="Backend.getScrollOffset();"',
+        );
+        
+        array_insert($GLOBALS['TL_DCA']['tl_dse_products_set']['list']['global_operations'], count($GLOBALS['TL_DCA']['tl_dse_products_set']['list']['global_operations']), $arrOperations);
+    }
+
+    public function export()
+    {
+        $intConfig = \Input::get('config');
+        
+        if (!$intConfig) {
+            \Controller::redirect('contao/main.php?act=error');
+        }
+
+        $this->exportAndCatchExceptions();
+    }
+
+    /**
+     * Try to export and catch ExportFailedException.
+     *
+     * @param $intConfig
+     * @param $arrIds
+     */
+    public function exportAndCatchExceptions()
+    {
+        try {
+            Dse\ProductCatalogBundle\Model\DseProductsExport::export();
+        } catch (\Leads\Exporter\ExportFailedException $e) {
+            \Message::addError($e->getMessage());
+            \Controller::redirect(\System::getReferer());
+        }
     }
 
     /**

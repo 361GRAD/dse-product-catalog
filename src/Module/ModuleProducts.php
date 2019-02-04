@@ -95,7 +95,7 @@ abstract class ModuleProducts extends \Module {
 //        $objTemplate->linkHeadline = $this->generateLink($objArticle->headline, $objArticle, $blnAddArchive);
 //        $objTemplate->more = $this->generateLink($GLOBALS['TL_LANG']['MSC']['more'], $objArticle, $blnAddArchive, true);
         $objTemplate->link = $this->generateProductsUrl($objArticle, $blnAddArchive);
-        $objTemplate->relatedProducts = deserialize($objArticle->related);
+        // $objTemplate->relatedProducts = deserialize($objArticle->related);
 //        $objTemplate->set = $objArticle->getRelated('pid');
         $objTemplate->comparable = $this->comparable;
         $objTemplate->text = '';

@@ -359,19 +359,19 @@ $GLOBALS['TL_DCA']['tl_dse_products'] = array(
             ),
             'sql' => "text NULL"
         ),
-        'related' => array(
-            'label' => &$GLOBALS['TL_LANG']['tl_dse_products']['related'],
-            'inputType' => 'select',
-            'eval' => array(
-                'doNotCopy' => true,
-                'multiple' => true,
-                'chosen' => true,
-//                'includeBlankOption' => true,
-                'tl_class' => 'clr'
-            ),
-            'foreignKey' => 'tl_dse_products.title',
-            'sql' => "TEXT NULL"
-        ),
+        // 'related' => array(
+        //     'label' => &$GLOBALS['TL_LANG']['tl_dse_products']['related'],
+        //     'inputType' => 'select',
+        //     'eval' => array(
+        //         'doNotCopy' => true,
+        //         'multiple' => true,
+        //         'chosen' => true,
+        //         // 'includeBlankOption' => true,
+        //         'tl_class' => 'clr'
+        //     ),
+        //     'foreignKey' => 'tl_dse_products.title',
+        //     'sql' => "TEXT NULL"
+        // ),
         'add_image_map' => array(
             'exclude' => true,
             'label' => &$GLOBALS['TL_LANG']['tl_dse_products']['add_image_map'],
@@ -506,7 +506,7 @@ $GLOBALS['TL_DCA']['tl_dse_products'] = array(
             'sql' => "TEXT NULL"
         ),
         'im_1_ct_txt' => array(
-            'label' => &$GLOBALS['TL_LANG']['tl_dse_products']['bf_textarea_right'],
+            'label' => &$GLOBALS['TL_LANG']['tl_dse_products']['im_1_ct_txt'],
             'exclude' => true,
             'filter' => false,
             'inputType' => 'text',
@@ -4985,7 +4985,6 @@ class tl_dse_products extends Backend
      * @throws \Exception
      */
     public function generateAlias($varValue, DataContainer $dc) {
-        echo $varValue;
         $autoAlias = false;
 
         // Generate alias if there is none

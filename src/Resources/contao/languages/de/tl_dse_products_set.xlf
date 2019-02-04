@@ -2,6 +2,14 @@
 <xliff version="1.1">
 	<file datatype="php" original="src/Resources/contao/languages/en/default.php" source-language="en" target-langue="de">
     <body>
+        <trans-unit id="tl_dse_products_set.export_csv.0">
+            <source>Export CSV</source>
+            <target>CSV exportieren</target>
+        </trans-unit>
+        <trans-unit id="tl_dse_products_set.export_csv.1">
+            <source>Export data as a CSV file</source>
+            <target>Daten als CSV-Datei exportieren</target>
+        </trans-unit>
         <trans-unit id="tl_dse_products_set.new.0">
             <source>New entry</source>
             <target>Neuer Eintrag</target>

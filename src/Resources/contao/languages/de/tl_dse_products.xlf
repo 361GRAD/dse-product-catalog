@@ -240,12 +240,12 @@
             <target>1. Bild</target>
         </trans-unit>
         <trans-unit id="tl_dse_products.bf_img_1_size.0">
-            <source>Main image</source>
-            <target>Hauptbild</target>
+            <source>1. Image size</source>
+            <target>1. Bildgröße</target>
         </trans-unit>
         <trans-unit id="tl_dse_products.bf_img_1_alt.0">
-            <source>Alternate text</source>
-            <target>Alternativer Text</target>
+            <source>1. Alternate text</source>
+            <target>1. Alternativer Text</target>
         </trans-unit>
 
         <trans-unit id="tl_dse_products.bf_img_2.0">
@@ -253,12 +253,12 @@
             <target>2. Bild</target>
         </trans-unit>
         <trans-unit id="tl_dse_products.bf_img_2_size.0">
-            <source>Main image</source>
-            <target>Hauptbild</target>
+            <source>2. Image size</source>
+            <target>2. Bildgröße</target>
         </trans-unit>
         <trans-unit id="tl_dse_products.bf_img_2_alt.0">
-            <source>Alternate text</source>
-            <target>Alternativer Text</target>
+            <source>2. Alternate text</source>
+            <target>2. Alternativer Text</target>
         </trans-unit>
 
         <trans-unit id="tl_dse_products.bf_img_3.0">
@@ -266,12 +266,12 @@
             <target>3. Bild</target>
         </trans-unit>
         <trans-unit id="tl_dse_products.bf_img_3_size.0">
-            <source>Main image</source>
-            <target>Hauptbild</target>
+            <source>3. Image size</source>
+            <target>3. Bildgröße</target>
         </trans-unit>
         <trans-unit id="tl_dse_products.bf_img_3_alt.0">
-            <source>Alternate text</source>
-            <target>Alternativer Text</target>
+            <source>3. Alternate text</source>
+            <target>3. Alternativer Text</target>
         </trans-unit>
 
         <trans-unit id="tl_dse_products.bf_img_4.0">
@@ -279,12 +279,12 @@
             <target>4. Bild</target>
         </trans-unit>
         <trans-unit id="tl_dse_products.bf_img_4_size.0">
-            <source>Main image</source>
-            <target>Hauptbild</target>
+            <source>4. Image size</source>
+            <target>4. Bildgröße</target>
         </trans-unit>
         <trans-unit id="tl_dse_products.bf_img_4_alt.0">
-            <source>Alternate text</source>
-            <target>Alternativer Text</target>
+            <source>4. Alternate text</source>
+            <target>4. Alternativer Text</target>
         </trans-unit>
 
         <trans-unit id="tl_dse_products.bf_img_5.0">
@@ -292,12 +292,12 @@
             <target>5. Bild</target>
         </trans-unit>
         <trans-unit id="tl_dse_products.bf_img_5_size.0">
-            <source>Main image</source>
-            <target>Hauptbild</target>
+            <source>5. Image size</source>
+            <target>5. Bildgröße</target>
         </trans-unit>
         <trans-unit id="tl_dse_products.bf_img_5_alt.0">
-            <source>Alternate text</source>
-            <target>Alternativer Text</target>
+            <source>5. Alternate text</source>
+            <target>5. Alternativer Text</target>
         </trans-unit>
 
         <trans-unit id="tl_dse_products.bf_img_6.0">
@@ -305,12 +305,12 @@
             <target>6. Bild</target>
         </trans-unit>
         <trans-unit id="tl_dse_products.bf_img_6_size.0">
-            <source>Main image</source>
-            <target>Hauptbild</target>
+            <source>6. Image size</source>
+            <target>6. Bildgröße</target>
         </trans-unit>
         <trans-unit id="tl_dse_products.bf_img_6_alt.0">
-            <source>Alternate text</source>
-            <target>Alternativer Text</target>
+            <source>6. Alternate text</source>
+            <target>6. Alternativer Text</target>
         </trans-unit>
 
         <trans-unit id="tl_dse_products.reasons_legend">
@@ -375,12 +375,12 @@
             <target>1. Bild</target>
         </trans-unit>
         <trans-unit id="tl_dse_products.applications_field_big_image_size.0">
-            <source>Image size</source>
-            <target>Bildgröße</target>
+            <source>1. Image size</source>
+            <target>1. Bildgröße</target>
         </trans-unit>
         <trans-unit id="tl_dse_products.applications_field_big_image_alt.0">
-            <source>Alternate text</source>
-            <target>Alternativer Text</target>
+            <source>1. Alternate text</source>
+            <target>1. Alternativer Text</target>
         </trans-unit>
         <trans-unit id="tl_dse_products.applications_field_small_1_title.0">
             <source>2. Title</source>
@@ -391,12 +391,12 @@
             <target>2. Bild</target>
         </trans-unit>
         <trans-unit id="tl_dse_products.applications_field_small_1_image_size.0">
-            <source>Image size</source>
-            <target>Bildgröße</target>
+            <source>2. Image size</source>
+            <target>2. Bildgröße</target>
         </trans-unit>
         <trans-unit id="tl_dse_products.applications_field_small_1_image_alt.0">
-            <source>Alternate text</source>
-            <target>Alternativer Text</target>
+            <source>2. Alternate text</source>
+            <target>2. Alternativer Text</target>
         </trans-unit>
         <trans-unit id="tl_dse_products.applications_field_small_2_title.0">
             <source>3. Title</source>
@@ -407,12 +407,12 @@
             <target>3. Bild</target>
         </trans-unit>
         <trans-unit id="tl_dse_products.applications_field_small_2_image_size.0">
-            <source>Image size</source>
-            <target>Bildgröße</target>
+            <source>3. Image size</source>
+            <target>3. Bildgröße</target>
         </trans-unit>
         <trans-unit id="tl_dse_products.applications_field_small_2_image_alt.0">
-            <source>Alternate text</source>
-            <target>Alternativer Text</target>
+            <source>3. Alternate text</source>
+            <target>3. Alternativer Text</target>
         </trans-unit>
         <trans-unit id="tl_dse_products.applications_field_big_2_title.0">
             <source>4. Title</source>
@@ -423,12 +423,12 @@
             <target>4. Bild</target>
         </trans-unit>
         <trans-unit id="tl_dse_products.applications_field_big_2_image_size.0">
-            <source>Image size</source>
-            <target>Bildgröße</target>
+            <source>4. Image size</source>
+            <target>4. Bildgröße</target>
         </trans-unit>
         <trans-unit id="tl_dse_products.applications_field_big_2_image_alt.0">
-            <source>Alternate text</source>
-            <target>Alternativer Text</target>
+            <source>4. Alternate text</source>
+            <target>4. Alternativer Text</target>
         </trans-unit>
         <trans-unit id="tl_dse_products.applications_field_small_3_title.0">
             <source>5. Title</source>
@@ -439,12 +439,12 @@
             <target>5. Bild</target>
         </trans-unit>
         <trans-unit id="tl_dse_products.applications_field_small_3_image_size.0">
-            <source>Image size</source>
-            <target>Bildgröße</target>
+            <source>5. Image size</source>
+            <target>5. Bildgröße</target>
         </trans-unit>
         <trans-unit id="tl_dse_products.applications_field_small_3_image_alt.0">
-            <source>Alternate text</source>
-            <target>Alternativer Text</target>
+            <source>5. Alternate text</source>
+            <target>5. Alternativer Text</target>
         </trans-unit>
         <trans-unit id="tl_dse_products.applications_field_small_4_title.0">
             <source>6. Title</source>
@@ -455,12 +455,12 @@
             <target>6. Bild</target>
         </trans-unit>
         <trans-unit id="tl_dse_products.applications_field_small_4_image_size.0">
-            <source>Image size</source>
-            <target>Bildgröße</target>
+            <source>6. Image size</source>
+            <target>6. Bildgröße</target>
         </trans-unit>
         <trans-unit id="tl_dse_products.applications_field_small_4_image_alt.0">
-            <source>Alternate text</source>
-            <target>Alternativer Text</target>
+            <source>6. Alternate text</source>
+            <target>6. Alternativer Text</target>
         </trans-unit>
 
         <trans-unit id="tl_dse_products.video_legend">
