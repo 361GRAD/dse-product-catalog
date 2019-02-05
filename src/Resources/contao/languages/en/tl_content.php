@@ -9,5 +9,5 @@
  * @license   http://www.361.de proprietary
  */
 
-$GLOBALS['TL_LANG']['CTE']['dse_elements'] = '361 - Erweiterungen';
+$GLOBALS['TL_LANG']['CTE']['dse_elements'] = '361 - Extensions';
 $GLOBALS['TL_LANG']['CTE']['dse_products_set'] = ['Produktkatalog', 'Element - Product Catalog'];

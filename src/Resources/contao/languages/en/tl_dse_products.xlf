@@ -9,24 +9,1118 @@
             <source>Create a new product</source>
         </trans-unit>
 
+        <trans-unit id="tl_dse_products.product_legend">
+            <source>Product</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.alias.0">
+            <source>Alias</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.title.0">
+            <source>Title</source>
+        </trans-unit>
         <trans-unit id="tl_dse_products.sku.0">
             <source>SKU</source>
         </trans-unit>
 
+        <trans-unit id="tl_dse_products.singleSRC.0">
+            <source>Main image</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.main_image_size.0">
+            <source>Image size</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.main_image_alt.0">
+            <source>Alternate text</source>
+        </trans-unit>
+
+        <trans-unit id="tl_dse_products.thumb_image.0">
+            <source>Thumbnail</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.thumb_image_size.0">
+            <source>Thumbnail size</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.thumb_image_alt.0">
+            <source>Thumbnail alternate text</source>
+        </trans-unit>
+
+        <trans-unit id="tl_dse_products.subheadline.0">
+            <source>Subheadline</source>
+        </trans-unit>
+
+        <trans-unit id="tl_dse_products.description.0">
+            <source>Description</source>
+        </trans-unit>
+
+        <trans-unit id="tl_dse_products.image_map_legend">
+            <source>Image map</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.add_image_map.0">
+            <source>Add image map?</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.im_1_x_coord.0">
+            <source>1. x-coordinate</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.im_1_y_coord.0">
+            <source>1. y-coordinate</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.im_1_ct_img.0">
+            <source>1. content image</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.im_1_ct_hl.0">
+            <source>1. content headline</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.im_1_ct_txt.0">
+            <source>1. content text</source>
+        </trans-unit>
+        
+        <trans-unit id="tl_dse_products.im_2_x_coord.0">
+            <source>2. x-coordinate</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.im_2_y_coord.0">
+            <source>2. y-coordinate</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.im_2_ct_img.0">
+            <source>2. content image</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.im_2_ct_hl.0">
+            <source>2. content headline</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.im_2_ct_txt.0">
+            <source>2. content text</source>
+        </trans-unit>
+
+        <trans-unit id="tl_dse_products.im_3_x_coord.0">
+            <source>3. x-coordinate</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.im_3_y_coord.0">
+            <source>3. y-coordinate</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.im_3_ct_img.0">
+            <source>3. content image</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.im_3_ct_hl.0">
+            <source>3. content headline</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.im_3_ct_txt.0">
+            <source>3. content text</source>
+        </trans-unit>
+
+        <trans-unit id="tl_dse_products.im_4_x_coord.0">
+            <source>4. x-coordinate</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.im_4_y_coord.0">
+            <source>4. y-coordinate</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.im_4_ct_img.0">
+            <source>4. content image</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.im_4_ct_hl.0">
+            <source>4. content headline</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.im_4_ct_txt.0">
+            <source>4. content text</source>
+        </trans-unit>
+
+        <trans-unit id="tl_dse_products.im_5_x_coord.0">
+            <source>5. x-coordinate</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.im_5_y_coord.0">
+            <source>5. y-coordinate</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.im_5_ct_img.0">
+            <source>5. content image</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.im_5_ct_hl.0">
+            <source>5. content headline</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.im_5_ct_txt.0">
+            <source>5. content text</source>
+        </trans-unit>
+
+        <trans-unit id="tl_dse_products.settings_legend">
+            <source>Settings</source>
+        </trans-unit>
         <trans-unit id="tl_dse_products.type.0">
             <source>Type</source>
         </trans-unit>
-
-        <trans-unit id="tl_dse_products.product_legend">
-            <source>Product</source>
+        <trans-unit id="tl_dse_products.related.0">
+            <source>Related products</source>
         </trans-unit>
 
-        <trans-unit id="tl_dse_products.title.0">
-            <source>Title</source>
+        <trans-unit id="tl_dse_products.benefits_field_legend">
+            <source>Benefits and fields</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.bf_exclude_menu.0">
+            <source>Exclude from Menu?</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.bf_headline.0">
+            <source>Headline</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.bf_hl_text.0">
+            <source>Text</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.bf_textarea_headline.0">
+            <source>Small headline</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.bf_textarea_left.0">
+            <source>Text left</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.bf_textarea_right.0">
+            <source>Text right</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.bf_field_textarea_headline.0">
+            <source>Small headline</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.bf_field_textarea_text.0">
+            <source>Text</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.bf_field_textarea_left.0">
+            <source>Text left</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.bf_field_textarea_right.0">
+            <source>Text right</source>
         </trans-unit>
 
+        <trans-unit id="tl_dse_products.bf_img_1.0">
+            <source>1. Image</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.bf_img_1_size.0">
+            <source>1. Image size</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.bf_img_1_alt.0">
+            <source>1. Alternate text</source>
+        </trans-unit>
+
+        <trans-unit id="tl_dse_products.bf_img_2.0">
+            <source>2. Image</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.bf_img_2_size.0">
+            <source>2. Image size</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.bf_img_2_alt.0">
+            <source>2. Alternate text</source>
+        </trans-unit>
+
+        <trans-unit id="tl_dse_products.bf_img_3.0">
+            <source>3. Image</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.bf_img_3_size.0">
+            <source>3. Image size</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.bf_img_3_alt.0">
+            <source>3. Alternate text</source>
+        </trans-unit>
+
+        <trans-unit id="tl_dse_products.bf_img_4.0">
+            <source>4. Image</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.bf_img_4_size.0">
+            <source>4. Image size</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.bf_img_4_alt.0">
+            <source>4. Alternate text</source>
+        </trans-unit>
+
+        <trans-unit id="tl_dse_products.bf_img_5.0">
+            <source>5. Image</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.bf_img_5_size.0">
+            <source>5. Image size</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.bf_img_5_alt.0">
+            <source>5. Alternate text</source>
+        </trans-unit>
+
+        <trans-unit id="tl_dse_products.bf_img_6.0">
+            <source>6. Image</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.bf_img_6_size.0">
+            <source>6. Image size</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.bf_img_6_alt.0">
+            <source>6. Alternate text</source>
+        </trans-unit>
+
+        <trans-unit id="tl_dse_products.reasons_legend">
+            <source>Reasons</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.reasons_exclude_menu.0">
+            <source>Exclude from Menu?</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.reasons_headline.0">
+            <source>Headline</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.reasons_image.0">
+            <source>Image</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.reasons_image_size.0">
+            <source>Image size</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.reasons_image_alt.0">
+            <source>Alternate text</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.reasons_list.0">
+            <source>List</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.reasons_list_headline.0">
+            <source>Headline</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.reasons_list_text.0">
+            <source>Text</source>
+        </trans-unit>
+
+        <trans-unit id="tl_dse_products.applications_legend">
+            <source>Application fields</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.applications_exclude_menu.0">
+            <source>Exclude from Menu?</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.applications_headline.0">
+            <source>Headline</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.applications_text.0">
+            <source>Text</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.applications_field_big_title.0">
+            <source>1. Title</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.applications_field_big_image.0">
+            <source>1. Image</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.applications_field_big_image_size.0">
+            <source>1. Image size</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.applications_field_big_image_alt.0">
+            <source>1. Alternate text</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.applications_field_small_1_title.0">
+            <source>2. Title</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.applications_field_small_1_image.0">
+            <source>2. Image</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.applications_field_small_1_image_size.0">
+            <source>2. Image size</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.applications_field_small_1_image_alt.0">
+            <source>2. Alternate text</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.applications_field_small_2_title.0">
+            <source>3. Title</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.applications_field_small_2_image.0">
+            <source>3. Image</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.applications_field_small_2_image_size.0">
+            <source>3. Image size</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.applications_field_small_2_image_alt.0">
+            <source>3. Alternate text</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.applications_field_big_2_title.0">
+            <source>4. Title</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.applications_field_big_2_image.0">
+            <source>4. Image</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.applications_field_big_2_image_size.0">
+            <source>4. Image size</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.applications_field_big_2_image_alt.0">
+            <source>4. Alternate text</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.applications_field_small_3_title.0">
+            <source>5. Title</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.applications_field_small_3_image.0">
+            <source>5. Image</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.applications_field_small_3_image_size.0">
+            <source>5. Image size</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.applications_field_small_3_image_alt.0">
+            <source>5. Alternate text</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.applications_field_small_4_title.0">
+            <source>6. Title</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.applications_field_small_4_image.0">
+            <source>6. Image</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.applications_field_small_4_image_size.0">
+            <source>6. Image size</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.applications_field_small_4_image_alt.0">
+            <source>6. Alternate text</source>
+        </trans-unit>
+
+        <trans-unit id="tl_dse_products.video_legend">
+            <source>Video</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.video_exclude_menu.0">
+            <source>Exclude from Menu?</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.video_headline.0">
+            <source>Headline</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.video_text.0">
+            <source>Text</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.video_link.0">
+            <source>Link</source>
+        </trans-unit>
+
+        <trans-unit id="tl_dse_products.downloads_legend">
+            <source>Downloads</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.downloads_exclude_menu.0">
+            <source>Exclude from Menu?</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.downloads_headline.0">
+            <source>Headline</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.downloads_text.0">
+            <source>Text</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.downloads_file_1_title.0">
+            <source>1. Title</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.downloads_file_1.0">
+            <source>1. File</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.downloads_file_2_title.0">
+            <source>2. Title</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.downloads_file_2.0">
+            <source>2. File</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.downloads_file_3_title.0">
+            <source>3. Title</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.downloads_file_3.0">
+            <source>3. File</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.downloads_file_4_title.0">
+            <source>4. Title</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.downloads_file_4.0">
+            <source>4. File</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.downloads_file_5_title.0">
+            <source>5. Title</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.downloads_file_5.0">
+            <source>5. File</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.downloads_file_6_title.0">
+            <source>6. Title</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.downloads_file_6.0">
+            <source>6. File</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.downloads_file_7_title.0">
+            <source>7. Title</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.downloads_file_7.0">
+            <source>7. File</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.downloads_file_8_title.0">
+            <source>8. Title</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.downloads_file_8.0">
+            <source>8. File</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.downloads_file_9_title.0">
+            <source>9. Title</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.downloads_file_9.0">
+            <source>9. File</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.downloads_file_10_title.0">
+            <source>10. Title</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.downloads_file_10.0">
+            <source>10. File</source>
+        </trans-unit>
+
+        <trans-unit id="tl_dse_products.attributes_legend">
+            <source>Attributes</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_exclude_menu.0">
+            <source>Exclude from Menu?</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_headline.0">
+            <source>Headline</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_text.0">
+            <source>Text</source>
+        </trans-unit>
         <trans-unit id="tl_dse_products.attr_bm_nennaufnahmeleistung.0">
-            <source>EN - Nennaufnahmeleistung</source>
+            <source>Rated power consumption</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_bm_maschinengewicht.0">
+            <source>Machine weight</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_bm_schrauben_weichholz_ohne_vorbohren.0">
+            <source>Screws in softwood, without pre-drilling, max.</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_bm_festdrehmoment.0">
+            <source>Fixed torque (1st gear)</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_bm_bohrspindelgewinde.0">
+            <source>Drill spindle thread</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_bm_spannhals.0">
+            <source>Clamping neck diameter</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_bm_spannbereich_bohrfutter.0">
+            <source>Clamping range Drill chuck</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_bm_durchsch_holz_1_gang_forstner.0">
+            <source>Drilling diameter in softwood with Forstner drill 1. gear</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_bm_durchsch_holz_2_gang_forstner.0">
+            <source>Drill diameter in softwood with Forstner drill 2. gear</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_bm_drehzahl_nennlast_1_gang.0">
+            <source>Speed at rated load 1st gear</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_bm_drehzahl_nennlast_2_gang.0">
+            <source>Speed at rated load 2nd gear</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_bm_schrauben_bis.0">
+            <source>Screws up to</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_bm_durchsch_stahl_1_gang.0">
+            <source>Drilling diameter in steel 1st gear</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_bm_durchsch_stahl_2_gang.0">
+            <source>Drill diameter in steel 2nd gear</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_bm_durchsch_holz_1_gang.0">
+            <source>Drilling diameter in softwood 1st gear</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_bm_durchsch_holz_2_gang.0">
+            <source>Drill diameter in softwood 2nd gear</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_bm_durchsch_baustoff_1_gang.0">
+            <source>Drill diameter in lightweight materials with hole saw 1st gear</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_bm_durchsch_baustoff_2_gang.0">
+            <source>Drill diameter in lightweight materials with hole saw 2nd gear</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_bm_durchsch_stein_1_gang.0">
+            <source>Drilling diameter in stone 1st gear</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_bm_durchsch_stein_2_gang.0">
+            <source>Drill diameter in stone 2nd gear</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_bm_durchsch_mauer_1_gang.0">
+            <source>Drill diameter in sand-lime brick and masonry with hollow drill bit 1st gear</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_bm_schlagzahl_max.0">
+            <source>max. number of strokes</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_bm_bohrbereich_stahl.0">
+            <source>Drilling range in steel with solid drill bit</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_bm_bohrbereich_holz.0">
+            <source>Drilling range in wood with solid drill bit</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_bm_bohrbereich_polypropylen.0">
+            <source>Drilling range in polypropylene with hole saw LS</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_bm_drehzahlen.0">
+            <source>Speed at rated load 1./2./3./4. gear</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_bm_werkzeugaufnahme.0">
+            <source>Tool holder</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_bm_maschinentyp.0">
+            <source>Machine type</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_bm_einsatzgebiete.0">
+            <source>Fields</source>
+        </trans-unit>
+
+        <trans-unit id="tl_dse_products.attr_bh_nennaufnahmeleistung.0">
+            <source>Rated power consumption</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_bh_maschinengewicht.0">
+            <source>Machine weight</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_bh_werkzeugaufnahme.0">
+            <source>Tool holder</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_bh_bohrbereich_vollbohrer.0">
+            <source>Drilling range with solid drill bit</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_bh_bohrbereich_stahl.0">
+            <source>Drilling range in steel</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_bh_bohrleistung.0">
+            <source>Drilling capacity in hard concrete C 45/55 (diameter 14 mm)</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_bh_einzelschlagenergie.0">
+            <source>Single impact energy</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_bh_drehzahl_nennlast.0">
+            <source>Speed at rated load</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_bh_schlagzahl.0">
+            <source>Adjustable number of strokes</source>
+        </trans-unit>
+
+        <trans-unit id="tl_dse_products.attr_nt_nennaufnahmeleistung.0">
+            <source>Rated power consumption</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_nt_maschinengewicht.0">
+            <source>Machine weight</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_nt_werkzeugaufnahme.0">
+            <source>Tool holder</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_nt_drehzahl_nennlast_gang.0">
+            <source>Speed at nominal load 1./2./3. gear</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_nt_drehzahl_nennlast_01.0">
+            <source>Speed at rated load</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_nt_bohrbereich_diamant_trocken.0">
+            <source>Drill range with diamond core bit hand-guided dry</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_nt_bohrbereich_diamant_nass.0">
+            <source>Drilling range with diamond core bit hand-guided wet</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_nt_bohrbereich_diamant_staender_nass.0">
+            <source>Drilling area with diamond drill bit, stand guided, wet</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_nt_bohrbereich_diamant_beton_hand_nass.0">
+            <source>Drilling range with diamond core bit in concrete pipe hand-guided wet</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_nt_bohrbereich_ls_kunststoff_hand.0">
+            <source>Drilling area with hole saw LS in plastic hand-guided</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_nt_bohrbereich_ls_kunststoff_staender.0">
+            <source>Drilling area with LS hole saw in plastic column guided</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_nt_bohrbereich_ls_kunststoff_stativ.0">
+            <source>Drilling area with LS hole saw in plastic, tripod-guided</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_nt_bohrbereich_lb_hand.0">
+            <source>Drilling area with wood hole saw LB hand-guided</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_nt_bohrbereich_lb_staender.0">
+            <source>Drilling area with wood hole saw LB column guided</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_nt_bohrbereich_lb_stativ.0">
+            <source>Drilling area with wood hole saw LB tripod guided</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_nt_drehzahl_nennlast_02.0">
+            <source>Speed at rated load</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_nt_einsatzgebiete.0">
+            <source>Fields</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_nt_untergruende.0">
+            <source>Subfloors</source>
+        </trans-unit>
+
+        <trans-unit id="tl_dse_products.attr_t_nennaufnahmeleistung.0">
+            <source>Rated power consumption</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_t_maschinengewicht.0">
+            <source>Machine weight</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_t_werkzeugaufnahme.0">
+            <source>Tool holder</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_t_drehzahl_nennlast_gang.0">
+            <source>Speed at nominal load 1./2./3. gear</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_t_drehzahl_nennlast_01.0">
+            <source>Speed at rated load</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_t_bohrbereich_diamant_hand_trocken.0">
+            <source>Drill range with diamond core bit hand-guided dry</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_t_bohrbereich_ls_kunststoff_hand.0">
+            <source>Drilling area with hole saw LS in plastic hand-guided</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_t_bohrbereich_ls_kunststoff_staender.0">
+            <source>Drilling area with LS hole saw in plastic column guided</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_t_bohrbereich_ls_kunststoff_stativ.0">
+            <source>Drilling area with LS hole saw in plastic, tripod-guided</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_t_bohrbereich_lb_hand.0">
+            <source>Drilling area with wood hole saw LB hand-guided</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_t_bohrbereich_lb_staender.0">
+            <source>Drilling area with wood hole saw LB column guided</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_t_bohrbereich_lb_stativ.0">
+            <source>Drilling area with wood hole saw LB tripod guided</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_t_drehzahl_nennlast_02.0">
+            <source>Speed at rated load</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_t_einsatzgebiete.0">
+            <source>Fields</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_t_untergruende.0">
+            <source>Subfloors</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_t_anbohren.0">
+            <source>Tapping</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_t_led.0">
+            <source>LED display for performance monitoring and service planning</source>
+        </trans-unit>
+
+        <trans-unit id="tl_dse_products.attr_n_nennaufnahmeleistung.0">
+            <source>Rated power consumption</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_n_maschinengewicht.0">
+            <source>Machine weight</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_n_werkzeugaufnahme.0">
+            <source>Tool holder</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_n_drehzahl_nennlast_gang.0">
+            <source>Speed at nominal load 1./2./3. gear</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_n_drehzahl_nennlast_01.0">
+            <source>Speed at rated load</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_n_bohrbereich_hand_nass.0">
+            <source>Drilling range hand-guided wet</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_n_bohrbereich_staender_nass_01.0">
+            <source>Drilling range column guided wet</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_n_bohrbereich_1_gang.0">
+            <source>Drilling range 1st gear: 230 rpm</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_n_bohrbereich_2_gang.0">
+            <source>Drilling range 2nd gear: 480 rpm</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_n_bohrbereich_3_gang.0">
+            <source>Drilling range 3rd gear: 720 rpm</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_n_drehzahl_nennlast_02.0">
+            <source>Speed at rated load</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_n_einsatzgebiete.0">
+            <source>Fields</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_n_untergruende.0">
+            <source>Subfloors</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_n_drehzahl_stufenlos.0">
+            <source>infinitely variable speed</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_n_anbohren.0">
+            <source>Tapping</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_n_feindosiereung.0">
+            <source>water-saving fine dosing</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_n_bohrbereich_staender_nass_02.0">
+            <source>Drilling range column guided wet</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_n_led.0">
+            <source>LED display for performance monitoring and service planning</source>
+        </trans-unit>
+
+        <trans-unit id="tl_dse_products.attr_bome_nennaufnahmeleistung.0">
+            <source>Rated power consumption</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_bome_maschinengewicht.0">
+            <source>Machine weight</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_bome_werkzeugaufnahme.0">
+            <source>Tool holder</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_bome_bohrbereich_vollbohrer.0">
+            <source>Drilling range with solid drill bit</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_bome_bohrbereich_hammerbohrkrone.0">
+            <source>Drilling range with hammer drill bit</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_bome_bohrleistung_beton_30mm.0">
+            <source>Drilling capacity in hard concrete C 45/55 (diameter 30 mm)</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_bome_bohrleistung_beton_35mm.0">
+            <source>Drilling capacity in hard concrete C 45/55 (diameter 35 mm)</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_bome_bohrleistung_beton_22mm.0">
+            <source>Drilling capacity in hard concrete C 45/55 (diameter 22 mm)</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_bome_bohrleistung_beton_20mm.0">
+            <source>Drilling capacity in hard concrete C 45/55 (diameter 20 mm)</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_bome_bohrleistung_beton_25mm.0">
+            <source>Drilling capacity in hard concrete C 45/55 (diameter 25 mm)</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_bome_bohrleistung_beton_14mm.0">
+            <source>Drilling capacity in hard concrete C 45/55 (diameter 14 mm)</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_bome_einzelschlagenergie.0">
+            <source>Single impact energy</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_bome_drehzahl_nennlast.0">
+            <source>Speed at rated load</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_bome_schlagzahl.0">
+            <source>Adjustable number of strokes</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_bome_messleistung_spitzmeissel.0">
+            <source>Chiselling performance in hard concrete C45/55 with pointed chisel</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_bome_vibration_normal.0">
+            <source>Vibrationswerte Bohren/Meißeln in Normalstellung</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_bome_vibration_kompressor.0">
+            <source>Vibrationswerte Bohren/Meißeln in Kompressorstellung</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_bome_vibration_daempfelement.0">
+            <source>Vibration damping elements</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_bome_schalterarretierung.0">
+            <source>Switch lock for continuous operation</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_bome_led.0">
+            <source>LED display for service planning</source>
+        </trans-unit>
+
+        <trans-unit id="tl_dse_products.attr_mh_nennaufnahmeleistung.0">
+            <source>Rated power consumption</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_mh_maschinengewicht.0">
+            <source>Machine weight</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_mh_werkzeugaufnahme.0">
+            <source>Tool holder</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_mh_einzelschlagenergie.0">
+            <source>Single impact energy</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_mh_schlagzahl.0">
+            <source>Adjustable number of strokes</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_mh_leistung_spitzmeissel.0">
+            <source>Chiselling performance in hard concrete C45/55 with pointed chisel</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_mh_vibration_normal.0">
+            <source>Vibration values Chisels in normal position</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_mh_vibration_kompressor.0">
+            <source>Vibration values for chisels in compressor position</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_mh_vibration_daempfelement.0">
+            <source>Vibration damping elements</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_mh_led.0">
+            <source>LED display for service planning</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_mh_schalterarretierung.0">
+            <source>Switch lock for continuous operation</source>
+        </trans-unit>
+
+        <trans-unit id="tl_dse_products.attr_ah_nennaufnahmeleistung.0">
+            <source>Rated power consumption</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_ah_maschinengewicht.0">
+            <source>Machine weight</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_ah_werkzeugaufnahme.0">
+            <source>Tool holder</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_ah_einzelschlagenergie.0">
+            <source>Single impact energy</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_ah_schlagzahl.0">
+            <source>Adjustable number of strokes</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_ah_leistung_spitzmeissel.0">
+            <source>Chiselling performance in hard concrete C45/55 with pointed chisel</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_ah_vibration_normal.0">
+            <source>Vibration values Chisels in normal position</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_ah_vibration_kompressor.0">
+            <source>Vibration values for chisels in compressor position</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_ah_vibration_daempfelement.0">
+            <source>Vibration damping elements</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_ah_led.0">
+            <source>LED display for service planning</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_ah_schalterarretierung.0">
+            <source>Switch lock for continuous operation</source>
+        </trans-unit>
+
+        <trans-unit id="tl_dse_products.attr_zu_bs_max_bohrdurchschnitt.0">
+            <source>max. drilling diameter</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_zu_bs_max_bohrdurchschnitt_wassersammelring.0">
+            <source>max. drilling diameter with water collecting ring</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_zu_bs_hub.0">
+            <source>Stroke</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_zu_bs_saeulenlaenge.0">
+            <source>column length</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_zu_bs_schraegverstellung.0">
+            <source>oblique adjustment</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_zu_bs_bohrstaenderfuss.0">
+            <source>drill stand base</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_zu_bs_gewicht.0">
+            <source>Weight</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_zu_bs_befestigungen.0">
+            <source>Mounting optionally with</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_zu_bs_maschinenempfehlung.0">
+            <source>Machine recommendation</source>
+        </trans-unit>
+
+        <trans-unit id="tl_dse_products.attr_zu_is_gewicht.0">
+            <source>Weight</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_zu_is_max_leistung.0">
+            <source>max. power consumption</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_zu_is_max_volumenstrom.0">
+            <source>max. volume flow</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_zu_is_max_unterdruck.0">
+            <source>max. negative pressure</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_zu_is_behaeltervolumen_brutto.0">
+            <source>Gross tank volume</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_zu_is_saugschlauch.0">
+            <source>suction hose</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_zu_is_schutzklasse.0">
+            <source>protection class</source>
+        </trans-unit>
+
+        <trans-unit id="tl_dse_products.attr_zu_ag_bohrbereich.0">
+            <source>drilling range</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_zu_ag_hammer_trocken.0">
+            <source>Dry hammer drilling</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_zu_ag_diamant_nass.0">
+            <source>Wet diamond drilling</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_zu_ag_anschluss.0">
+            <source>Connection diameter industrial vacuum cleaner</source>
+        </trans-unit>
+
+        <trans-unit id="tl_dse_products.attr_zu_sa_anschluss.0">
+            <source>Connection diameter industrial vacuum cleaner</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_zu_sa_duss_maschinen.0">
+            <source>for DUSS machines with</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_zu_sa_weitere_maschinen.0">
+            <source>associated machines</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_zu_sa_meissel_laenge.0">
+            <source>for chisels with total length</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_zu_sa_meissel_vlma.0">
+            <source>for chisels with overall length in conjunction with VLMA</source>
+        </trans-unit>
+
+        <trans-unit id="tl_dse_products.attr_zu_ah_anschluss.0">
+            <source>Connection diameter industrial vacuum cleaner</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_zu_ah_bohrbereich.0">
+            <source>Drilling range for dry diamond drilling, in tiles and ceramics</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_zu_ah_systemprodukte.0">
+            <source>associated system products</source>
+        </trans-unit>
+
+        <trans-unit id="tl_dse_products.attr_zu_lc_drehzahlbereich_holz_25mm.0">
+            <source>recommended speed range for drilling diameters in wood materials up to 25 mm</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_zu_lc_drehzahlbereich_kunststoff_25mm.0">
+            <source>recommended speed range for drilling diameters in plastics up to 25 mm</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_zu_lc_drehzahlbereich_holz_2635mm.0">
+            <source>Recommended speed range for drilling diameter in wood materials 26 - 35 mm</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_zu_lc_drehzahlbereich_kunststoff_2635mm.0">
+            <source>Recommended speed range for drilling diameter in plastics 26 - 35 mm</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_zu_lc_drehzahlbereich_holz_3645mm.0">
+            <source>Recommended speed range for drilling diameter in wood materials 36 - 45 mm</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_zu_lc_drehzahlbereich_kunststoff_3645mm.0">
+            <source>Recommended speed range for drilling diameter in plastics 36 - 45 mm</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_zu_lc_drehzahlbereich_holz_4660mm.0">
+            <source>Recommended speed range for drilling diameter in wood materials 46 - 60 mm</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_zu_lc_drehzahlbereich_kunststoff_4660mm.0">
+            <source>Recommended speed range for drilling diameter in plastics 46 - 60 mm</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_zu_lc_drehzahlbereich_holz_6180mm.0">
+            <source>Recommended speed range for drilling diameters in wood-based materials 61 - 80 mm</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_zu_lc_drehzahlbereich_kunststoff_6180mm.0">
+            <source>Recommended speed range for drilling diameter in plastics 61 - 80 mm</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_zu_lc_drehzahlbereich_holz_81110mm.0">
+            <source>Recommended speed range for drilling diameter in wood materials 81 - 110 mm</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_zu_lc_drehzahlbereich_kunststoff_81110mm.0">
+            <source>Recommended speed range for drilling diameter in plastics 81 - 110 mm</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_zu_lc_anschlussgewinde.0">
+            <source>connecting threads</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_zu_lc_bohrtiefe.0">
+            <source>drilling depth</source>
+        </trans-unit>
+
+        <trans-unit id="tl_dse_products.attr_zu_lslb_maschinenempfehlung.0">
+            <source>Machine recommendation</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_zu_lslb_anschlussgewinde.0">
+            <source>connecting threads</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_zu_lslb_bohrtiefe.0">
+            <source>drilling depth</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_zu_lslb_drehzahlbereich_4082mm.0">
+            <source>recommended speed range for drill diameter 40 - 82 mm</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_zu_lslb_drehzahlbereich_83142mm.0">
+            <source>Recommended speed range for drill diameter 83 - 142 mm</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_zu_lslb_drehzahlbereich_143202mm.0">
+            <source>Recommended speed range for drill diameter 143 - 202 mm</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_zu_lslb_drehzahlbereich_203322mm.0">
+            <source>Recommended speed range for drill diameter 203 - 322 mm</source>
+        </trans-unit>
+
+        <trans-unit id="tl_dse_products.attr_zu_bst_max_bohrdurchschnitt.0">
+            <source>max. drilling diameter</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_zu_bst_hub.0">
+            <source>Stroke</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_zu_bst_gewicht.0">
+            <source>Weight</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_zu_bst_maschinenempfehlungen.0">
+            <source>Machine recommendation</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_zu_bst_maschinenhalter.0">
+            <source>Mounting machine holder</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_zu_bst_kanalrohr.0">
+            <source>smallest outside diameter of the sewer pipe</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_zu_bst_max_bohrkronenlaenge.0">
+            <source>max. drill bit length</source>
+        </trans-unit>
+
+        <trans-unit id="tl_dse_products.attr_zu_an_lochsaege.0">
+            <source>for hole saws with hole diameter</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_zu_an_duss_lochsaegen.0">
+            <source>for DUSS hole saws</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_zu_an_fremdlochsaegen.0">
+            <source>for foreign hole saws with total length</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_zu_an_sechskant.0">
+            <source>hexagon / for drill chuck</source>
+        </trans-unit>
+
+        <trans-unit id="tl_dse_products.attr_zu_ep_lochsaege.0">
+            <source>for hole saws with hole diameter</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_zu_ep_duss_lochsaegen.0">
+            <source>for DUSS hole saws</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_zu_ep_fremdlochsaegen.0">
+            <source>for foreign hole saws with total length</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_zu_ep_bohrfutter.0">
+            <source>for drill chuck</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_zu_ep_aufnahme.0">
+            <source>Admission</source>
+        </trans-unit>
+
+        <trans-unit id="tl_dse_products.order_data_legend">
+            <source>order details</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.order_data_exclude_menu.0">
+            <source>Exclude from Menu?</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.order_data_headline.0">
+            <source>Headline</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.order_data_text.0">
+            <source>Text</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.order_data.0">
+            <source>order details</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.order_data.1">
+            <source>Values in the first row are used for the column headline.</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.order_data_value_1.0">
+            <source>Value 1</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.order_data_value_2.0">
+            <source>Value 2</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.order_data_value_3.0">
+            <source>Value 3</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.order_data_value_4.0">
+            <source>Value 4</source>
+        </trans-unit>
+
+        <trans-unit id="tl_dse_products.tech_data_image.0">
+            <source>Image</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.tech_data_image_size.0">
+            <source>Image size</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.tech_data_image_alt.0">
+            <source>Alternate text</source>
+        </trans-unit>
+
+        <trans-unit id="tl_dse_products.publish_legend">
+            <source>Publish options</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.published.0">
+            <source>Published</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.featured.0">
+            <source>Featured</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.start.0">
+            <source>From</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.stop.0">
+            <source>To</source>
         </trans-unit>
     </body>
   </file>
