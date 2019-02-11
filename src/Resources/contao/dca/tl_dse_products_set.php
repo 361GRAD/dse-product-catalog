@@ -149,7 +149,7 @@ class tl_dse_products_set extends Backend
             return;
         }
 
-        if (!$this->User->hasAccess('tl_dse_products_set', 'tl_dse_products', 'alexf')) {
+        if (!$this->User->hasAccess('dse_products_set', 'modules')) {
             throw new Contao\CoreBundle\Exception\AccessDeniedException('Not enough permissions');
         }
     }
