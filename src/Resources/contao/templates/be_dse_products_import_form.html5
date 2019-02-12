@@ -1,0 +1,48 @@
+<div id="tl_buttons">
+    <a href="<?= $this->backLink ?>" class="header_back" title="<?= specialchars($this->langMsc['backBTTitle']) ?>" accesskey="b"><?= $this->langMsc['backBT'] ?></a>
+</div>
+
+<?php if (!empty($this->successMessage)): ?>
+
+    <div class="tl_tbox">
+        <p class="tl_info"><?= $this->successMessage ?></p>
+    </div>
+
+<?php else: ?>
+
+    <form action="<?= $this->formAction ?>" id="tl_dse_products_import" class="tl_form" method="POST" enctype="multipart/form-data">
+        <div class="tl_formbody_edit">
+
+            <?php if (!empty($this->errorMessage)): ?>
+                <p class="tl_error"><?= $this->errorMessage ?></p>
+            <?php endif ?>
+
+            <input type="hidden" name="FORM_SUBMIT" value="tl_dse_products_import">
+            <input type="hidden" name="REQUEST_TOKEN" value="<?= $this->requestToken ?>">
+
+            <fieldset id="pal_import_legend" class="tl_box">
+            <legend onclick="AjaxRequest.toggleFieldset(this, 'import_legend')"><?= $GLOBALS['TL_LANG']['MSC']['IMPORT']['import_legend'] ?></legend>
+                <div class="w50 widget">
+                    <h3>
+                        <label for="ctrl_timeFormat">
+                            <span class="invisible">Mandatory field </span><?= $GLOBALS['TL_LANG']['MSC']['IMPORT']['import_file'][0] ?>
+                            <span class="mandatory">*</span>
+                        </label>
+                    </h3>
+                    <input type="file" accept=".csv" name="source_file" class="tl_upload_field" onfocus="Backend.getScrollOffset()" multiple="false">
+                    <p class="tl_help tl_tip" title=""><?= $GLOBALS['TL_LANG']['MSC']['IMPORT']['import_file'][1] ?></p>
+                </div>
+            </fieldset>
+
+        </div>
+
+        <div class="tl_formbody_submit">
+
+            <div class="tl_submit_container">
+                <input type="submit" name="import" id="import" class="tl_submit" accesskey="i" value="<?= specialchars($this->langMsc['import'][0]) ?>">
+            </div>
+
+        </div>
+    </form>
+
+<?php endif ?>
