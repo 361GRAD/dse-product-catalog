@@ -21,7 +21,22 @@
             <input type="hidden" name="REQUEST_TOKEN" value="<?= $this->requestToken ?>">
 
             <fieldset id="pal_import_legend" class="tl_box">
-            <legend onclick="AjaxRequest.toggleFieldset(this, 'import_legend')"><?= $GLOBALS['TL_LANG']['MSC']['IMPORT']['import_legend'] ?></legend>
+                <legend onclick="AjaxRequest.toggleFieldset(this, 'import_legend')"><?= $GLOBALS['TL_LANG']['MSC']['IMPORT']['import_legend'] ?></legend>
+                <div class="w50 widget">
+                    <h3>
+                        <label for="ctrl_timeFormat">
+                            <span class="invisible">Mandatory field </span><?= $GLOBALS['TL_LANG']['MSC']['IMPORT']['import_select'][0] ?>
+                            <span class="mandatory">*</span>
+                        </label>
+                    </h3>
+                    <select id="cat_type" name="cat_type" class="tl_select" required>
+                        <?php for($i=0;$i<count($this->categories); $i++):  ?>
+                            <?php echo $this->categories[$i] ?>
+                            <option value="<?= $this->categories[$i]["id"] ?>"><?= $this->categories[$i]["title"] ?></option>
+                        <?php endfor; ?>
+                    </select>
+                    <p class="tl_help tl_tip" title=""><?= $GLOBALS['TL_LANG']['MSC']['IMPORT']['import_select'][1] ?></p>
+                </div>
                 <div class="w50 widget">
                     <h3>
                         <label for="ctrl_timeFormat">

@@ -44,6 +44,12 @@ $GLOBALS['TL_DCA']['tl_dse_products_set'] = array(
                 'class' => 'header_edit_all',
                 'attributes' => 'onclick="Backend.getScrollOffset()" accesskey="e"'
             ),
+            'import' => array(
+                'label' => &$GLOBALS['TL_LANG']['MSC']['import'],
+                'href' => 'key=import',
+                'class' => 'header_export_excel',
+                'attributes' => 'onclick="Backend.getScrollOffset();"'
+            )
         ),
         'operations' => array(
             'edit'   => array(
@@ -130,12 +136,74 @@ $GLOBALS['TL_DCA']['tl_dse_products_set'] = array(
 class tl_dse_products_set extends Backend
 {
     /**
+     * Category Id
+     * @var string
+     */
+    protected $catId = '';
+
+    /**
+     * DB category header array flipped
+     * @var array
+     */
+    protected $categoryDbHeaderKeysFlip = '';
+
+    /**
+     * Error Message
+     * @var string
+     */
+    protected $errorMessage = '';
+
+    /**
+     * Force update
+     * @var string
+     */
+    protected $forceUpdate = '';
+
+    /**
+     * CSV header array
+     * @var array
+     */
+    protected $headerKeys;
+
+    /**
+     * DB product header array flipped
+     * @var array
+     */
+    protected $productDbHeaderKeysFlip;
+
+    /**
+     * Items data
+     * @var array
+     */
+    protected $itemsData = array(
+        'created' => 0,
+        'changed' => 0,
+        'unchanged' => 0,
+        'hidden' => 0,
+        'skipped' => 0,
+        'deleted_variants' => 0
+    );
+
+    /**
+     * Logger service
+     * @var object
+     */
+    protected $logger;
+
+    /**
+     * Error Message
+     * @var string
+     */
+    protected $succsessMesssage = '';
+
+    /**
      * Import the back end user object
      */
     public function __construct()
     {
         parent::__construct();
         $this->import('BackendUser', 'User');
+        $this->logger = $this->getContainer()->get('monolog.logger.contao');
     }
 
     /**
@@ -169,6 +237,18 @@ class tl_dse_products_set extends Backend
         array_insert($GLOBALS['TL_DCA']['tl_dse_products_set']['list']['global_operations'], count($GLOBALS['TL_DCA']['tl_dse_products_set']['list']['global_operations']), $arrOperations);
     }
 
+    /**
+     * Label callback
+     *
+     * @param string         $strLabel
+     *
+     * @return string
+     */
+    public function getGroupLabel($strLabel)
+    {
+        return $strLabel;
+    }
+
     public function export()
     {
         $intConfig = \Input::get('config');
@@ -197,14 +277,438 @@ class tl_dse_products_set extends Backend
     }
 
     /**
-     * Label callback
+     * Initiate products import
+     * @return string
+     */
+    public function initiateImport()
+    {
+
+        if (Input::get('key') != 'import') {
+            return '';
+        }
+
+        if (Input::post('FORM_SUBMIT') == 'tl_dse_products_import') {
+            $this->catId = Input::post('cat_type');
+            $this->processFormData();
+        }
+
+        $productCategoriesQuery = $this->Database->prepare("SELECT id, title FROM tl_dse_products_set")->execute()->fetchAllAssoc();
+
+        $objTemplate = new FrontendTemplate('be_dse_products_import_form');
+        $objTemplate->setData([
+            'backLink' => ampersand(str_replace('&key=import', '', Environment::get('request'))),
+            'formAction' => ampersand(Environment::get('request'), true),
+            'langMsc' => $GLOBALS['TL_LANG']['MSC'],
+            'successMessage' => $this->successMessage,
+            'errorMessage' => $this->errorMessage,
+            'requestToken' => REQUEST_TOKEN,
+            'categories' => $productCategoriesQuery
+        ]);
+
+        return $objTemplate->parse();
+
+    }
+
+    /**
+     * Process submitted form data.
      *
-     * @param string         $strLabel
+     * @throws Exception
+     */
+    protected function processFormData()
+    {
+
+        $files = Files::getInstance();
+
+        // Environment::get('documentRoot') in C4 will return the path to web directory,
+        // kernel.root_dir gives app path and Files is hardcoded to TL_ROOT path,
+        // so we have to strip "/app" from base path and add it to the relative path for Files methods to work
+        $basePath = str_replace(DIRECTORY_SEPARATOR . 'app', '', $this->getContainer()->getParameter('kernel.root_dir')) . DIRECTORY_SEPARATOR;
+        $relativeTmpPath = 'system' . DIRECTORY_SEPARATOR . 'tmp';
+
+        // handle tmp directory
+        if (!$files->is_writeable($relativeTmpPath)) {
+            $files->mkdir($relativeTmpPath);
+        } else {
+            $files->rrdir($relativeTmpPath, true);
+        }
+
+        // process upload
+        try {
+
+            // undefined | Multiple Files | $_FILES Corruption Attack
+            // if this request falls under any of them, treat it invalid.
+            if (
+                !isset($_FILES['source_file']['error']) ||
+                is_array($_FILES['source_file']['error'])
+            ) {
+                throw new Exception('Invalid parameters.');
+            }
+            switch ($_FILES['source_file']['error']) {
+                case UPLOAD_ERR_OK:
+                    break;
+                case UPLOAD_ERR_NO_FILE:
+                    throw new Exception('No file sent.');
+                case UPLOAD_ERR_INI_SIZE:
+                case UPLOAD_ERR_FORM_SIZE:
+                    throw new Exception('Exceeded filesize limit.');
+                default:
+                    throw new Exception('Unknown errors.');
+            }
+
+            $ext = 'csv';
+            $allowedTypes = [
+                'text/csv',
+                'application/vnd.ms-excel'
+            ];
+
+            // Check passed type
+
+            if (!in_array($_FILES['source_file']['type'], $allowedTypes)) {
+                throw new Exception('Invalid file format.');
+            }
+
+            // obtain safe unique name from binary data.
+            $newPath = sprintf($relativeTmpPath . DIRECTORY_SEPARATOR . '%s.%s', sha1_file($_FILES['source_file']['tmp_name']), $ext);
+
+            if (!$files->move_uploaded_file($_FILES['source_file']['tmp_name'], $newPath)) {
+                throw new Exception('Failed to move uploaded file.');
+            }
+
+            $this->handleUploadedFile($newPath, $basePath);
+
+        } catch (Exception $e) {
+            $this->errorMessage = $e->getMessage();
+        }
+    }
+
+    /**
+     * Handle uploaded file
+     *
+     * @param $relativePath string
+     * @param $basePath
+     *
+     * @throws Exception
+     *
+     * @return void
+     */
+    public function handleUploadedFile($relativePath, $basePath)
+    {
+
+        $path = $basePath . $relativePath;
+
+        $this->forceUpdate = Input::post('force_update');
+
+        try {
+
+            $allowedExtensions = ['csv'];
+
+            if (!in_array(pathinfo($path, PATHINFO_EXTENSION), $allowedExtensions)) {
+                throw new Exception('Wrong type of CSV file.');
+            }
+        } catch (Exception $e) {
+            $this->errorMessage = $e->getMessage();
+            return;
+        }
+
+        try {
+
+            //$csvData = str_getcsv(file_get_contents($path), "\n");
+            // map str_getcsv here instead of calling rowToArray on each row
+            $csvData = array_map(function($row) { return str_getcsv($row, ","); }, file($path));
+
+            $csvData = $this->stripHeaderKeys($csvData);
+
+            $this->getProductDbColNames();
+            $this->validateHeaders($this->productDbHeaderKeysFlip);
+
+            // group rows into entries
+            $csvData = $this->groupRows($csvData);
+
+            // parse fields inside each row
+            foreach ($csvData as $index => $row) {
+                $this->processEntry($index, $row);
+            }
+
+//            $this->cleanUpDbEntries();
+
+        } catch (Exception $e) {
+            $this->errorMessage = $e->getMessage();
+        }
+
+        if (empty($this->errorMessage)) {
+            // hardcoded in DE, we can move this to lang if needed
+            $this->successMessage = 'Produktimport erfolgreich durchgeführt. Produkt Stats: ' .
+                $this->itemsData['created']
+                . ' erstellt, ' .
+                $this->itemsData['changed']
+                . ' geändert, ' .
+                $this->itemsData['unchanged']
+                . ' unverändert, ' .
+                $this->itemsData['hidden']
+                . ' ausgeblendet, ' .
+                $this->itemsData['deleted_variants']
+                . ' Varianten entfernt.';
+        }
+    }
+
+    /**
+     * Set the first row of the CSV data as csvHeaderKeys field
+     * and remove it from the data array. Return updated data array.
+     *
+     * @param array $csvData Data parsed from the input file.
+     *
+     * @return array
+     */
+    private function stripHeaderKeys($csvData)
+    {
+        $this->csvHeaderKeys = array_map("trim", $csvData[0]);
+        unset($csvData[0]);
+
+        return $csvData;
+    }
+
+    /**
+     * Get database column names as array keys
+     * @return array
+     */
+    protected function getProductDbColNames()
+    {
+        $arrColNames = array();
+        $arrCols = Database::getInstance()
+            ->prepare("SELECT distinct(column_name) FROM information_schema.COLUMNS WHERE table_name='tl_dse_products'")
+            ->execute();
+
+        while($arrCols->next()) {
+            $arrColNames[] = $arrCols->column_name;
+        }
+        $this->productDbHeaderKeysFlip = array_flip($arrColNames);
+
+        return $arrColNames;
+    }
+
+    /**
+     * Check if the first header fields from the CSV file match the reference format from the database.
+     *
+     * @param array $csvHeaderRow
+     *
+     * @throws Exception
+     *
+     * @return void
+     */
+    private function validateHeaders($csvHeaderRow)
+    {
+        if (count(array_intersect_key($this->productDbHeaderKeysFlip, $csvHeaderRow)) !== count($csvHeaderRow)) {
+            throw new Exception('Wrong format of the CSV file header row.');
+        } else {
+            return;
+        }
+    }
+
+    /**
+     * Process passed CSV array to join separate rows into products.
+     *
+     * @param array $rows
+     *
+     * @return array
+     *
+     * @return ProductsModel
+     */
+    private function groupRows($rows)
+    {
+        $this->logger->info('Grouping the ' . count($rows) . ' CSV rows', [__METHOD__]);
+
+        $keyColumn = "sku";
+
+        $data = [];
+        foreach ($rows as $index => $row) {
+
+            $variant = $this->composeRow($row);
+
+            $key = $variant[$keyColumn];
+
+            if (empty($key)) {
+
+                $this->logger->notice("Row number $index has empty '$keyColumn' column, skipping this row", [__METHOD__]);
+                $this->incrementCounter('skipped');
+                continue;
+
+            }
+
+            if ($data[$key]) {
+                // add to existing group
+                $data[$key][] = $variant;
+            } else {
+                // create a group with variants array
+                $data[$key] = [$variant];
+            }
+
+//            $this->saveVariant($variant);
+
+        }
+
+        $this->logger->info('CSV rows grouped into ' . count($data) . ' products', [__METHOD__]);
+
+        return $data;
+
+    }
+
+    /**
+     * Increment one of internal counters.
+     *
+     * @param string $index Counter index, possible values: "created", "changed", "unchanged", "skipped"
+     *
+     * @throws Exception
+     *
+     * @return void
+     */
+    private function incrementCounter($index)
+    {
+
+        if (!array_key_exists($index, $this->itemsData)) {
+            throw new Exception("Got incorrect counter index: $index");
+        }
+
+        $this->itemsData[$index]++;
+
+    }
+
+    /**
+     * Compose a row array using header field as keys.
+     *
+     * @param array $csvRow CSV data row
+     *
+     * @return array
+     */
+    private function composeRow($csvRow)
+    {
+        return array_combine($this->csvHeaderKeys, $csvRow);
+    }
+
+    /**
+     * Create / update entry
+     *
+     * @param string $identifier External id of the item by which the rows were grouped
+     * @param array $row Array with keys generated from the header row and all the row's data
+     *
+     * @throws Exception
+     *
+     * @return void
+     */
+    private function processEntry($identifier, $row)
+    {
+
+        $this->logger->info("Processing entry $identifier", [__METHOD__]);
+
+        $currentItem = Dse\ProductCatalogBundle\Model\DseProductsModel::findBySku($identifier);
+
+        if (empty($currentItem)) {
+            $this->logger->info("Entry $identifier not found in the database, creating", [__METHOD__]);
+            $currentItem = new Dse\ProductCatalogBundle\Model\DseProductsModel();
+            $counterIndex = 'created';
+        } else if (($this->forceUpdate == '1') || (sha1(serialize($row)) !== ($currentItem->external_data_hash))) {
+            $this->logger->info("Entry $identifier found in the database, but was updated or force update active - changing", [__METHOD__]);
+            $counterIndex = 'changed';
+        } else {
+            $this->logger->info("Entry $identifier found in the database, and has up to date data, no change needed", [__METHOD__]);
+            $counterIndex = 'unchanged';
+        }
+
+        if ($counterIndex !== 'unchanged') {
+            $currentItem = $this->setItemData($currentItem, $identifier, $row);
+            $currentItem->save();
+        }
+
+        $this->incrementCounter($counterIndex);
+
+        $this->processedIds[] = $identifier;
+
+        $this->logger->info("Done processing entry $identifier", [__METHOD__]);
+
+        return;
+    }
+
+    /**
+     * Set model data using passed CSV array if needed and return it.
+     *
+     * @param ProductsModel $model Product model
+     * @param string $identifier Item's external id
+     * @param array $row Array with keys generated from the header row and all the row's data
+     *
+     * @throws Exception
+     *
+     * @return ProductsModel
+     */
+    private function setItemData($model, $identifier, $productRows)
+    {
+        foreach ($this->productDbHeaderKeysFlip as $key => $value) {
+            switch ($key) {
+                case "id":
+                    break;
+                case "pid":
+                    $model->$key = $this->catId;
+                    break;
+                case "tstamp":
+                    $model->$key = time();
+                    break;
+                case "alias":
+                    $model->$key = $this->generateAlias($productRows[0]["title"], $identifier, $model);
+                    break;
+                // ToDo: Remove TEMP fixes
+                case strpos($key, '_coord') !== false:
+                    if (is_null($productRows[0][$key]) && empty($productRows[0][$key])) {
+                        $model->$key = 0;
+                    }
+                    break;
+                default:
+                    if (is_null($productRows[0][$key])) {
+                        $model->$key = "";
+                    } else {
+                        $model->$key = $productRows[0][$key];
+                    }
+                    break;
+            }
+        }
+
+        return $model;
+
+    }
+    /**
+     * Auto-generate the products alias
+     *
+     * Use model id to sort out existing model when checking for uniqueness
+     * since this alias is only "editable" here and should not get any temporary suffixes.
+     *
+     * @param string $strAlias
+     * @param integer $identifier
+     * @param object $model
+     *
+     * @return string
+     * @throws Exception
+     */
+    private function generateAlias($strAlias, $identifier, $model)
+    {
+        $strAlias = $this->makeSlug($strAlias);
+
+        $objAlias = $this->Database->prepare("SELECT id FROM tl_products WHERE alias=?")
+            ->execute($strAlias);
+
+        // Add external ID to alias
+        if ($objAlias->numRows && ($objAlias->id !== $model->id)) {
+            $strAlias .= '-' . $this->makeSlug($identifier);
+        }
+
+        return $strAlias;
+    }
+
+    /**
+     * Generate a URL safe slug from string
+     *
+     * @param string $string
      *
      * @return string
      */
-    public function getGroupLabel($strLabel)
+    private function makeSlug($string)
     {
-        return $strLabel;
+        return standardize(StringUtil::restoreBasicEntities($string));
     }
 }

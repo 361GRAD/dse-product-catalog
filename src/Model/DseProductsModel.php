@@ -89,6 +89,32 @@ class DseProductsModel extends \Model
     }
 
     /**
+     * Find product by it's sku
+     *
+     * @param string $strId The products sku
+     * @param integer $intLimit An optional limit
+     * @param array $arrOptions An optional options array
+     *
+     * @return object|null A collection of models or null if there are no products
+     */
+    public static function findBySku($strId, $intLimit = 0, array $arrOptions = array())
+    {
+        $t = static::$strTable;
+
+        $arrColumns = array("$t.sku=?");
+
+        if (!isset($arrOptions['order'])) {
+            $arrOptions['order'] = "$t.sorting ASC";
+        }
+
+        if ($intLimit > 0) {
+            $arrOptions['limit'] = $intLimit;
+        }
+
+        return static::findBy($arrColumns, $strId, $arrOptions);
+    }
+
+    /**
      * Find all by their parent ID
      *
      * @param array $arrPids An array of packages set IDs

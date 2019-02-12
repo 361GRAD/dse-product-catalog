@@ -11,17 +11,8 @@ array_insert($GLOBALS['BE_MOD'], 1, array
         (
             'tables' => array('tl_dse_products_set', 'tl_dse_products', 'tl_content'),
             'export' => array('tl_dse_products_set', 'export'),
+            'import' => array('tl_dse_products_set', 'initiateImport'),
         ),
-        // 'dse_products_export' => array
-        // (
-        //     'tables' => array('tl_dse_products_export'),
-        //     'export' => array('tl_dse_products_export', 'export'),
-        // )
-         'dse_products_set_test' => array
-         (
-             'tables' => array('tl_dse_products_set_test', 'tl_dse_products_test', 'tl_content'),
-             'import' => array('tl_dse_products_set_test', 'initiateImport'),
-         )
     )
 ));
 
