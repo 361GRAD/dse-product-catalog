@@ -2,6 +2,13 @@
 <xliff version="1.1">
 	<file datatype="php" original="src/Resources/contao/languages/en/default.php" source-language="en">
     <body>
+        <trans-unit id="tl_dse_products_set.import_csv.0">
+            <source>Import CSV</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products_set.import_csv.1">
+            <source>Import data from a CSV file</source>
+        </trans-unit>
+
         <trans-unit id="tl_dse_products_set.export_csv.0">
             <source>Export CSV</source>
         </trans-unit>

@@ -45,7 +45,7 @@ $GLOBALS['TL_DCA']['tl_dse_products_set'] = array(
                 'attributes' => 'onclick="Backend.getScrollOffset()" accesskey="e"'
             ),
             'import' => array(
-                'label' => &$GLOBALS['TL_LANG']['MSC']['import'],
+                'label' => &$GLOBALS['TL_LANG']['tl_dse_products_set']['import_csv'],
                 'href' => 'key=import',
                 'class' => 'header_export_excel',
                 'attributes' => 'onclick="Backend.getScrollOffset();"'
