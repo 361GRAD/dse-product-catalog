@@ -8,6 +8,9 @@
         <trans-unit id="tl_dse_products_set.import_csv.1">
             <source>Import data from a CSV file</source>
         </trans-unit>
+        <trans-unit id="tl_dse_products_set.import">
+            <source>Import</source>
+        </trans-unit>
 
         <trans-unit id="tl_dse_products_set.export_csv.0">
             <source>Export CSV</source>
