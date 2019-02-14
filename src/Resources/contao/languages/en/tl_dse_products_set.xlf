@@ -26,6 +26,22 @@
         <trans-unit id="tl_dse_products_set.title.0">
             <source>Title</source>
         </trans-unit>
+
+        <trans-unit id="tl_dse_products_set.IMPORT.successMessage.0">
+            <source>Product import successfully completed:</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products_set.IMPORT.successMessage.created">
+            <source>created</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products_set.IMPORT.successMessage.changed">
+            <source>changed</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products_set.IMPORT.successMessage.unchanged">
+            <source>unchanged</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products_set.IMPORT.successMessage.deleted">
+            <source>deleted</source>
+        </trans-unit>
     </body>
   </file>
 </xliff>

@@ -1,5 +1,5 @@
 <div id="tl_buttons">
-    <a href="<?= $this->backLink ?>" class="header_back" title="<?= specialchars($this->langMsc['backBTTitle']) ?>" accesskey="b"><?= $this->langMsc['backBT'] ?></a>
+    <a href="<?= $this->backLink ?>" class="header_back" title="<?= specialchars($GLOBALS['TL_LANG']['MSC']['backBTTitle']) ?>" accesskey="b"><?= $GLOBALS['TL_LANG']['MSC']['backBT'] ?></a>
 </div>
 
 <?php if (!empty($this->successMessage)): ?>
@@ -54,7 +54,7 @@
         <div class="tl_formbody_submit">
 
             <div class="tl_submit_container">
-                <input type="submit" name="import" id="import" class="tl_submit" accesskey="i" value="<?= specialchars($this->langMsc['import'][0]) ?>">
+                <input type="submit" name="import" id="import" class="tl_submit" accesskey="i" value="<?= specialchars($GLOBALS['TL_LANG']['MSC']['import'][0]) ?>">
             </div>
 
         </div>

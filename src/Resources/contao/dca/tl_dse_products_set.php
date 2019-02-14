@@ -154,16 +154,16 @@ class tl_dse_products_set extends Backend
     protected $errorMessage = '';
 
     /**
-     * Force update
-     * @var string
-     */
-    protected $forceUpdate = '';
-
-    /**
      * CSV header array
      * @var array
      */
     protected $headerKeys;
+
+    /**
+     * Existing CSV ids
+     * @var array
+     */
+    protected $processedIds = array();
 
     /**
      * DB product header array flipped
@@ -179,9 +179,8 @@ class tl_dse_products_set extends Backend
         'created' => 0,
         'changed' => 0,
         'unchanged' => 0,
-        'hidden' => 0,
-        'skipped' => 0,
-        'deleted_variants' => 0
+        'deleted' => 0,
+        'skipped' => 0
     );
 
     /**
@@ -373,8 +372,8 @@ class tl_dse_products_set extends Backend
             if (!$files->move_uploaded_file($_FILES['source_file']['tmp_name'], $newPath)) {
                 throw new Exception('Failed to move uploaded file.');
             }
-
             $this->handleUploadedFile($newPath, $basePath);
+            $files->delete($newPath);
 
         } catch (Exception $e) {
             $this->errorMessage = $e->getMessage();
@@ -395,8 +394,6 @@ class tl_dse_products_set extends Backend
     {
 
         $path = $basePath . $relativePath;
-
-        $this->forceUpdate = Input::post('force_update');
 
         try {
 
@@ -428,26 +425,23 @@ class tl_dse_products_set extends Backend
             foreach ($csvData as $index => $row) {
                 $this->processEntry($index, $row);
             }
-
-//            $this->cleanUpDbEntries();
+                
+           $this->cleanUpDbEntries();
 
         } catch (Exception $e) {
             $this->errorMessage = $e->getMessage();
         }
-
+        
         if (empty($this->errorMessage)) {
-            // hardcoded in DE, we can move this to lang if needed
-            $this->successMessage = 'Produktimport erfolgreich durchgeführt. Produkt Stats: ' .
+            $this->successMessage = $GLOBALS['TL_LANG']['tl_dse_products_set']['IMPORT']['successMessage'][0] . ' ' .
                 $this->itemsData['created']
-                . ' erstellt, ' .
+                . ' ' . $GLOBALS['TL_LANG']['tl_dse_products_set']['IMPORT']['successMessage']['created'] . ', ' .
                 $this->itemsData['changed']
-                . ' geändert, ' .
-                $this->itemsData['unchanged']
-                . ' unverändert, ' .
-                $this->itemsData['hidden']
-                . ' ausgeblendet, ' .
-                $this->itemsData['deleted_variants']
-                . ' Varianten entfernt.';
+                . ' ' . $GLOBALS['TL_LANG']['tl_dse_products_set']['IMPORT']['successMessage']['changed'] . ', '.
+                // $this->itemsData['unchanged']
+                // . ' ' . $GLOBALS['TL_LANG']['tl_dse_products_set']['IMPORT']['successMessage']['unchanged'] . ', '.
+                $this->itemsData['deleted']
+                . ' ' . $GLOBALS['TL_LANG']['tl_dse_products_set']['IMPORT']['successMessage']['deleted'] . '.';
         }
     }
 
@@ -555,7 +549,7 @@ class tl_dse_products_set extends Backend
     /**
      * Increment one of internal counters.
      *
-     * @param string $index Counter index, possible values: "created", "changed", "unchanged", "skipped"
+     * @param string $index Counter index, possible values: "created", "changed", "unchanged", "skipped", "deleted"
      *
      * @throws Exception
      *
@@ -605,8 +599,8 @@ class tl_dse_products_set extends Backend
             $this->logger->info("Entry $identifier not found in the database, creating", [__METHOD__]);
             $currentItem = new Dse\ProductCatalogBundle\Model\DseProductsModel();
             $counterIndex = 'created';
-        } else if (($this->forceUpdate == '1') || (sha1(serialize($row)) !== ($currentItem->external_data_hash))) {
-            $this->logger->info("Entry $identifier found in the database, but was updated or force update active - changing", [__METHOD__]);
+        } else if ($currentItem->sku === $identifier) {
+            $this->logger->info("Entry $identifier found in the database - changing", [__METHOD__]);
             $counterIndex = 'changed';
         } else {
             $this->logger->info("Entry $identifier found in the database, and has up to date data, no change needed", [__METHOD__]);
@@ -623,6 +617,41 @@ class tl_dse_products_set extends Backend
         $this->processedIds[] = $identifier;
 
         $this->logger->info("Done processing entry $identifier", [__METHOD__]);
+
+        return;
+    }
+
+/**
+     * Delete entries that were not in the import file.
+     *
+     * @return void
+     */
+    private function cleanUpDbEntries()
+    {
+        // process products
+        $this->logger->info("Cleaning up the data - hiding every currently active product that was not processed during the import", [__METHOD__]);
+
+        // hide products that were not in the source file
+        if (count($this->processedIds)) {
+            $objRemovedActiveEntries = $this->Database
+                ->prepare("SELECT sku FROM tl_dse_products WHERE sku NOT IN(" . implode(', ', array_map(function($item) {return "'$item'";}, $this->processedIds)) . ")")
+                ->execute();
+        } else {
+            $this->logger->info("No entries processed, cancelling data cleanup", [__METHOD__]);
+            return;
+        }
+        
+        $this->logger->info("Found " . $objRemovedActiveEntries->count() . " active products that were not processed during the import", [__METHOD__]);
+        $arrRemovedActiveEntries = $objRemovedActiveEntries->fetchAllAssoc();
+
+        foreach ($arrRemovedActiveEntries as $entry) {
+            $model = Dse\ProductCatalogBundle\Model\DseProductsModel::findBySku($entry['sku']);
+            if (!empty($model)) {
+                $this->logger->info("Deleting entry with SKU: $model->sku.", [__METHOD__]);
+                $model->delete();
+                $this->incrementCounter('deleted');
+            }
+        }
 
         return;
     }
@@ -652,6 +681,9 @@ class tl_dse_products_set extends Backend
                     break;
                 case "alias":
                     $model->$key = $this->generateAlias($productRows[0]["title"], $identifier, $model);
+                    break;
+                case "published":
+                    $model->$key = 1;
                     break;
                 // ToDo: Remove TEMP fixes
                 case strpos($key, '_coord') !== false:
@@ -689,7 +721,7 @@ class tl_dse_products_set extends Backend
     {
         $strAlias = $this->makeSlug($strAlias);
 
-        $objAlias = $this->Database->prepare("SELECT id FROM tl_products WHERE alias=?")
+        $objAlias = $this->Database->prepare("SELECT id FROM tl_dse_products WHERE alias=?")
             ->execute($strAlias);
 
         // Add external ID to alias
