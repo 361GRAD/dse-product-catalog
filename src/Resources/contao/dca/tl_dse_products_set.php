@@ -232,7 +232,7 @@ class tl_dse_products_set extends Backend
             'class'         => 'leads-export header_export_excel',
             'attributes'    => 'onclick="Backend.getScrollOffset();"',
         );
-        
+
         array_insert($GLOBALS['TL_DCA']['tl_dse_products_set']['list']['global_operations'], count($GLOBALS['TL_DCA']['tl_dse_products_set']['list']['global_operations']), $arrOperations);
     }
 
@@ -251,7 +251,7 @@ class tl_dse_products_set extends Backend
     public function export()
     {
         $intConfig = \Input::get('config');
-        
+
         if (!$intConfig) {
             \Controller::redirect('contao/main.php?act=error');
         }
@@ -425,13 +425,13 @@ class tl_dse_products_set extends Backend
             foreach ($csvData as $index => $row) {
                 $this->processEntry($index, $row);
             }
-                
-           $this->cleanUpDbEntries();
+
+            $this->cleanUpDbEntries();
 
         } catch (Exception $e) {
             $this->errorMessage = $e->getMessage();
         }
-        
+
         if (empty($this->errorMessage)) {
             $this->successMessage = $GLOBALS['TL_LANG']['tl_dse_products_set']['IMPORT']['successMessage'][0] . ' ' .
                 $this->itemsData['created']
@@ -621,7 +621,7 @@ class tl_dse_products_set extends Backend
         return;
     }
 
-/**
+    /**
      * Delete entries that were not in the import file.
      *
      * @return void
@@ -640,7 +640,7 @@ class tl_dse_products_set extends Backend
             $this->logger->info("No entries processed, cancelling data cleanup", [__METHOD__]);
             return;
         }
-        
+
         $this->logger->info("Found " . $objRemovedActiveEntries->count() . " active products that were not processed during the import", [__METHOD__]);
         $arrRemovedActiveEntries = $objRemovedActiveEntries->fetchAllAssoc();
 
@@ -685,6 +685,9 @@ class tl_dse_products_set extends Backend
                 case "published":
                     $model->$key = 1;
                     break;
+                case "singleSRC":
+                    $model->$key = $this->getFileUuid($productRows[0]["singleSRC"]);
+                    break;
                 // ToDo: Remove TEMP fixes
                 case strpos($key, '_coord') !== false:
                     if (is_null($productRows[0][$key]) && empty($productRows[0][$key])) {
@@ -704,6 +707,31 @@ class tl_dse_products_set extends Backend
         return $model;
 
     }
+
+    /**
+     * Get UUID from previously uploaded file
+     *
+     *
+     * @param string $strName
+     *
+     * @return binary
+     */
+    private function getFileUuid($strName)
+    {
+        $uploadPath = "";
+        if (preg_match('/(\.jpg|\.png|\.bmp)$/', $strName)) {
+            $uploadPath = "files/public/products/import/images/";
+        } elseif (preg_match('/(\.pdf)$/', $strName)) {
+            $uploadPath = "files/public/products/import/pdf/";
+        }
+
+        $fileUuid = $fileUuid = \FilesModel::findByPath($uploadPath.$strName)->uuid;
+
+        if($fileUuid) {
+            return $fileUuid;
+        }
+    }
+
     /**
      * Auto-generate the products alias
      *
