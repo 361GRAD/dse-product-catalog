@@ -18,6 +18,7 @@
 namespace Dse\ProductCatalogBundle\Model;
 
 use Contao\Model;
+use Contao\Database;
 
 /**
  * Class ProductsModel
@@ -35,6 +36,43 @@ class DseProductsModel extends \Model
      * @var string
      */
     protected static $strTable = 'tl_dse_products';
+
+    /**
+     * Find published by their parent ID and ID or alias
+     *
+     *
+     * @return object
+     */
+    public static function getDbColNames() {
+        $objCols = Database::getInstance()
+            ->prepare("SHOW COLUMNS FROM " . static::$strTable)
+            ->execute()
+        ;
+        
+        return $objCols;
+    }
+
+    /**
+     * Find published by their parent ID and ID or alias
+     *
+     *
+     * @return array
+     */
+    public static function getDbColNamesArray() {
+        $arrColNames = [];
+        $objCols = Database::getInstance()
+            ->prepare("SHOW COLUMNS FROM " . static::$strTable)
+            ->execute()
+        ;
+        $i = 0;
+        $objCols = DseProductsModel::getDbColNames();
+        while($objCols->next()) {
+            $arrColNames[$i] = $objCols->Field;
+            $i++;
+        }
+ 
+        return $arrColNames;
+    }
 
     /**
      * Find published by their parent ID and ID or alias
@@ -368,5 +406,109 @@ class DseProductsModel extends \Model
         $arrOptions['offset'] = $intOffset;
 
         return static::findBy($arrColumns, null, $arrOptions);
+    }
+
+    /**
+     * Generate a contao model compatible array
+     * of search columns for filter query
+     *
+     * @return array
+     */
+    private function getSearchColumns()
+    {
+
+        $data = [
+            'columns' => [],
+            'values' => []
+        ];
+
+        $table = 'tl_products';
+
+        $currentCategory = urldecode(Input::get('category_slug'));
+
+        if (!empty($currentCategory) && ($currentCategory !== '-')) {
+            $data['columns'][] = "$table.csv_category_slug = ?";
+            $data['values'][] = $currentCategory;
+        }
+
+        foreach ($this->variantFields as $variantField) {
+
+            $data = $this->addVariantColumn($data, $variantField, $table);
+
+        }
+
+        return $data;
+
+
+    }
+
+    /**
+     * Count published by passed table fields and values.
+     * These must be separated to be able to use prepared statements.
+     *
+     * @param mixed $columns An array of table columns
+     * @param mixed $values An array of statement values
+     * @param array $arrOptions An optional options array
+     *
+     * @return integer The number of packages
+     */
+    public static function countPublishedByColumns($columns, $values, array $arrOptions = array())
+    {
+        if (!is_array($columns)) {
+            // cast to array to support multiple categories
+            $columns = [$columns];
+        }
+
+        $t = static::$strTable;
+        $arrColumns = $columns;
+
+        $arrColumns[] = "$t.published=1";
+
+        return static::countBy($arrColumns, $values, $arrOptions);
+    }
+
+    /**
+     * Find published by passed table fields and values.
+     * These must be separated to be able to use prepared statements.
+     *
+     * @param mixed $columns An array of table columns
+     * @param mixed $values An array of statement values
+     * @param integer $intLimit An optional limit
+     * @param integer $intOffset An optional offset
+     * @param array $arrOptions An optional options array
+     *
+     * @return object|null A collection of models or null if there are no packages
+     */
+    public static function findPublishedByColumns($columns, $values, $intLimit = 0, $intOffset = 0, array $arrOptions = array())
+    {
+        if (!is_array($columns)) {
+            // cast to array to support multiple categories
+            $columns = [$columns];
+        }
+
+        $t = static::$strTable;
+        $arrColumns = $columns;
+        
+        $arrColumns[] = "$t.published=1";
+
+        if (!isset($arrOptions['order'])) {
+            $arrOptions['order'] = "$t.sorting ASC";
+        }
+
+        $arrOptions['limit'] = $intLimit;
+        $arrOptions['offset'] = $intOffset;
+
+        return static::findBy($arrColumns, $values, $arrOptions);
+    }
+
+    public static function getFilterValues($columns = '*', $pid)
+    {
+        $arrValues = Database::getInstance()
+            ->prepare("SELECT " . $columns . " FROM " . static::$strTable . " WHERE pid=" . $pid)
+            ->execute()
+            ->fetchAllAssoc()
+        ;
+        
+        return $arrValues;
     }
 }

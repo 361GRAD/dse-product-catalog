@@ -4,6 +4,7 @@ namespace Dse\ProductCatalogBundle\Module;
 
 use Contao\CoreBundle\Exception\PageNotFoundException;
 use Contao\BackendTemplate;
+use Dse\ProductCatalogBundle\Model\DseProductsSetModel;
 use Dse\ProductCatalogBundle\Model\DseProductsModel;
 
 class ModuleProductsList extends ModuleProducts {
@@ -46,6 +47,10 @@ class ModuleProductsList extends ModuleProducts {
      */
     protected function compile()
     {
+        $filterSearched = [];
+        $filterData = [];
+        $intTotal = 0;
+        
         $offset = intval(0);
         $limit = null;
 
@@ -63,8 +68,34 @@ class ModuleProductsList extends ModuleProducts {
             $blnFeatured = null;
         }
 
+        // Get filter data
+        $objSet = DseProductsSetModel::findMultipleByIds($this->products_sets);
+        $arrFilterFields = deserialize($objSet->filterfields);
+        foreach ($arrFilterFields as $filterField) {
+            // $filterFieldValue = html_entity_decode(\Input::get($filterField));
+            $filterFieldValue = urldecode(\Input::get($filterField));
+
+            if ($filterFieldValue != '') {
+                $filterSearched[$filterField] = $filterFieldValue;
+                $filterData['columns'][] = "tl_dse_products.$filterField LIKE ?";
+                $filterData['values'][] = "%$filterFieldValue%";
+            }            
+        }
+
         // Get the total number of items
-        $intTotal = DseProductsModel::countPublishedByPids($this->products_sets, $blnFeatured);
+        if($filterData) {
+            $this->Template->filterSearched = $filterSearched;
+            $intTotal = DseProductsModel::countPublishedByColumns($filterData['columns'], $filterData['values']);
+        } else {
+            $intTotal = DseProductsModel::countPublishedByPids($this->products_sets, $blnFeatured);
+        }
+    
+        // Filer and values for the form
+        if($arrFilterFields) {
+            $filters = implode(",", $arrFilterFields);
+            $this->Template->arrFilters = $arrFilterFields;
+            $this->Template->arrFiltersValue = DseProductsModel::getFilterValues($filters, $this->products_sets[0]);
+        }
 
         if ($intTotal < 1) {
             $this->Template->articles = array();
@@ -82,23 +113,12 @@ class ModuleProductsList extends ModuleProducts {
 
             // Get the current page
             $id = 'page_n' . $this->id;
-//            $page = \Input::get($id) ? : 1;
             $page = (\Input::get($id) !== null) ? \Input::get($id) : 1;
 
             // Do not index or cache the page if the page number is outside the range
             if ($page < 1 || $page > max(ceil($total / $this->perPage), 1)) {
                 throw new PageNotFoundException('Page not found: ' . \Environment::get('uri'));
             }
-
-//            if ($page < 1 || $page > max(ceil($total / $this->perPage), 1)) {
-//                global $objPage;
-//                $objPage->noSearch = 1;
-//                $objPage->cache = 0;
-//
-//                // Send a 404 header
-//                header('HTTP/1.1 404 Not Found');
-//                return;
-//            }
 
             // Set limit and offset
             $offset += (max($page, 1) - 1) * $this->perPage;
@@ -115,13 +135,17 @@ class ModuleProductsList extends ModuleProducts {
         }
 
         // Get the items
-        if (isset($limit)) {
+        if (isset($limit) && $filterData) {
+            $objArticles = DseProductsModel::findPublishedByColumns($filterData['columns'], $filterData['values'], $limit, $offset);
+        } elseif (!isset($limit) && $filterData) {
+            $objArticles = DseProductsModel::findPublishedByColumns($filterData['columns'], $filterData['values'], 0, $offset);
+        } elseif (isset($limit) && !$filterData) {
             $objArticles = DseProductsModel::findPublishedByPids($this->products_sets, $blnFeatured, $limit, $offset);
         } else {
             $objArticles = DseProductsModel::findPublishedByPids($this->products_sets, $blnFeatured, 0, $offset);
         }
 
-        // ToDo:
+        // ToDo: related products
         $this->Template->articles = $this->parseArticles($objArticles, false, $this->full_details, false);
 
         $this->Template->sets = $this->products_sets;

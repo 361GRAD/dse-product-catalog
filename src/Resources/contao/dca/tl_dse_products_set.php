@@ -84,7 +84,7 @@ $GLOBALS['TL_DCA']['tl_dse_products_set'] = array(
     ),
 
     'palettes' => array(
-        'default' => '{title_legend},title,jumpTo;',
+        'default' => '{title_legend},title,filterfields,jumpTo;',
     ),
 
     'fields' => array(
@@ -114,6 +114,20 @@ $GLOBALS['TL_DCA']['tl_dse_products_set'] = array(
                 'tl_class'  => 'w50 clr',
             ),
             'sql'       => "varchar(255) NOT NULL default ''"
+        ),
+        'filterfields' => array(
+            'label' => &$GLOBALS['TL_LANG']['tl_dse_products_set']['filterfields'],
+            'exclude' => true,
+            'inputType' => 'select',
+            'options_callback' => array('Dse\ProductCatalogBundle\Model\DseProductsModel', 'getDbColNamesArray'),
+            'eval' => array(
+                'maxlength'=>255,
+                'includeBlankOption'=>true,
+                'multiple'=>true,
+                'chosen'=>true,
+                'tl_class'  => 'clr',
+            ),
+            'sql' => "blob NULL"
         ),
         'jumpTo' => array(
             'label' => &$GLOBALS['TL_LANG']['tl_dse_products_set']['jumpTo'],

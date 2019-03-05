@@ -61,12 +61,9 @@ class DseProductsExport extends \Model
         // Get database column names
         $arrColNames = [];
         $j = 0;
-        $arrCols = Database::getInstance()
-            ->prepare("SHOW COLUMNS FROM " . static::$strTable)
-            ->execute()
-        ;
-        while($arrCols->next()) {
-            $arrColNames[$j] = $GLOBALS['TL_LANG']['MSC']['EXPORT'][$arrCols->Field];
+        $objCols = DseProductsModel::getDbColNames();
+        while($objCols->next()) {
+            $arrColNames[$j] = $GLOBALS['TL_LANG']['MSC']['EXPORT'][$objCols->Field];
             $j++;
         }
 

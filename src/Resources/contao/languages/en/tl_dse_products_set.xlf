@@ -2,6 +2,10 @@
 <xliff version="1.1">
 	<file datatype="php" original="src/Resources/contao/languages/en/default.php" source-language="en">
     <body>
+        <trans-unit id="tl_dse_products_set.title_legend">
+            <source>Category</source>
+        </trans-unit>
+
         <trans-unit id="tl_dse_products_set.import_csv.0">
             <source>Import CSV</source>
         </trans-unit>
@@ -35,6 +39,20 @@
 
         <trans-unit id="tl_dse_products_set.title.0">
             <source>Title</source>
+        </trans-unit>
+
+        <trans-unit id="tl_dse_products_set.filterfields.0">
+            <source>Filter</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products_set.filterfields.1">
+            <source>Select the filters for this category.</source>
+        </trans-unit>
+
+        <trans-unit id="tl_dse_products_set.jumpTo.0">
+            <source>Detail page</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products_set.jumpTo.1">
+            <source>Select page for the details here.</source>
         </trans-unit>
 
         <trans-unit id="tl_dse_products_set.IMPORT.successMessage.0">

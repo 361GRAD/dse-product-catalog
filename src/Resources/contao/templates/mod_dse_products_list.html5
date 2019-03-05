@@ -20,6 +20,21 @@
         <?php endif; ?>
     </div>
 
+    <?php if($this->arrFilters): ?>
+    <a href="{{link_url::{{page::id}}}}" alt="Filter zurücksetzen">Filter zurücksetzen</a>
+    <form methhod="GET" action="{{link_url::{{page::id}}}}">
+        <?php foreach($this->arrFilters as $filter): ?>
+        <select name="<?= $filter ?>">
+            <option value=""<?= (!isset($this->filterSearched[$filter])) ? ' selected' : '' ?>>-</option>
+            <?php for($i=0; $i<count($this->arrFiltersValue); $i++): ?>
+            <option value="<?= $this->arrFiltersValue[$i][$filter] ?>"<?= ($this->arrFiltersValue[$i][$filter] == $this->filterSearched[$filter]) ? ' selected' : '' ?>><?= $this->arrFiltersValue[$i][$filter] ?></option>
+            <?php endfor; ?>
+        </select>
+        <?php endforeach; ?>
+        <input type="submit" id="productsfilter_submit" class="submit" value="Produkte filtern">
+    </form>
+    <?php endif; ?>
+
 <?php if (count($this->articles)): // more then 0 articles  ?>
 
     <div class="pl-wrap">
