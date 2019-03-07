@@ -634,7 +634,7 @@ class tl_dse_products_set extends Backend
         // hide products that were not in the source file
         if (count($this->processedIds)) {
             $objRemovedActiveEntries = $this->Database
-                ->prepare("SELECT sku FROM tl_dse_products WHERE sku NOT IN(" . implode(', ', array_map(function($item) {return "'$item'";}, $this->processedIds)) . ")")
+                ->prepare("SELECT sku FROM tl_dse_products WHERE pid=$this->catId AND sku NOT IN(" . implode(', ', array_map(function($item) {return "'$item'";}, $this->processedIds)) . ")")
                 ->execute();
         } else {
             $this->logger->info("No entries processed, cancelling data cleanup", [__METHOD__]);
