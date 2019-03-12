@@ -1,0 +1,48 @@
+<?xml version="1.0" ?>
+<xliff version="1.1">
+	<file datatype="php" original="src/Resources/contao/languages/en/default.php" source-language="en" target-langue="de">
+    <body>
+        <trans-unit id="tl_dse_products_tag.new.0">
+            <source>New tag</source>
+            <target>Neuer Tag</target>
+        </trans-unit>
+        <trans-unit id="tl_dse_products_tag.new.1">
+            <source>Create a new product tag</source>
+            <target>Einen neuen Produktag erstellen</target>
+        </trans-unit>
+
+        <trans-unit id="tl_dse_products_tag.tag_legend">
+            <source>Tag</source>
+            <target>Tag</target>
+        </trans-unit>
+
+        <trans-unit id="tl_dse_products_tag.title.0">
+            <source>Title</source>
+            <target>Titel</target>
+        </trans-unit>
+
+        <trans-unit id="tl_dse_products_tag.alias.0">
+            <source>Alias</source>
+            <target>Alias</target>
+        </trans-unit>
+
+        <trans-unit id="tl_dse_products_tag.pids.0">
+            <source>Products</source>
+            <target>Produkte</target>
+        </trans-unit>
+        <trans-unit id="tl_dse_products_tag.pid.1">
+            <source>Select the products for this tag</source>
+            <target>Wählen Sie die Produkte für diesen Tag</target>
+        </trans-unit>
+
+        <trans-unit id="tl_dse_products_tag.publish_legend">
+            <source>Publish options</source>
+            <target>Veröffentlichungsoptionen</target>
+        </trans-unit>
+        <trans-unit id="tl_dse_products_tag.published.0">
+            <source>Published</source>
+            <target>Veröffentlicht</target>
+        </trans-unit>
+    </body>
+  </file>
+</xliff>

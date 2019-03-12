@@ -84,7 +84,7 @@ $GLOBALS['TL_DCA']['tl_dse_products_set'] = array(
     ),
 
     'palettes' => array(
-        'default' => '{title_legend},title,filterfields,jumpTo;',
+        'default' => '{title_legend},title;{filter_legend},filterfields;{tag_legend},tags;{jumpto_legend},jumpTo;',
     ),
 
     'fields' => array(
@@ -128,6 +128,15 @@ $GLOBALS['TL_DCA']['tl_dse_products_set'] = array(
                 'tl_class'  => 'clr',
             ),
             'sql' => "blob NULL"
+        ),
+        'tags' => array(
+            'exclude' => true,
+            'label' => &$GLOBALS['TL_LANG']['tl_dse_products_set']['tags'],
+            'inputType' => 'checkbox',
+            'eval' => array(
+                'doNotCopy' => false
+            ),
+            'sql' => "char(1) NOT NULL default ''"
         ),
         'jumpTo' => array(
             'label' => &$GLOBALS['TL_LANG']['tl_dse_products_set']['jumpTo'],

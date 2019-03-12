@@ -5,3 +5,4 @@ $GLOBALS['TL_LANG']['MOD']['dse_products_set'] = ['Products','Products managemen
 $GLOBALS['TL_LANG']['MOD']['dse_products_export'] = ['Export','Product export'];
 $GLOBALS['TL_LANG']['MOD']['dse_products_compare'] = ['COMPARE PRODUCTS'];
 $GLOBALS['TL_LANG']['MOD']['dse_products_compare'] = ['WISHLIST'];
+$GLOBALS['TL_LANG']['MOD']['dse_products_tag'] = ['Tags'];

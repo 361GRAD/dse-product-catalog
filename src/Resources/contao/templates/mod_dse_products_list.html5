@@ -20,9 +20,10 @@
         <?php endif; ?>
     </div>
 
-    <?php if($this->arrFilters): ?>
+    <?php if($this->arrFilters || $this->arrTags): ?>
     <a href="{{link_url::{{page::id}}}}" alt="Filter zurücksetzen">Filter zurücksetzen</a>
-    <form methhod="GET" action="{{link_url::{{page::id}}}}">
+    <form method="GET" action="{{link_url::{{page::id}}}}">
+        <?php if($this->arrFilters): ?>
         <?php foreach($this->arrFilters as $filter): ?>
         <select name="<?= $filter ?>">
             <option value=""<?= (!isset($this->filterSearched[$filter])) ? ' selected' : '' ?>>-</option>
@@ -31,6 +32,16 @@
             <?php endfor; ?>
         </select>
         <?php endforeach; ?>
+        <?php endif; ?>
+
+        <?php if($this->arrTags): ?>
+        <select name="tag[]" multiple>
+            <option value="">Tags</option>
+            <?php foreach($this->arrTags as $tag): ?>
+                <option value="<?= $tag["id"] ?>"<?= (in_array($tag["id"], $this->tagSearched)) ? ' selected' : '' ?>><?= $tag["title"] ?></option>
+            <?php endforeach ?>
+        </select>
+        <?php endif; ?>
         <input type="submit" id="productsfilter_submit" class="submit" value="Produkte filtern">
     </form>
     <?php endif; ?>

@@ -13,6 +13,10 @@ array_insert($GLOBALS['BE_MOD'], 1, array
             'export' => array('tl_dse_products_set', 'export'),
             'import' => array('tl_dse_products_set', 'initiateImport'),
         ),
+        'dse_products_tag' => array
+        (
+            'tables' => array('tl_dse_products_tag'),
+        ),
     )
 ));
 

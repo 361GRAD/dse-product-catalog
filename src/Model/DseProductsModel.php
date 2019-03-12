@@ -271,6 +271,38 @@ class DseProductsModel extends \Model
     }
 
     /**
+     * Count published by their parent ID
+     *
+     * @param array $arrPids An array of packages set IDs
+     * @param boolean $blnFeatured If true, return only featured packages, if false, return only unfeatured packages
+     * @param array $arrOptions An optional options array
+     *
+     * @return integer The number of packages
+     */
+    public static function countPublishedByPidsAndIds($arrPids, $arrIds, $blnFeatured = null, array $arrOptions = array())
+    {
+        if ((!is_array($arrPids) || empty($arrPids)) && (!is_array($arrIds) || empty($arrIds))) {
+            return 0;
+        }
+
+        $t = static::$strTable;
+        $arrColumns = array("$t.pid IN(" . implode(',', array_map('intval', $arrPids)) . ")", "$t.id IN(" . implode(',', array_map('intval', $arrIds)) . ")");
+
+        if ($blnFeatured === true) {
+            $arrColumns[] = "$t.featured=1";
+        } elseif ($blnFeatured === false) {
+            $arrColumns[] = "$t.featured=''";
+        }
+
+        if (!BE_USER_LOGGED_IN) {
+            $time = time();
+            $arrColumns[] = "($t.start='' OR $t.start<$time) AND ($t.stop='' OR $t.stop>$time) AND $t.published=1";
+        }
+
+        return static::countBy($arrColumns, null, $arrOptions);
+    }
+
+    /**
      * Find published with the default redirect target by their parent ID
      *
      * @param integer $intPid The packages sets ID
@@ -376,14 +408,58 @@ class DseProductsModel extends \Model
      *
      * @return \Model\Collection|null A collection of models or null if there are no packages
      */
-    public static function findMultipleProductsByIds($arrPids, $blnFeatured = null, $intLimit = 0, $intOffset = 0, array $arrOptions = array())
+    public static function findMultipleProductsByIds($arrIds, $blnFeatured = null, $intLimit = 0, $intOffset = 0, array $arrOptions = array())
+    {
+        if (!is_array($arrIds) || empty($arrIds)) {
+            return null;
+        }
+
+        $t = static::$strTable;
+        $arrColumns = array("$t.id IN(" . implode(',', array_map('intval', $arrIds)) . ")");
+
+        if ($blnFeatured === true) {
+            $arrColumns[] = "$t.featured=1";
+        } elseif ($blnFeatured === false) {
+            $arrColumns[] = "$t.featured=''";
+        }
+
+        // Never return unpublished elements in the back end, so they don't end up in the RSS feed
+        // should we add one in the future :)
+        if (!BE_USER_LOGGED_IN || TL_MODE == 'BE') {
+            $time = time();
+            $arrColumns[] = "($t.start='' OR $t.start<$time) AND ($t.stop='' OR $t.stop>$time) AND $t.published=1";
+        }
+
+        if (!isset($arrOptions['order'])) {
+            $arrOptions['order'] = "$t.sorting ASC";
+        }
+
+        $arrOptions['limit'] = $intLimit;
+        $arrOptions['offset'] = $intOffset;
+
+        return static::findBy($arrColumns, null, $arrOptions);
+    }
+
+    /**
+     * Find related by their parent ID
+     *
+     * @param array $arrPids An array of packages set IDs
+     * @param array $arrIds An array of packages set IDs
+     * @param boolean $blnFeatured If true, return only featured packages, if false, return only unfeatured packages
+     * @param integer $intLimit An optional limit
+     * @param integer $intOffset An optional offset
+     * @param array $arrOptions An optional options array
+     *
+     * @return \Model\Collection|null A collection of models or null if there are no packages
+     */
+    public static function findMultipleProductsByPidsAndIds($arrPids, $arrIds, $blnFeatured = null, $intLimit = 0, $intOffset = 0, array $arrOptions = array())
     {
         if (!is_array($arrPids) || empty($arrPids)) {
             return null;
         }
 
         $t = static::$strTable;
-        $arrColumns = array("$t.id IN(" . implode(',', array_map('intval', $arrPids)) . ")");
+        $arrColumns = array("$t.pid IN(" . implode(',', array_map('intval', $arrPids)) . ")", "$t.id IN(" . implode(',', array_map('intval', $arrIds)) . ")");
 
         if ($blnFeatured === true) {
             $arrColumns[] = "$t.featured=1";
@@ -468,6 +544,31 @@ class DseProductsModel extends \Model
     }
 
     /**
+     * Count published by passed table fields and values.
+     * These must be separated to be able to use prepared statements.
+     *
+     * @param mixed $columns An array of table columns
+     * @param mixed $values An array of statement values
+     * @param array $arrOptions An optional options array
+     *
+     * @return integer The number of packages
+     */
+    public static function countPublishedByColumnsAndPids($columns, $values, $arrPids, array $arrOptions = array())
+    {
+        if (!is_array($columns)) {
+            // cast to array to support multiple categories
+            $columns = [$columns];
+        }
+
+        $t = static::$strTable;
+        $arrColumns = $columns;
+        
+        $arrColumns = array_merge($arrColumns, array("$t.published=1", "$t.pid IN(" . implode(',', array_map('intval', $arrPids)) . ")"));
+
+        return static::countBy($arrColumns, $values, $arrOptions);
+    }
+
+    /**
      * Find published by passed table fields and values.
      * These must be separated to be able to use prepared statements.
      *
@@ -497,14 +598,14 @@ class DseProductsModel extends \Model
 
         $arrOptions['limit'] = $intLimit;
         $arrOptions['offset'] = $intOffset;
-
+        
         return static::findBy($arrColumns, $values, $arrOptions);
     }
 
     public static function getFilterValues($columns = '*', $pid)
     {
         $arrValues = Database::getInstance()
-            ->prepare("SELECT " . $columns . " FROM " . static::$strTable . " WHERE pid=" . $pid)
+            ->prepare("SELECT " . $columns . " FROM " . static::$strTable . " WHERE pid=" . $pid . "  ORDER BY id")
             ->execute()
             ->fetchAllAssoc()
         ;

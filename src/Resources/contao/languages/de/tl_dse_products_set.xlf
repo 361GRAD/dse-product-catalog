@@ -52,15 +52,36 @@
             <target>Titel</target>
         </trans-unit>
         
-        <trans-unit id="tl_dse_products_set.filterfields.0">
+        <trans-unit id="tl_dse_products_set.filter_legend">
             <source>Filter</source>
             <target>Filter</target>
+        </trans-unit>
+        <trans-unit id="tl_dse_products_set.filterfields.0">
+            <source>Select filter</source>
+            <target>Filterauswahl</target>
         </trans-unit>
         <trans-unit id="tl_dse_products_set.filterfields.1">
             <source>Select the filters for this category.</source>
             <target>Wählen Sie hier die Filter für diese Kategorie aus.</target>
         </trans-unit>
 
+        <trans-unit id="tl_dse_products_set.tag_legend">
+            <source>Tags</source>
+            <target>Tags</target>
+        </trans-unit>
+        <trans-unit id="tl_dse_products_set.tags.0">
+            <source>Activate tags</source>
+            <target>Tags aktivieren</target>
+        </trans-unit>
+        <trans-unit id="tl_dse_products_set.tags.1">
+            <source>Active tags to show them in this category.</source>
+            <target>Tags aktivieren um Sie in dieser Kategorie anzuzeigen.</target>
+        </trans-unit>
+
+        <trans-unit id="tl_dse_products_set.jumpto_legend">
+            <source>Redirect page</source>
+            <target>Weiterleitungsseite</target>
+        </trans-unit>
         <trans-unit id="tl_dse_products_set.jumpTo.0">
             <source>Detail page</source>
             <target>Detailseite</target>
