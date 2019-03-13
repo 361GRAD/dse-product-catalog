@@ -13,6 +13,10 @@
             <source>Tag</source>
         </trans-unit>
 
+        <trans-unit id="tl_dse_products_tag.id.0">
+            <source>ID</source>
+        </trans-unit>
+
         <trans-unit id="tl_dse_products_tag.title.0">
             <source>Title</source>
         </trans-unit>

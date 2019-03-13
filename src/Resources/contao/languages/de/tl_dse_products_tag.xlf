@@ -16,6 +16,11 @@
             <target>Tag</target>
         </trans-unit>
 
+        <trans-unit id="tl_dse_products_tag.id.0">
+            <source>ID</source>
+            <target>ID</target>
+        </trans-unit>
+
         <trans-unit id="tl_dse_products_tag.title.0">
             <source>Title</source>
             <target>Titel</target>

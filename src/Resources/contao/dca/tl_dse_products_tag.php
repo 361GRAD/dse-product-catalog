@@ -14,17 +14,19 @@ $GLOBALS['TL_DCA']['tl_dse_products_tag'] = array(
 
     'list' => array(
         'sorting' => array(
-            'mode' => 1,
+            'mode' => 2,
             'fields' => array(
                 'title',
+                'id',
             ),
-            'flag' => 1,
+            'flag' => 3,
             'panelLayout' => 'filter;sort,search,limit'
         ),
         'label' => array
         (
-            'fields'                  => array('title'),
-            'group_callback'          => array('tl_dse_products_tag', 'getGroupLabel')
+            'fields'                  => array('title', 'id'),
+//            'group_callback'          => array('tl_dse_products_tag', 'getGroupLabel')
+            'showColumns' => true,
         ),
         'global_operations' => array(
             'all' => array(
@@ -76,8 +78,8 @@ $GLOBALS['TL_DCA']['tl_dse_products_tag'] = array(
         'id' => [
             'label' => &$GLOBALS['TL_LANG']['tl_dse_products_tag']['id'],
             'exclude' => true,
-            'sorting' => false,
-            'search' => false,
+            'sorting' => true,
+            'search' => true,
             'sql' => 'int(10) unsigned NOT NULL auto_increment'
         ],
         'pids' => array(
@@ -123,7 +125,7 @@ $GLOBALS['TL_DCA']['tl_dse_products_tag'] = array(
         'alias' => array(
             'label' => &$GLOBALS['TL_LANG']['tl_dse_products_tag']['alias'],
             'exclude' => true,
-            'search' => true,
+            'search' => false,
             'inputType' => 'text',
             'eval' => array(
                 'rgxp' => 'alias',
