@@ -3,29 +3,31 @@
 $GLOBALS['TL_DCA']['tl_dse_products_tag'] = array(
     'config' => array(
         'dataContainer' => 'Table',
+        'ptable' => 'tl_dse_products_tag_set',
+        'ctable' => array('tl_content'),
         'switchToEdit' => true,
         'enableVersioning' => true,
         'sql' => array(
             'keys' => array(
                 'id' => 'primary',
+                'pid' => 'index',
             )
         ),
     ),
 
     'list' => array(
         'sorting' => array(
-            'mode' => 2,
-            'fields' => array(
-                'title',
-                'id',
-            ),
-            'flag' => 3,
-            'panelLayout' => 'filter;sort,search,limit'
+            'mode' => 4,
+            'fields' => array('sorting'),
+            'headerFields' => array('title'),
+            'panelLayout' => 'filter;sort,search,limit',
+            'disableGrouping' => true,
+            'child_record_callback' => array('tl_dse_products_tag', 'listRows'),
         ),
-        'label' => array
-        (
-            'fields'                  => array('title', 'id'),
-//            'group_callback'          => array('tl_dse_products_tag', 'getGroupLabel')
+        'label' => array(
+            'fields' => array(
+                'title'
+            ),
             'showColumns' => true,
         ),
         'global_operations' => array(
@@ -82,26 +84,34 @@ $GLOBALS['TL_DCA']['tl_dse_products_tag'] = array(
             'search' => true,
             'sql' => 'int(10) unsigned NOT NULL auto_increment'
         ],
-        'pids' => array(
-            'label' => &$GLOBALS['TL_LANG']['tl_dse_products_tag']['pids'],
-            'exclude' => true,
-            'sorting' => false,
-            'search' => false,
-            'inputType' => 'select',
-            'foreignKey' => 'tl_dse_products.title',
-            'eval' => array(
-                'maxlength'=>255,
-                'includeBlankOption'=>true,
-                'multiple'=>true,
-                'chosen'=>true,
-                'tl_class'  => 'clr',
-            ),
-            'sql' => "blob NULL",
+        'pid' => array(
+            'foreignKey' => 'tl_dse_products_tag_set.title',
+            'sql' => "int(10) unsigned NOT NULL default '0'",
             'relation' => array(
-                'type' => 'belongsToMany',
+                'type' => 'belongsTo',
                 'load' => 'eager'
             )
         ),
+        // 'pids' => array(
+        //     'label' => &$GLOBALS['TL_LANG']['tl_dse_products_tag']['pids'],
+        //     'exclude' => true,
+        //     'sorting' => false,
+        //     'search' => false,
+        //     'inputType' => 'select',
+        //     'foreignKey' => 'tl_dse_products.title',
+        //     'eval' => array(
+        //         'maxlength'=>255,
+        //         'includeBlankOption'=>true,
+        //         'multiple'=>true,
+        //         'chosen'=>true,
+        //         'tl_class'  => 'clr',
+        //     ),
+        //     'sql' => "blob NULL",
+        //     'relation' => array(
+        //         'type' => 'belongsToMany',
+        //         'load' => 'eager'
+        //     )
+        // ),
         'tstamp'         => [
             'sql' => "int(10) unsigend NOT NULL default '0'"
         ],
@@ -142,7 +152,7 @@ $GLOBALS['TL_DCA']['tl_dse_products_tag'] = array(
             'sql' => "varbinary(128) NOT NULL default ''"
         ),
 
-        // PRODUCT VISIBILITY
+        // TAG VISIBILITY
         'published' => array(
             'exclude' => true,
             'label' => &$GLOBALS['TL_LANG']['tl_dse_products_tag']['published'],
@@ -167,19 +177,17 @@ class tl_dse_products_tag extends Backend
     }
 
     /**
-     * Check if a user has access to lead data.
+     * child_record_callback
      *
-     * @param $dc
+     * @param array $arrRow
+     *
+     * @return string
      */
-    public function checkPermission($dc)
+    public function listRows($arrRow)
     {
-        if ($this->User->isAdmin) {
-            return;
-        }
+        $strBuffer = '<div class="cte_type ' . (($arrRow['published']) ? 'published' : 'unpublished') . '">' . $arrRow['title'] . '</div>';
 
-        if (!$this->User->hasAccess('dse_products_tag', 'modules')) {
-            throw new Contao\CoreBundle\Exception\AccessDeniedException('Not enough permissions');
-        }
+        return $strBuffer;
     }
 
     /**

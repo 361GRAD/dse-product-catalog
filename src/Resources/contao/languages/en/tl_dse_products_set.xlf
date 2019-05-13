@@ -48,6 +48,16 @@
             <source>Select the filters for this category.</source>
         </trans-unit>
 
+        <trans-unit id="tl_dse_products_set.tag_legend">
+            <source>Tags</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products_set.tagSet.0">
+            <source>Activate tags</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products_set.tagSet.1">
+            <source>Active tags to show them in this category.</source>
+        </trans-unit>
+
         <trans-unit id="tl_dse_products_set.jumpTo.0">
             <source>Detail page</source>
         </trans-unit>

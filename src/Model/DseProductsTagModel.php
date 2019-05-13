@@ -15,15 +15,15 @@ class DseProductsTagModel extends \Model {
      * 
      * @return array
      */
-    public static function getAllTags() {
+    public static function getAllTags($tagSetId) {
         $t = static::$strTable;
-
+        
         $arrTags = \Database::getInstance()
-            ->prepare("SELECT * FROM $t WHERE pids !='' ORDER BY title")
+            ->prepare("SELECT * FROM $t WHERE published=1 AND pid=$tagSetId ORDER BY sorting ASC")
             ->execute()
             ->fetchAllAssoc()
         ;
-        
+
         return $arrTags;
     }
 
@@ -35,21 +35,19 @@ class DseProductsTagModel extends \Model {
      * 
      * @return \Model\Collection|null A collection of models or null if there are no packages sets
      */
-    public static function getProductsIdsFromSelectedTags($arrIds) {
-        if (!is_array($arrIds) || empty($arrIds)) {
+    public static function getOnlyPublishedTags($arrTags) {
+        if (!is_array($arrTags) || empty($arrTags)) {
             return null;
         }
 
         $t = static::$strTable;
 
-        $arrTagPids = \Database::getInstance()->execute("SELECT * FROM $t WHERE " . \Database::getInstance()->findInSet('id', $arrIds))->fetchAllAssoc();
+        $arrTagPids = \Database::getInstance()
+            ->execute("SELECT id FROM $t WHERE published=1 AND " . \Database::getInstance()->findInSet('id', $arrTags))
+            ->fetchAllAssoc()
+        ;
 
-        $arrSelectedPids = [];
-        foreach($arrTagPids as $tagPids) {
-            $arrSelectedPids = array_merge($arrSelectedPids, unserialize($tagPids["pids"]));
-        }
-
-        return array_unique($arrSelectedPids);
+        return array_unique($arrTagPids);
     }
 
 }

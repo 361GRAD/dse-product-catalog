@@ -81,14 +81,15 @@ class ModuleProductsList extends ModuleProducts {
         }
 
         // Tags
-        $selectedTags = array_unique(\Input::get("tag"));
-        if($objSet->tags) {
-            $this->Template->arrTags = DseProductsTagModel::getAllTags();
-        }
-        foreach($selectedTags as $key => $value) {
-            if(is_null($value) || $value == '') {
-                // remove empty key=>value
-                unset($selectedTags[$key]);
+        if($objSet->tagSet) {
+            $this->Template->arrTags = DseProductsTagModel::getAllTags(intval($objSet->tagSet));
+
+            $selectedTags = array_unique(\Input::get("tag"));
+            foreach($selectedTags as $key => $value) {
+                if(is_null($value) || $value == '') {
+                    // remove empty key=>value
+                    unset($selectedTags[$key]);
+                }
             }
         }
         
@@ -104,10 +105,17 @@ class ModuleProductsList extends ModuleProducts {
 
             if($selectedTags) {
                 $this->Template->tagSearched = $selectedTags;
-                $arrProductIds = DseProductsTagModel::getProductsIdsFromSelectedTags($selectedTags);
-                $intTotalTags = DseProductsModel::countPublishedByPidsAndIds($this->products_sets, $arrProductIds, $blnFeatured);
+
+                $publishedTags = DseProductsTagModel::getOnlyPublishedTags($selectedTags);
+                if($publishedTags) {
+                    $arrProductIds = DseProductsModel::getPublishedIdsByPidsAndTags($this->products_sets, $selectedTags);
+                    if(count($arrProductIds) > 0) {
+                        $intTotalTags = count($arrProductIds);
+                    }
+                }
             }
 
+            // Set $intTotal
             if(is_int($intTotalFilter) && is_int($intTotalTags)) {
                 $intTotal = min($intTotalFilter, $intTotalTags);
             } elseif(is_int($intTotalFilter) && is_null($intTotalTags)) {

@@ -1,32 +1,9 @@
 <?php
 
-/**
- * Contao Open Source CMS
- * 
- * Copyright (C) 2005-2013 Leo Feyer
- * 
- * @package   BcatHotel
- * @author    Yuriy Davats 
- * @license   GNU 
- * @copyright die praxis 
- */
-/**
- * Namespace
- */
-
 namespace Dse\ProductCatalogBundle\Module;
 
 use Dse\ProductCatalogBundle\Model\DseProductsSetModel;
 
-/**
- * Class ModuleProducts
- *
- * Parent class for products modules.
- * @package   BcatProducts
- * @author    Yuriy Davats 
- * @link      http://www.bcat.eu
- * @license   GNU
- */
 abstract class ModuleProducts extends \Module {
 
     /**

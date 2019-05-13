@@ -1481,6 +1481,20 @@
             <source>To</source>
             <target>Bis</target>
         </trans-unit>
+
+
+        <trans-unit id="tl_dse_products.tags_legend">
+            <source>Tags</source>
+            <target>Tags</target>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.tags.0">
+            <source>Select tags</source>
+            <target>Tagauswahl</target>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.tags.1">
+            <source>Select tags for this product.</source>
+            <target>Tags für dieses Produkt auswählen.</target>
+        </trans-unit>
     </body>
   </file>
 </xliff>

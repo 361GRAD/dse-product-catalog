@@ -341,6 +341,8 @@ $GLOBALS['TL_LANG']['MSC']['EXPORT']['thumb_image_size'] = 'Thumbnail Größe';
 $GLOBALS['TL_LANG']['MSC']['EXPORT']['thumb_image'] = 'Thumbnail';
 $GLOBALS['TL_LANG']['MSC']['EXPORT']['order_data_exclude_menu'] = 'Bestelldaten - Vom Menü ausschließen?';
 $GLOBALS['TL_LANG']['MSC']['EXPORT']['attr_exclude_menu'] = 'Vom Menü ausschließen?';
+$GLOBALS['TL_LANG']['MSC']['EXPORT']['tags'] = 'Tags';
+
 $GLOBALS['TL_LANG']['MSC']['IMPORT']['import_legend'] = 'Datenimport';
 $GLOBALS['TL_LANG']['MSC']['IMPORT']['import_file'] = array('Quelldatei', 'Wählen Sie eine CSV Datei');
 $GLOBALS['TL_LANG']['MSC']['IMPORT']['import_select'] = array('Kategorie', 'Auswahl der Kategorie in welche die Daten importiert werden.');

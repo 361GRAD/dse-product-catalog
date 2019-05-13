@@ -69,11 +69,11 @@
             <source>Tags</source>
             <target>Tags</target>
         </trans-unit>
-        <trans-unit id="tl_dse_products_set.tags.0">
+        <trans-unit id="tl_dse_products_set.tagSet.0">
             <source>Activate tags</source>
             <target>Tags aktivieren</target>
         </trans-unit>
-        <trans-unit id="tl_dse_products_set.tags.1">
+        <trans-unit id="tl_dse_products_set.tagSet.1">
             <source>Active tags to show them in this category.</source>
             <target>Tags aktivieren um Sie in dieser Kategorie anzuzeigen.</target>
         </trans-unit>

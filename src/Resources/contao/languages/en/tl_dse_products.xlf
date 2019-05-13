@@ -1122,6 +1122,16 @@
         <trans-unit id="tl_dse_products.stop.0">
             <source>To</source>
         </trans-unit>
+
+        <trans-unit id="tl_dse_products.tags_legend">
+            <source>Tags</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.tags.0">
+            <source>Select tags</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.tags.1">
+            <source>Select tags for this product.</source>
+        </trans-unit>
     </body>
   </file>
 </xliff>

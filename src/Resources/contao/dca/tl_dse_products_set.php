@@ -84,7 +84,7 @@ $GLOBALS['TL_DCA']['tl_dse_products_set'] = array(
     ),
 
     'palettes' => array(
-        'default' => '{title_legend},title;{filter_legend},filterfields;{tag_legend},tags;{jumpto_legend},jumpTo;',
+        'default' => '{title_legend},title;{filter_legend},filterfields;{tag_legend},tagSet;{jumpto_legend},jumpTo;defineSize;',
     ),
 
     'fields' => array(
@@ -129,14 +129,21 @@ $GLOBALS['TL_DCA']['tl_dse_products_set'] = array(
             ),
             'sql' => "blob NULL"
         ),
-        'tags' => array(
+        'tagSet' => array(
+            'label' => &$GLOBALS['TL_LANG']['tl_dse_products_set']['tagSet'],
             'exclude' => true,
-            'label' => &$GLOBALS['TL_LANG']['tl_dse_products_set']['tags'],
-            'inputType' => 'checkbox',
+            'sorting' => false,
+            'search' => false,
+            'inputType' => 'select',
+            'foreignKey' => 'tl_dse_products_tag_set.title',
             'eval' => array(
-                'doNotCopy' => false
+                'maxlength'=>255,
+                'includeBlankOption'=>true,
+                'multiple'=>false,
+                'chosen'=>true,
+                'tl_class'  => 'clr',
             ),
-            'sql' => "char(1) NOT NULL default ''"
+            'sql' => "blob NULL",
         ),
         'jumpTo' => array(
             'label' => &$GLOBALS['TL_LANG']['tl_dse_products_set']['jumpTo'],
@@ -710,6 +717,9 @@ class tl_dse_products_set extends Backend
                     break;
                 case "singleSRC":
                     $model->$key = $this->getFileUuid($productRows[0]["singleSRC"]);
+                    break;
+                case "tags":
+                    $model->$key = serialize(explode(";", str_replace(' ', '', $productRows[0]["tags"])));
                     break;
                 // ToDo: Remove TEMP fixes
                 case strpos($key, '_coord') !== false:

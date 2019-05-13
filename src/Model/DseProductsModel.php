@@ -1,33 +1,10 @@
 <?php
 
-/**
- * Contao Open Source CMS
- *
- * Copyright (C) 2005-2013 Leo Feyer
- *
- * @package   BcatHotel
- * @author    Yuriy Davats
- * @link      http://www.bcat.eu
- * @license   GNU
- * @copyright die praxis
- */
-/**
- * Namespace
- */
-
 namespace Dse\ProductCatalogBundle\Model;
 
 use Contao\Model;
 use Contao\Database;
 
-/**
- * Class ProductsModel
- *
- * @package   BcatProducts
- * @author    Yuriy Davats
- * @link      http://www.bcat.eu
- * @license   GNU
- */
 class DseProductsModel extends \Model
 {
 
@@ -611,5 +588,35 @@ class DseProductsModel extends \Model
         ;
         
         return $arrValues;
+    }
+
+    /**
+     * Find multiple packages sets by their IDs
+     * 
+     * @param array $arrIds     An array of archive IDs
+     * @param array $arrOptions An optional options array
+     * 
+     * @return \Model\Collection|null A collection of models or null if there are no packages sets
+     */
+    public static function getPublishedIdsByPidsAndTags($arrPids, $arrSelectedTags) {
+        if (!is_array($arrSelectedTags) || empty($arrSelectedTags)) {
+            return null;
+        }
+
+        $t = static::$strTable;
+
+        $arrProducts = \Database::getInstance()
+            ->execute("SELECT id,tags FROM $t WHERE tags IS NOT NULL AND " . \Database::getInstance()->findInSet('pid', $arrPids))
+            ->fetchAllAssoc()
+        ;
+
+        $arrIds = [];
+        foreach($arrProducts as $product) {
+            if(array_intersect($arrSelectedTags, unserialize($product["tags"]))) {
+                $arrIds[] = $product["id"];
+            }
+        }
+
+        return array_unique($arrIds);
     }
 }

@@ -138,6 +138,7 @@ class DseProductsExport extends \Model
             $arrRow['description'] = str_replace(PHP_EOL, '', $arrRow['description']);
             $arrRow['thumb_image_size'] = static::stringFormat($arrRow['thumb_image_size']);
             $arrRow['thumb_image'] = \FilesModel::findByPk($arrRow['thumb_image'])->path;
+            $arrRow['tags'] = implode(";", unserialize($arrRow['tags']));
 
             return $arrRow;
         });
