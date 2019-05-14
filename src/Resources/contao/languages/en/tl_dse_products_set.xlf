@@ -52,6 +52,10 @@
         <trans-unit id="tl_dse_products_set.IMPORT.successMessage.deleted">
             <source>deleted</source>
         </trans-unit>
+
+        <trans-unit id="tl_dse_products_set.IMPORT.variants">
+            <source>Variants</source>
+        </trans-unit>
     </body>
   </file>
 </xliff>

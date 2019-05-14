@@ -67,6 +67,11 @@
             <source>deleted</source>
             <target>gelöscht</target>
         </trans-unit>
+
+        <trans-unit id="tl_dse_products_set.IMPORT.variants">
+            <source>Variants</source>
+            <target>Varianten</target>
+        </trans-unit>
     </body>
   </file>
 </xliff>
