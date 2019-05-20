@@ -19,6 +19,10 @@
             <source>Alias</source>
             <target>Alias</target>
         </trans-unit>
+        <trans-unit id="tl_dse_products.variants_category.0">
+            <source>Variant</source>
+            <target>Variante</target>
+        </trans-unit>
         <trans-unit id="tl_dse_products.title.0">
             <source>Title</source>
             <target>Titel</target>

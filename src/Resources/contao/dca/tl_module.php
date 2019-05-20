@@ -1,16 +1,6 @@
 <?php
 
 /**
- * Contao Open Source CMS
- * 
- * Copyright (C) 2005-2013 Leo Feyer
- * 
- * @package   BcatProducts
- * @author    Yuriy Davats 
- * @link      http://www.bcat.eu
- * @license   GNU
- */
-/**
  * Add palettes to tl_module
  */
 $GLOBALS['TL_DCA']['tl_module']['palettes']['dse_products_list'] = '{title_legend},name,headline,type;{config_legend},products_sets,numberOfItems,products_featured,perPage,full_details,comparable;{template_legend:hide},products_template,products_wrapper_template;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space';
@@ -124,15 +114,6 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['related_template'] = array
     'sql' => "varchar(64) NOT NULL default ''"
 );
 
-
-/**
- * Class tl_module_dse_products
- *
- * @package   BcatProducts
- * @author    Yuriy Davats 
- * @link      http://www.bcat.eu
- * @license   GNU
- */
 class tl_module_dse_products extends Backend {
 
     /**

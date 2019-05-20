@@ -1,15 +1,5 @@
 <?php
 
-/**
- * Contao Open Source CMS
- * 
- * Copyright (C) 2005-2013 Leo Feyer
- *
- */
-/**
- * Namespace
- */
-
 namespace Dse\ProductCatalogBundle\Module;
 
 use Contao\CoreBundle\Exception\PageNotFoundException;
@@ -17,15 +7,6 @@ use Contao\Database;
 use Contao\BackendTemplate;
 use Dse\ProductCatalogBundle\Model\DseProductsModel;
 
-/**
- * Class ModuleProductsReader
- *
- * Front end module "products reader".
- * @package   BcatProducts
- * @author    Yuriy Davats 
- * @link      http://www.bcat.eu
- * @license   GNU
- */
 class ModuleProductsNotelist extends ModuleProducts {
 
     /**

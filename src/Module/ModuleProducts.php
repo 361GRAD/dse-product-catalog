@@ -1,32 +1,10 @@
 <?php
 
-/**
- * Contao Open Source CMS
- * 
- * Copyright (C) 2005-2013 Leo Feyer
- * 
- * @package   BcatHotel
- * @author    Yuriy Davats 
- * @license   GNU 
- * @copyright die praxis 
- */
-/**
- * Namespace
- */
-
 namespace Dse\ProductCatalogBundle\Module;
 
 use Dse\ProductCatalogBundle\Model\DseProductsSetModel;
+use Dse\ProductCatalogBundle\Model\DseProductsVariantsModel;
 
-/**
- * Class ModuleProducts
- *
- * Parent class for products modules.
- * @package   BcatProducts
- * @author    Yuriy Davats 
- * @link      http://www.bcat.eu
- * @license   GNU
- */
 abstract class ModuleProducts extends \Module {
 
     /**
@@ -107,6 +85,12 @@ abstract class ModuleProducts extends \Module {
         $objTemplate->main_image_path = $objModel->path;
 //        $objTemplate->img_details = $objModelDetails->path;
 //        $objTemplate->img_label = $objModelLabel->path;
+
+        // Get product variants
+        $objArticleVariants = DseProductsVariantsModel::findByPsku($objTemplate->sku, $objTemplate->variants_category);
+        if($objArticleVariants) {
+            $objTemplate->variants = $objArticleVariants;
+        }
 
         $this->loadLanguageFile('tl_dse_products');
         $objTemplate->localTrans = $GLOBALS['TL_LANG']['tl_dse_products'];

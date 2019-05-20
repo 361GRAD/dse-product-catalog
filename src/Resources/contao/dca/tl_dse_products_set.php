@@ -418,10 +418,14 @@ class tl_dse_products_set extends Backend
             $this->errorMessage = $e->getMessage();
             return;
         }
-
-        if(strpos($this->catId, "variants")) {
+        $delstring = 'variants_';
+        if(strpos($this->catId, $delstring) !== false) {
             $this->isVariant = true;
+            $local = substr ($this->catId, strrpos( $this->catId, '_' ) + 1 );
             try {
+                // Truncate tabe before import because csv is master
+                $this->clearAllDbLocalVariants('tl_dse_products_variants', $local);
+
                 $csvData = array_map(function ($row) {
                     return str_getcsv($row, ",");
                 }, file($path));
@@ -437,8 +441,6 @@ class tl_dse_products_set extends Backend
                 foreach ($csvData as $index => $row) {
                     $this->processEntry($index, $row);
                 }
-
-//                $this->cleanUpDbEntries();
 
             } catch (Exception $e) {
                 $this->errorMessage = $e->getMessage();
@@ -575,7 +577,7 @@ class tl_dse_products_set extends Backend
         foreach ($rows as $index => $row) {
 
             $variant = $this->composeRow($row);
-
+            
             $key = $variant[$keyColumn];
 
             if (empty($key)) {
@@ -593,7 +595,7 @@ class tl_dse_products_set extends Backend
                 // create a group with variants array
                 $data[$key] = [$variant];
             }
-
+    
 //            $this->saveVariant($variant);
 
         }
@@ -651,9 +653,7 @@ class tl_dse_products_set extends Backend
 
         $this->logger->info("Processing entry $identifier", [__METHOD__]);
 
-        if($this->isVariant) {
-            $currentItem = Dse\ProductCatalogBundle\Model\DseProductsVariantsModel::findBySku($identifier);
-        } else {
+        if(!$this->isVariant) {
             $currentItem = Dse\ProductCatalogBundle\Model\DseProductsModel::findBySku($identifier);
         }
 
@@ -665,7 +665,7 @@ class tl_dse_products_set extends Backend
                 $currentItem = new Dse\ProductCatalogBundle\Model\DseProductsModel();
             }
             $counterIndex = 'created';
-        } else if ($currentItem->sku === $identifier) {
+        } else if ($currentItem->sku == $identifier) {
             $this->logger->info("Entry $identifier found in the database - changing", [__METHOD__]);
             $counterIndex = 'changed';
         } else {
@@ -712,6 +712,7 @@ class tl_dse_products_set extends Backend
 
         foreach ($arrRemovedActiveEntries as $entry) {
             $model = Dse\ProductCatalogBundle\Model\DseProductsModel::findBySku($entry['sku']);
+
             if (!empty($model)) {
                 $this->logger->info("Deleting entry with SKU: $model->sku.", [__METHOD__]);
                 $model->delete();
@@ -720,6 +721,17 @@ class tl_dse_products_set extends Backend
         }
 
         return;
+    }
+
+    /**
+     * Truncate table
+     *
+     */
+    private function clearAllDbLocalVariants($table, $local)
+    {
+        $this->Database
+            ->prepare("DELETE FROM $table WHERE language='" . $local . "'")
+            ->execute();
     }
 
     /**

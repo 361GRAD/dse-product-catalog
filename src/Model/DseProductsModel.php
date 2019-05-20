@@ -1,32 +1,9 @@
 <?php
 
-/**
- * Contao Open Source CMS
- *
- * Copyright (C) 2005-2013 Leo Feyer
- *
- * @package   BcatHotel
- * @author    Yuriy Davats
- * @link      http://www.bcat.eu
- * @license   GNU
- * @copyright die praxis
- */
-/**
- * Namespace
- */
-
 namespace Dse\ProductCatalogBundle\Model;
 
 use Contao\Model;
 
-/**
- * Class ProductsModel
- *
- * @package   BcatProducts
- * @author    Yuriy Davats
- * @link      http://www.bcat.eu
- * @license   GNU
- */
 class DseProductsModel extends \Model
 {
 

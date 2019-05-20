@@ -15,6 +15,9 @@
         <trans-unit id="tl_dse_products.alias.0">
             <source>Alias</source>
         </trans-unit>
+        <trans-unit id="tl_dse_products.variants_category.0">
+            <source>Variant</source>
+        </trans-unit>
         <trans-unit id="tl_dse_products.title.0">
             <source>Title</source>
         </trans-unit>

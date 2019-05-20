@@ -30,6 +30,7 @@ if ('BE' === TL_MODE) {
  */
 $GLOBALS['TL_MODELS']['tl_dse_products'] = 'Dse\ProductCatalogBundle\Model\DseProductsModel';
 $GLOBALS['TL_MODELS']['tl_dse_products_set'] = 'Dse\ProductCatalogBundle\Model\DseProductsSetModel';
+$GLOBALS['TL_MODELS']['tl_dse_products_variants'] = 'Dse\ProductCatalogBundle\Model\DseProductsVariantsModel';
 
 array_insert($GLOBALS['FE_MOD'], 2, array
 (
