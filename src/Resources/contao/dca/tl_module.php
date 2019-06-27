@@ -114,10 +114,6 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['related_template'] = array
     'sql' => "varchar(64) NOT NULL default ''"
 );
 
-<<<<<<< HEAD
-
-=======
->>>>>>> product-import
 class tl_module_dse_products extends Backend {
 
     /**
