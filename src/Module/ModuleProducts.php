@@ -3,6 +3,7 @@
 namespace Dse\ProductCatalogBundle\Module;
 
 use Dse\ProductCatalogBundle\Model\DseProductsSetModel;
+use Dse\ProductCatalogBundle\Model\DseProductsVariantsModel;
 
 abstract class ModuleProducts extends \Module {
 
@@ -84,6 +85,12 @@ abstract class ModuleProducts extends \Module {
         $objTemplate->main_image_path = $objModel->path;
 //        $objTemplate->img_details = $objModelDetails->path;
 //        $objTemplate->img_label = $objModelLabel->path;
+
+        // Get product variants
+        $objArticleVariants = DseProductsVariantsModel::findByPsku($objTemplate->sku, $objTemplate->variants_category);
+        if($objArticleVariants) {
+            $objTemplate->variants = $objArticleVariants;
+        }
 
         $this->loadLanguageFile('tl_dse_products');
         $objTemplate->localTrans = $GLOBALS['TL_LANG']['tl_dse_products'];

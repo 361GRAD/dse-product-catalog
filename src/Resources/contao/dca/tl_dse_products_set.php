@@ -202,6 +202,18 @@ class tl_dse_products_set extends Backend
     protected $productDbHeaderKeysFlip;
 
     /**
+     * true if variants are imported
+     * @var boolean
+     */
+    protected $isVariant = false;
+
+    /**
+     * DB product variants header array flipped
+     * @var array
+     */
+    protected $productVariantsDbHeaderKeysFlip;
+
+    /**
      * Items data
      * @var array
      */
@@ -436,30 +448,59 @@ class tl_dse_products_set extends Backend
             $this->errorMessage = $e->getMessage();
             return;
         }
+        $delstring = 'variants_';
+        if(strpos($this->catId, $delstring) !== false) {
+            $this->isVariant = true;
+            $local = substr ($this->catId, strrpos( $this->catId, '_' ) + 1 );
+            try {
+                // Truncate tabe before import because csv is master
+                $this->clearAllDbLocalVariants('tl_dse_products_variants', $local);
 
-        try {
+                $csvData = array_map(function ($row) {
+                    return str_getcsv($row, ",");
+                }, file($path));
 
-            //$csvData = str_getcsv(file_get_contents($path), "\n");
-            // map str_getcsv here instead of calling rowToArray on each row
-            $csvData = array_map(function($row) { return str_getcsv($row, ","); }, file($path));
+                $csvData = $this->stripHeaderKeys($csvData);
 
-            $csvData = $this->stripHeaderKeys($csvData);
+                $this->getProductVariantsDbColNames();
 
-            $this->getProductDbColNames();
-            $this->validateHeaders($this->productDbHeaderKeysFlip);
+                // group rows into entries
+                $csvData = $this->groupRows($csvData);
 
-            // group rows into entries
-            $csvData = $this->groupRows($csvData);
+                // parse fields inside each row
+                foreach ($csvData as $index => $row) {
+                    $this->processEntry($index, $row);
+                }
 
-            // parse fields inside each row
-            foreach ($csvData as $index => $row) {
-                $this->processEntry($index, $row);
+            } catch (Exception $e) {
+                $this->errorMessage = $e->getMessage();
             }
+        } else {
+            $this->isVariant = false;
+            try {
 
-            $this->cleanUpDbEntries();
+                //$csvData = str_getcsv(file_get_contents($path), "\n");
+                // map str_getcsv here instead of calling rowToArray on each row
+                $csvData = array_map(function($row) { return str_getcsv($row, ","); }, file($path));
 
-        } catch (Exception $e) {
-            $this->errorMessage = $e->getMessage();
+                $csvData = $this->stripHeaderKeys($csvData);
+
+                $this->getProductDbColNames();
+                $this->validateHeaders($this->productDbHeaderKeysFlip);
+
+                // group rows into entries
+                $csvData = $this->groupRows($csvData);
+
+                // parse fields inside each row
+                foreach ($csvData as $index => $row) {
+                    $this->processEntry($index, $row);
+                }
+
+                $this->cleanUpDbEntries();
+
+            } catch (Exception $e) {
+                $this->errorMessage = $e->getMessage();
+            }
         }
 
         if (empty($this->errorMessage)) {
@@ -511,6 +552,25 @@ class tl_dse_products_set extends Backend
     }
 
     /**
+     * Get database column names as array keys
+     * @return array
+     */
+    protected function getProductVariantsDbColNames()
+    {
+        $arrColNames = array();
+        $arrCols = Database::getInstance()
+            ->prepare("SELECT distinct(column_name) FROM information_schema.COLUMNS WHERE table_name='tl_dse_products_variants'")
+            ->execute();
+
+        while($arrCols->next()) {
+            $arrColNames[] = $arrCols->column_name;
+        }
+        $this->productVariantsDbHeaderKeysFlip = array_flip($arrColNames);
+
+        return $arrColNames;
+    }
+
+    /**
      * Check if the first header fields from the CSV file match the reference format from the database.
      *
      * @param array $csvHeaderRow
@@ -547,7 +607,7 @@ class tl_dse_products_set extends Backend
         foreach ($rows as $index => $row) {
 
             $variant = $this->composeRow($row);
-
+            
             $key = $variant[$keyColumn];
 
             if (empty($key)) {
@@ -565,7 +625,7 @@ class tl_dse_products_set extends Backend
                 // create a group with variants array
                 $data[$key] = [$variant];
             }
-
+    
 //            $this->saveVariant($variant);
 
         }
@@ -623,13 +683,19 @@ class tl_dse_products_set extends Backend
 
         $this->logger->info("Processing entry $identifier", [__METHOD__]);
 
-        $currentItem = Dse\ProductCatalogBundle\Model\DseProductsModel::findBySku($identifier);
+        if(!$this->isVariant) {
+            $currentItem = Dse\ProductCatalogBundle\Model\DseProductsModel::findBySku($identifier);
+        }
 
         if (empty($currentItem)) {
             $this->logger->info("Entry $identifier not found in the database, creating", [__METHOD__]);
-            $currentItem = new Dse\ProductCatalogBundle\Model\DseProductsModel();
+            if($this->isVariant) {
+                $currentItem = new Dse\ProductCatalogBundle\Model\DseProductsVariantsModel();
+            } else {
+                $currentItem = new Dse\ProductCatalogBundle\Model\DseProductsModel();
+            }
             $counterIndex = 'created';
-        } else if ($currentItem->sku === $identifier) {
+        } else if ($currentItem->sku == $identifier) {
             $this->logger->info("Entry $identifier found in the database - changing", [__METHOD__]);
             $counterIndex = 'changed';
         } else {
@@ -676,6 +742,7 @@ class tl_dse_products_set extends Backend
 
         foreach ($arrRemovedActiveEntries as $entry) {
             $model = Dse\ProductCatalogBundle\Model\DseProductsModel::findBySku($entry['sku']);
+
             if (!empty($model)) {
                 $this->logger->info("Deleting entry with SKU: $model->sku.", [__METHOD__]);
                 $model->delete();
@@ -684,6 +751,17 @@ class tl_dse_products_set extends Backend
         }
 
         return;
+    }
+
+    /**
+     * Truncate table
+     *
+     */
+    private function clearAllDbLocalVariants($table, $local)
+    {
+        $this->Database
+            ->prepare("DELETE FROM $table WHERE language='" . $local . "'")
+            ->execute();
     }
 
     /**
@@ -699,41 +777,57 @@ class tl_dse_products_set extends Backend
      */
     private function setItemData($model, $identifier, $productRows)
     {
-        foreach ($this->productDbHeaderKeysFlip as $key => $value) {
-            switch ($key) {
-                case "id":
-                    break;
-                case "pid":
-                    $model->$key = $this->catId;
-                    break;
-                case "tstamp":
-                    $model->$key = time();
-                    break;
-                case "alias":
-                    $model->$key = $this->generateAlias($productRows[0]["title"], $identifier, $model);
-                    break;
-                case "published":
-                    $model->$key = 1;
-                    break;
-                case "singleSRC":
-                    $model->$key = $this->getFileUuid($productRows[0]["singleSRC"]);
-                    break;
-                case "tags":
-                    $model->$key = serialize(explode(";", str_replace(' ', '', $productRows[0]["tags"])));
-                    break;
-                // ToDo: Remove TEMP fixes
-                case strpos($key, '_coord') !== false:
-                    if (is_null($productRows[0][$key]) && empty($productRows[0][$key])) {
-                        $model->$key = 0;
-                    }
-                    break;
-                default:
-                    if (is_null($productRows[0][$key])) {
-                        $model->$key = "";
-                    } else {
-                        $model->$key = $productRows[0][$key];
-                    }
-                    break;
+        if($this->isVariant) {
+            foreach ($this->productVariantsDbHeaderKeysFlip as $key => $value) {
+                switch ($key) {
+                    case "id":
+                        break;
+                    case "tstamp":
+                        $model->$key = time();
+                        break;
+                    default:
+                        if (is_null($productRows[0][$key])) {
+                            $model->$key = "";
+                        } else {
+                            $model->$key = $productRows[0][$key];
+                        }
+                        break;
+                }
+            }
+        } else {
+            foreach ($this->productDbHeaderKeysFlip as $key => $value) {
+                switch ($key) {
+                    case "id":
+                        break;
+                    case "pid":
+                        $model->$key = $this->catId;
+                        break;
+                    case "tstamp":
+                        $model->$key = time();
+                        break;
+                    case "alias":
+                        $model->$key = $this->generateAlias($productRows[0]["title"], $identifier, $model);
+                        break;
+                    case "published":
+                        $model->$key = 1;
+                        break;
+                    case "singleSRC":
+                        $model->$key = $this->getFileUuid($productRows[0]["singleSRC"]);
+                        break;
+                    // ToDo: Remove TEMP fixes
+                    case strpos($key, '_coord') !== false:
+                        if (is_null($productRows[0][$key]) && empty($productRows[0][$key])) {
+                            $model->$key = 0;
+                        }
+                        break;
+                    default:
+                        if (is_null($productRows[0][$key])) {
+                            $model->$key = "";
+                        } else {
+                            $model->$key = $productRows[0][$key];
+                        }
+                        break;
+                }
             }
         }
 

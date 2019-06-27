@@ -38,6 +38,26 @@
         <?php echo $this->text; ?>
     </div>
 
+    <?php if($this->variants[1]): ?>
+	<table class="table">
+		<thead>
+			<tr>
+				<?php foreach($this->variants[0] as $key=>$value): ?>
+				<th scope="col"><?= $GLOBALS['TL_LANG']['MSC']['VARIANTS'][$key] ?></th>
+				<?php endforeach; ?>
+			</tr>
+		</thead>
+		<tbody>
+			<?php foreach($this->variants[1] as $dataVariant): ?>
+			<tr>
+				<?php foreach($dataVariant as $vvalue): ?>
+				<td><?= $vvalue ?></td>
+				<?php endforeach; ?>
+			</tr>
+			<?php endforeach; ?>
+		</tbody>
+	</table>
+	<?php endif; ?>
     <!--<p class="back-button">
         <a href="<?php echo $this->bcback; ?>" class="lb-iframe-link">
             <span class="icon"></span>

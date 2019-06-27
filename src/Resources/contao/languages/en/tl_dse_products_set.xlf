@@ -66,7 +66,7 @@
         </trans-unit>
 
         <trans-unit id="tl_dse_products_set.IMPORT.successMessage.0">
-            <source>Product import successfully completed:</source>
+            <source>Import successfully completed:</source>
         </trans-unit>
         <trans-unit id="tl_dse_products_set.IMPORT.successMessage.created">
             <source>created</source>
@@ -79,6 +79,10 @@
         </trans-unit>
         <trans-unit id="tl_dse_products_set.IMPORT.successMessage.deleted">
             <source>deleted</source>
+        </trans-unit>
+
+        <trans-unit id="tl_dse_products_set.IMPORT.variants">
+            <source>Variants</source>
         </trans-unit>
     </body>
   </file>

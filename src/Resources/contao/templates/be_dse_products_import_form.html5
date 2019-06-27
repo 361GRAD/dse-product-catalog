@@ -34,6 +34,8 @@
                             <?php echo $this->categories[$i] ?>
                             <option value="<?= $this->categories[$i]["id"] ?>"><?= $this->categories[$i]["title"] ?></option>
                         <?php endfor; ?>
+                            <option value="variants_de">DE - <?= $GLOBALS['TL_LANG']['tl_dse_products_set']['IMPORT']['variants'] ?></option>
+                            <option value="variants_en">EN - <?= $GLOBALS['TL_LANG']['tl_dse_products_set']['IMPORT']['variants'] ?></option>
                     </select>
                     <p class="tl_help tl_tip" title=""><?= $GLOBALS['TL_LANG']['MSC']['IMPORT']['import_select'][1] ?></p>
                 </div>

@@ -6,6 +6,7 @@ use Contao\CoreBundle\Exception\PageNotFoundException;
 use Contao\Database;
 use Contao\BackendTemplate;
 use Dse\ProductCatalogBundle\Model\DseProductsModel;
+use Dse\ProductCatalogBundle\Model\DseProductsVariantsModel;
 
 class ModuleProductsReader extends ModuleProducts {
 

@@ -1,5 +1,8 @@
 <?php
 
+/**
+ * Add palettes to tl_module
+ */
 $GLOBALS['TL_DCA']['tl_module']['palettes']['dse_products_list'] = '{title_legend},name,headline,type;{config_legend},products_sets,numberOfItems,products_featured,perPage,full_details,comparable;{template_legend:hide},products_template,products_wrapper_template;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space';
 $GLOBALS['TL_DCA']['tl_module']['palettes']['dse_products_reader'] = '{title_legend},name,headline,type;{config_legend},products_sets,full_details;{template_legend:hide},products_template,products_wrapper_template,related_template;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space';
 $GLOBALS['TL_DCA']['tl_module']['palettes']['dse_products_compare'] = '{title_legend},name,headline,type;{template_legend:hide},products_template,products_wrapper_template;{protected_legend:hide},protected;{expert_legend:hide},guests,cssID,space';
@@ -111,7 +114,10 @@ $GLOBALS['TL_DCA']['tl_module']['fields']['related_template'] = array
     'sql' => "varchar(64) NOT NULL default ''"
 );
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> product-import
 class tl_module_dse_products extends Backend {
 
     /**

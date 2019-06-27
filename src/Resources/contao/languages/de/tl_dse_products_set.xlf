@@ -92,8 +92,8 @@
         </trans-unit>
 
         <trans-unit id="tl_dse_products_set.IMPORT.successMessage.0">
-            <source>Product import successfully completed:</source>
-            <target>Produktimport erfolgreich durchgeführt: </target>
+            <source>Import successfully completed:</source>
+            <target>Import erfolgreich durchgeführt: </target>
         </trans-unit>
         <trans-unit id="tl_dse_products_set.IMPORT.successMessage.created">
             <source>created</source>
@@ -110,6 +110,11 @@
         <trans-unit id="tl_dse_products_set.IMPORT.successMessage.deleted">
             <source>deleted</source>
             <target>gelöscht</target>
+        </trans-unit>
+
+        <trans-unit id="tl_dse_products_set.IMPORT.variants">
+            <source>Variants</source>
+            <target>Varianten</target>
         </trans-unit>
     </body>
   </file>
