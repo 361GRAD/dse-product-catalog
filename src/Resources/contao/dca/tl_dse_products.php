@@ -89,7 +89,7 @@ $GLOBALS['TL_DCA']['tl_dse_products'] = array(
 
     'palettes' => array(
         '__selector__'      =>  array('featured',),
-        'default'           =>  '{product_legend},variants_category,title,alias,sku,singleSRC,main_image_size,main_image_alt,singleSRC_2,main_image_size_2,main_image_alt_2,description;{vd_legend:hide},vd_headline;{applications_legend:hide},applications_exclude_menu,applications_headline,applications_text,applications_field_1_headline,applications_field_1_text,applications_field_2_headline,applications_field_2_text,applications_field_3_headline,applications_field_3_text,applications_field_4_headline,applications_field_4_text;{downloads_legend:hide},downloads_exclude_menu,downloads_headline,downloads_file_1_title,downloads_file_1,downloads_file_2_title,downloads_file_2,downloads_file_3_title,downloads_file_3,downloads_file_4_title,downloads_file_4,downloads_file_5_title,downloads_file_5;{request_legend:hide},request_headline,request_headline_small,request_text;{tags_legend:hide},tags;{publish_legend},published;',
+        'default'           =>  '{product_legend},variants_category,title,alias,sku,singleSRC,main_image_size,main_image_alt,singleSRC_2,main_image_size_2,main_image_alt_2,singleSRC_3,main_image_size_3,main_image_alt_3,description;{vd_legend:hide},vd_headline;{applications_legend:hide},applications_exclude_menu,applications_headline,applications_text,applications_field_1_headline,applications_field_1_text,applications_field_2_headline,applications_field_2_text,applications_field_3_headline,applications_field_3_text,applications_field_4_headline,applications_field_4_text;{downloads_legend:hide},downloads_exclude_menu,downloads_headline,downloads_file_1_title,downloads_file_1,downloads_file_2_title,downloads_file_2,downloads_file_3_title,downloads_file_3,downloads_file_4_title,downloads_file_4,downloads_file_5_title,downloads_file_5;{request_legend:hide},request_headline,request_headline_small,request_text;{tags_legend:hide},tags;{publish_legend},published;',
     ),
 
     'subpalettes' => array(
@@ -266,6 +266,53 @@ $GLOBALS['TL_DCA']['tl_dse_products'] = array(
         ),
         'main_image_alt_2' => array(
             'label' => &$GLOBALS['TL_LANG']['tl_dse_products']['main_image_alt_2'],
+            'exclude' => true,
+            'sorting' => false,
+            'search' => false,
+            'inputType' => 'text',
+            'eval' => array(
+                'maxlength' => 255,
+                'tl_class' => 'w50'
+            ),
+            'sql' => "TEXT NULL"
+        ),
+        'singleSRC_3' => array(
+            'label' => &$GLOBALS['TL_LANG']['tl_dse_products']['singleSRC_3'],
+            'exclude' => true,
+            'inputType' => 'fileTree',
+            'eval' => array(
+                'mandatory' => true,
+                'filesOnly' => true,
+                'extensions' => \Config::get('validImageTypes'),
+                'tl_class' => 'w50 clr autoheight'
+            ),
+            'load_callback' => array(
+                array('tl_dse_products', 'setSingleSrcFlags')
+            ),
+            'save_callback' => array(
+                array('tl_dse_products', 'storeFileMetaInformation')
+            ),
+            'sql' => "binary(16) NULL"
+        ),
+        'main_image_size_3' => array(
+            'label' => &$GLOBALS['TL_LANG']['tl_dse_products']['main_image_size_3'],
+            'exclude' => true,
+            'inputType' => 'imageSize',
+            'reference' => &$GLOBALS['TL_LANG']['MSC'],
+            'eval' => array(
+                'rgxp' => 'natural',
+                'includeBlankOption' => true,
+                'nospace' => true,
+                'helpwizard' => true,
+                'tl_class' => 'w50 clr'
+            ),
+            'options_callback' => function () {
+                return System::getContainer()->get('contao.image.image_sizes')->getOptionsForUser(BackendUser::getInstance());
+            },
+            'sql' => "varchar(64) NOT NULL default ''"
+        ),
+        'main_image_alt_3' => array(
+            'label' => &$GLOBALS['TL_LANG']['tl_dse_products']['main_image_alt_3'],
             'exclude' => true,
             'sorting' => false,
             'search' => false,

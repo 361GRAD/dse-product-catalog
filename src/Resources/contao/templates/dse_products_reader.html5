@@ -14,9 +14,11 @@
 
     <?= $this->description; ?>
 
-    {{image::<?= $this->main_image_path ?>}}
+    {{image::<?= $this->main_image_path ?>?width=<?= unserialize($this->main_image_size)[0] ?>&height=<?= unserialize($this->main_image_size)[1] ?>&mode=<?= unserialize($this->main_image_size)[2] ?>&alt=<?= $this->main_image_alt; ?>}}
 
-    {{image::<?= $this->main_image_path_2 ?>}}
+    {{image::<?= $this->main_image_path_2 ?>?width=<?= unserialize($this->main_image_size_2)[0] ?>&height=<?= unserialize($this->main_image_size_2)[1] ?>&mode=<?= unserialize($this->main_image_size_2)[2] ?>&alt=<?= $this->main_image_alt_2; ?>}}
+    
+    {{image::<?= $this->main_image_path_3 ?>?width=<?= unserialize($this->main_image_size_3)[0] ?>&height=<?= unserialize($this->main_image_size_3)[1] ?>&mode=<?= unserialize($this->main_image_size_3)[2] ?>&alt=<?= $this->main_image_alt_3; ?>}}
 
     <?= $this->text; ?>
 

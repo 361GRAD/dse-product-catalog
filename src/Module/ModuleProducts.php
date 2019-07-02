@@ -89,6 +89,9 @@ abstract class ModuleProducts extends \Module {
         $objModel_2 = \FilesModel::findByPk($objArticle->singleSRC_2);
         $objTemplate->main_image_path_2 = $objModel_2->path;
 
+        $objModel_3 = \FilesModel::findByPk($objArticle->singleSRC_3);
+        $objTemplate->main_image_path_3 = $objModel_3->path;
+
         // Get product variants
         $objArticleVariants = DseProductsVariantsModel::findByPsku($objTemplate->sku, $objTemplate->variants_category);
         if($objArticleVariants) {

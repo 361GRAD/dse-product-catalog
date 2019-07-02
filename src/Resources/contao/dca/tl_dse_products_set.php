@@ -797,7 +797,7 @@ class tl_dse_products_set extends Backend
         } else {
             foreach ($this->productDbHeaderKeysFlip as $key => $value) {
                 switch ($key) {
-                    // Do nothing with id, because id is set automatically
+                    // Do nothing with id, because id is set automatically otherwise default case throws error
                     case "id":
                         break;
                     case "pid":
@@ -811,6 +811,36 @@ class tl_dse_products_set extends Backend
                         break;
                     case "singleSRC":
                         $model->$key = $this->getFileUuid($productRows[0]["singleSRC"]);
+                        break;
+                    case "main_image_size":
+                        $model->$key = serialize(explode('|', $productRows[0]["main_image_size"]));
+                        break;
+                    case "singleSRC_2":
+                        $model->$key = $this->getFileUuid($productRows[0]["singleSRC"]);
+                        break;
+                    case "main_image_size_2":
+                        $model->$key = serialize(explode('|', $productRows[0]["main_image_size_2"]));
+                        break;
+                    case "singleSRC_3":
+                        $model->$key = $this->getFileUuid($productRows[0]["singleSRC_3"]);
+                        break;
+                    case "main_image_size_3":
+                        $model->$key = serialize(explode('|', $productRows[0]["main_image_size_3"]));
+                        break;
+                    case "downloads_file_1":
+                        $model->$key = $this->getFileUuid($productRows[0]["downloads_file_1"]);
+                        break;
+                    case "downloads_file_2":
+                        $model->$key = $this->getFileUuid($productRows[0]["downloads_file_2"]);
+                        break;
+                    case "downloads_file_3":
+                        $model->$key = $this->getFileUuid($productRows[0]["downloads_file_3"]);
+                        break;
+                    case "downloads_file_4":
+                        $model->$key = $this->getFileUuid($productRows[0]["downloads_file_4"]);
+                        break;
+                    case "downloads_file_5":
+                        $model->$key = $this->getFileUuid($productRows[0]["downloads_file_5"]);
                         break;
                     case "tags":
                         $model->$key = serialize(explode('|', $productRows[0]["tags"]));
@@ -840,14 +870,7 @@ class tl_dse_products_set extends Backend
      */
     private function getFileUuid($strName)
     {
-        $uploadPath = "";
-        if (preg_match('/(\.jpg|\.png|\.bmp)$/', $strName)) {
-            $uploadPath = "files/public/products/import/images/";
-        } elseif (preg_match('/(\.pdf)$/', $strName)) {
-            $uploadPath = "files/public/products/import/pdf/";
-        }
-
-        $fileUuid = $fileUuid = \FilesModel::findByPath($uploadPath.$strName)->uuid;
+        $fileUuid = \FilesModel::findByPath($strName)->uuid;
 
         if($fileUuid) {
             return $fileUuid;
