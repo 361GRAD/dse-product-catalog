@@ -1,78 +1,76 @@
 
-<div class="products_reader block<?= ($this->class) ? ' '.$this->class : ''; ?>"<?php echo $this->cssID; ?><?php if ($this->style): ?> style="<?php echo $this->style; ?>"<?php endif; ?>>
+<div class="products_reader block<?= ($this->class) ? ' '.$this->class : ''; ?>"<?= $this->cssID; ?><?php if ($this->style): ?> style="<?= $this->style; ?>"<?php endif; ?>>
 
-    <h1><?php echo $this->title; ?></h1>
-    <div class="subheader">
-        <p><?php echo $this->bcsubheader; ?></p>
-    </div>
-    <?php if ($this->bctext): ?>
-        <div class="ce_text">
-            <?php echo $this->bctext; ?>
-        </div>
-     <?php endif; ?>
+    <ul class="">
+        <?php if(!$this->applications_exclude_menu): ?>
+            <li class="anchor-item"><a href="#applications"><?= $this->applications_headline ?></a></li>
+        <?php endif; ?>
+        <?php if(!$this->downloads_exclude_menu): ?>
+            <li class="anchor-item"><a href="#downloads"><?= $this->downloads_headline ?></a></li>
+        <?php endif; ?>
+    </ul>
+
+    <h1><?= $this->title; ?></h1>
+
+    <?= $this->description; ?>
 
     {{image::<?= $this->main_image_path ?>}}
-    <?php if ($this->img_details): ?>
-        <div class="ce_image">
 
-            {{image::<?php echo $this->img_details; ?>?alt=<?php
-                echo $this->headline;
-                //echo "&width=210";
-                //echo "&height=110";
-                //echo "&mode=crop";
-            ?>}}
-            <?php if ($this->img_label): ?>
-                <div class="label">
-                    {{image::<?php echo $this->img_label; ?>?alt=<?php
-                        echo $this->headline;
-                        //echo "&width=210";
-                        //echo "&height=110";
-                        //echo "&mode=crop";
-                    ?>}}
-                </div>
-            <?php endif; ?>
-        </div>
-    <?php endif; ?>
+    {{image::<?= $this->main_image_path_2 ?>}}
 
-    <div class="product-content">
-        <?php echo $this->text; ?>
-    </div>
+    <?= $this->text; ?>
 
+    <?= $this->vd_headline; ?>
     <?php if($this->variants[1]): ?>
-	<table class="table">
-		<thead>
-			<tr>
-				<?php foreach($this->variants[0] as $key=>$value): ?>
-				<th scope="col"><?= $GLOBALS['TL_LANG']['MSC']['VARIANTS'][$key] ?></th>
-				<?php endforeach; ?>
-			</tr>
-		</thead>
-		<tbody>
-			<?php foreach($this->variants[1] as $dataVariant): ?>
-			<tr>
-				<?php foreach($dataVariant as $vvalue): ?>
-				<td><?= $vvalue ?></td>
-				<?php endforeach; ?>
-			</tr>
-			<?php endforeach; ?>
-		</tbody>
-	</table>
+    <div class="table-responsive">
+        <table class="table">
+            <thead>
+                <tr>
+                    <?php foreach($this->variants[0] as $key=>$value): ?>
+                    <th scope="col"><?= $GLOBALS['TL_LANG']['MSC']['VARIANTS'][$key] ?></th>
+                    <?php endforeach; ?>
+                </tr>
+            </thead>
+            <tbody>
+                <?php foreach($this->variants[1] as $dataVariant): ?>
+                <tr>
+                    <?php foreach($dataVariant as $vvalue): ?>
+                    <td><?= $vvalue ?></td>
+                    <?php endforeach; ?>
+                </tr>
+                <?php endforeach; ?>
+            </tbody>
+        </table>
+    </div>
 	<?php endif; ?>
-    <!--<p class="back-button">
-        <a href="<?php echo $this->bcback; ?>" class="lb-iframe-link">
-            <span class="icon"></span>
-            {{iflng::de}}
-                <span>Zurück</span>
-            {{iflng}}
-            {{iflng::en}}
-                <span>Back</span>
-            {{iflng}}
-        </a>
-    </p>-->
 
-    <?php //echo $this->showTemplateVars(); 
-    //var_dump($this->set);
-    //var_dump($this->arrData);
-    ?>
+    <?= $this->vd_headline; ?>
+
+    <?= $this->applications_headline; ?>
+    <?= $this->applications_text; ?>
+    <?= $this->applications_field_1_headline; ?>
+    <?= $this->applications_field_1_text; ?>
+    <?= $this->applications_field_2_headline; ?>
+    <?= $this->applications_field_2_text; ?>
+    <?= $this->applications_field_3_headline; ?>
+    <?= $this->applications_field_3_text; ?>
+    <?= $this->applications_field_4_headline; ?>
+    <?= $this->applications_field_4_text; ?>
+
+    <?= $this->downloads_headline; ?>
+    <?= $this->downloads_file_1_title; ?>
+    <?= \FilesModel::findByUuid($this->downloads_file_1)->path; ?>
+    <?= $this->downloads_file_2_title; ?>
+    <?= \FilesModel::findByUuid($this->downloads_file_2)->path; ?>
+    <?= $this->downloads_file_2_title; ?>
+    <?= \FilesModel::findByUuid($this->downloads_file_3)->path; ?>
+    <?= $this->downloads_file_4_title; ?>
+    <?= \FilesModel::findByUuid($this->downloads_file_4)->path; ?>
+    <?= $this->downloads_file_5_title; ?>
+    <?= \FilesModel::findByUuid($this->downloads_file_5)->path; ?>
+
+    <?= $this->request_headline; ?>
+    <?= $this->request_headline_small; ?>
+    <?= $this->request_text; ?>
 
 </div>

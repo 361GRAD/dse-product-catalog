@@ -20,20 +20,13 @@
         <?php endif; ?>
     </div>
 
-    <?php if($this->arrFilters || $this->arrTags): ?>
+    <!-- FILTER 1: EXAMPLE: create navigation modules in BACKEND first and replace ID -->
+    {{insert_module::76}}
+
+    <!-- FILTER 2: Tags -->
+    <?php if($this->arrTags): ?>
     <a href="{{link_url::{{page::id}}}}" alt="Filter zurücksetzen">Filter zurücksetzen</a>
     <form method="GET" action="{{link_url::{{page::id}}}}">
-        <?php if($this->arrFilters): ?>
-        <?php foreach($this->arrFilters as $filter): ?>
-        <select name="<?= $filter ?>">
-            <option value=""<?= (!isset($this->filterSearched[$filter])) ? ' selected' : '' ?>>-</option>
-            <?php for($i=0; $i<count($this->arrFiltersValue); $i++): ?>
-            <option value="<?= $this->arrFiltersValue[$i][$filter] ?>"<?= ($this->arrFiltersValue[$i][$filter] == $this->filterSearched[$filter]) ? ' selected' : '' ?>><?= $this->arrFiltersValue[$i][$filter] ?></option>
-            <?php endfor; ?>
-        </select>
-        <?php endforeach; ?>
-        <?php endif; ?>
-
         <?php if($this->arrTags): ?>
         <select name="tag[]" multiple>
             <option value="">Tags</option>
