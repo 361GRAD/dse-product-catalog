@@ -453,11 +453,11 @@ class tl_dse_products_set extends Backend
             $this->isVariant = true;
             $local = substr ($this->catId, strrpos( $this->catId, '_' ) + 1 );
             try {
-                // Truncate tabe before import because csv is master
+                // Truncate table before import because csv is master
                 $this->clearAllDbLocalVariants('tl_dse_products_variants', $local);
 
                 $csvData = array_map(function ($row) {
-                    return str_getcsv($row, ",");
+                    return str_getcsv($row, ";");
                 }, file($path));
 
                 $csvData = $this->stripHeaderKeys($csvData);
@@ -481,7 +481,7 @@ class tl_dse_products_set extends Backend
 
                 //$csvData = str_getcsv(file_get_contents($path), "\n");
                 // map str_getcsv here instead of calling rowToArray on each row
-                $csvData = array_map(function($row) { return str_getcsv($row, ","); }, file($path));
+                $csvData = array_map(function($row) { return str_getcsv($row, ";"); }, file($path));
 
                 $csvData = $this->stripHeaderKeys($csvData);
 
@@ -797,6 +797,7 @@ class tl_dse_products_set extends Backend
         } else {
             foreach ($this->productDbHeaderKeysFlip as $key => $value) {
                 switch ($key) {
+                    // Do nothing with id, because id is set automatically
                     case "id":
                         break;
                     case "pid":
@@ -808,17 +809,11 @@ class tl_dse_products_set extends Backend
                     case "alias":
                         $model->$key = $this->generateAlias($productRows[0]["title"], $identifier, $model);
                         break;
-                    case "published":
-                        $model->$key = 1;
-                        break;
                     case "singleSRC":
                         $model->$key = $this->getFileUuid($productRows[0]["singleSRC"]);
                         break;
-                    // ToDo: Remove TEMP fixes
-                    case strpos($key, '_coord') !== false:
-                        if (is_null($productRows[0][$key]) && empty($productRows[0][$key])) {
-                            $model->$key = 0;
-                        }
+                    case "tags":
+                        $model->$key = serialize(explode('|', $productRows[0]["tags"]));
                         break;
                     default:
                         if (is_null($productRows[0][$key])) {
