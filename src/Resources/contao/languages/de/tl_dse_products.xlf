@@ -20,6 +20,10 @@
             <target>Alias</target>
         </trans-unit>
         <trans-unit id="tl_dse_products.title.0">
+            <source>Language</source>
+            <target>Sprache</target>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.title.0">
             <source>Title</source>
             <target>Titel</target>
         </trans-unit>

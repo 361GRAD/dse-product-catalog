@@ -16,6 +16,9 @@
             <source>Alias</source>
         </trans-unit>
         <trans-unit id="tl_dse_products.title.0">
+            <source>Language</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.title.0">
             <source>Title</source>
         </trans-unit>
         <trans-unit id="tl_dse_products.sku.0">

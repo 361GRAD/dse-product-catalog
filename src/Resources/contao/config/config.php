@@ -29,6 +29,12 @@ if ('BE' === TL_MODE) {
     }
 }
 
+// change alias hook
+$GLOBALS['TL_HOOKS']['changelanguageNavigation'][] = [
+    'Dse\ProductCatalogBundle\EventListener\ChangelanguageNavigationListener',
+    'onChangelanguageNavigation'
+];
+
 /**
  * FRONT END MODULES
  */

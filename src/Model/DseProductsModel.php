@@ -87,6 +87,47 @@ class DseProductsModel extends \Model
 
         return static::findBy($arrColumns, $varId, $arrOptions);
     }
+    /**
+     * Find published by their alias
+     *
+     * @param mixed $varId alias name
+     * @param array $arrOptions An optional options array
+     *
+     * @return \Model|null The PackagesModel or null if there are no packages
+     */
+    public static function findPublishedSkuByAlias($varId, array $arrOptions = array())
+    {
+        $t = static::$strTable;
+        $arrColumns = array("$t.alias=?");
+
+        if (!BE_USER_LOGGED_IN) {
+            $time = time();
+            $arrColumns[] = "($t.start='' OR $t.start<$time) AND ($t.stop='' OR $t.stop>$time) AND $t.published=1";
+        }
+
+        return static::findBy($arrColumns, $varId, $arrOptions);
+    }
+
+    /**
+     * Find published by their SKU
+     *
+     * @param mixed $varId sku
+     * @param array $arrOptions An optional options array
+     *
+     * @return \Model|null The PackagesModel or null if there are no packages
+     */
+    public static function findPublishedBySku($varId, array $arrOptions = array())
+    {
+        $t = static::$strTable;
+        $arrColumns = array("$t.sku=?");
+
+        if (!BE_USER_LOGGED_IN) {
+            $time = time();
+            $arrColumns[] = "($t.start='' OR $t.start<$time) AND ($t.stop='' OR $t.stop>$time) AND $t.published=1";
+        }
+
+        return static::findBy($arrColumns, $varId, $arrOptions);
+    }
 
     /**
      * Find all by their parent ID
