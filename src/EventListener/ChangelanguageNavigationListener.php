@@ -23,8 +23,12 @@ class ChangelanguageNavigationListener {
                     break;
                 }
             }
-            // Pass the new alias to ChangeLanguage
-            $event->getUrlParameterBag()->setUrlAttribute('items', $newAlias);
+            if($newAlias !== NULL) {
+                // Pass the new alias to ChangeLanguage
+                $event->getUrlParameterBag()->setUrlAttribute('items', $newAlias);
+            } else {
+                $event->skipInNavigation();
+            }
         }
 
     }
