@@ -29,6 +29,11 @@ if ('BE' === TL_MODE) {
     }
 }
 
+// Register hooks
+$GLOBALS['TL_HOOKS']['getSearchablePages'][] = [
+    'Dse\ProductCatalogBundle\EventListener\SearchIndexListener',
+    'getSearchablePages'
+];
 // change alias hook
 $GLOBALS['TL_HOOKS']['changelanguageNavigation'][] = [
     'Dse\ProductCatalogBundle\EventListener\ChangelanguageNavigationListener',
