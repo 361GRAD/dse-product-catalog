@@ -679,6 +679,18 @@
         <trans-unit id="tl_dse_products.attr_t_led.0">
             <source>LED display for performance monitoring and service planning</source>
         </trans-unit>
+        <trans-unit id="tl_dse_products.attr_t_softschlag.0">
+            <source>Switchable soft impact (XIP)</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_t_bereich_diamantbohrkrone.0">
+            <source>Drilling range with diamond core bit, with BS drill stand, dry</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_t_bereich_beton_hand.0">
+            <source>Drilling range with diamond core bit, hand-held, dry, with soft impact</source>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_t_bereich_beton_staender.0">
+            <source>Drilling range with diamond core bit, with BS drill stand, dry, with soft impact</source>
+        </trans-unit>
 
         <trans-unit id="tl_dse_products.attr_n_nennaufnahmeleistung.0">
             <source>Rated power consumption</source>

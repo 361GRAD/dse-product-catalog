@@ -896,6 +896,22 @@
             <source>LED Anzeige zur Leistungsüberwachung und Serviceplanung</source>
             <target>LED Anzeige zur Leistungsüberwachung und Serviceplanung</target>
         </trans-unit>
+        <trans-unit id="tl_dse_products.attr_t_softschlag.0">
+            <source>Switchable soft impact (XIP)</source>
+            <target>zuschaltbarer Softschlag (XIP) </target>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_t_bereich_diamantbohrkrone.0">
+            <source>Drilling range with diamond core bit, with BS drill stand, dry</source>
+            <target>Bohrbereich mit Diamantbohrkrone ständergeführt trocken</target>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_t_bereich_beton_hand.0">
+            <source>Drilling range with diamond core bit, hand-held, dry, with soft impact</source>
+            <target>Bohrbereich in Beton handgeführt trocken, mit Softschlag</target>
+        </trans-unit>
+        <trans-unit id="tl_dse_products.attr_t_bereich_beton_staender.0">
+            <source>Drilling range with diamond core bit, with BS drill stand, dry, with soft impact</source>
+            <target>Bohrbereich in Beton ständergeführt trocken, mit Softschlag</target>
+        </trans-unit>
 
         <trans-unit id="tl_dse_products.attr_n_nennaufnahmeleistung.0">
             <source>Nennaufnahmeleistung</source>
